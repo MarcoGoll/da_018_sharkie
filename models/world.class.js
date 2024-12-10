@@ -4,8 +4,8 @@ class World {
     canvas;
     character = new Character(0, 0, 180, 200, "../assets/img/1.Sharkie/3.Swim/1.png");
     lights = [
-        new Light((Math.random() * 500), 0, 250, 250, "../assets/img/3. Background/Layers/1. Light/1.png"),
-        new Light(((Math.random() * 500)), 0, 250, 250, "../assets/img/3. Background/Layers/1. Light/2.png")
+        new Light((Math.random() * 500), 0, 250, 480, "../assets/img/3. Background/Layers/1. Light/1.png"),
+        new Light(((Math.random() * 500)), 0, 250, 480, "../assets/img/3. Background/Layers/1. Light/2.png")
     ];
     enemiesJellyfish = [
         new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "../assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
@@ -16,8 +16,15 @@ class World {
         new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png")
     ];
     backgroundObjects = [
-        new BackgroundObject(0, 0, 360, 480, "../assets/img/3. Background/Layers/2. Floor/L1.png"),
-        new BackgroundObject(360, 0, 360, 480, "../assets/img/3. Background/Layers/2. Floor/L2.png")
+        new BackgroundObject(0, 0, 360, "../assets/img/3. Background/Layers/5. Water/L1.png"),
+        new BackgroundObject(360, 0, 360, "../assets/img/3. Background/Layers/5. Water/L1.png"),
+        new BackgroundObject(0, 180, 360, "../assets/img/3. Background/Layers/4.Fondo 2/L1.png"),
+        new BackgroundObject(360, 180, 360, "../assets/img/3. Background/Layers/4.Fondo 2/L2.png"),
+        new BackgroundObject(0, 180, 360, "../assets/img/3. Background/Layers/3.Fondo 1/L1.png"),
+        new BackgroundObject(360, 180, 360, "../assets/img/3. Background/Layers/3.Fondo 1/L2.png"),
+        new BackgroundObject(0, 180, 360, "../assets/img/3. Background/Layers/2. Floor/L1.png"),
+        new BackgroundObject(360, 180, 360, "../assets/img/3. Background/Layers/2. Floor/L2.png"),
+
     ];
 
     constructor(canvas) {

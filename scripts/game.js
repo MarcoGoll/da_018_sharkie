@@ -1,3 +1,4 @@
+const HEIGHT = 480;
 let canvasRef;
 let world;
 
