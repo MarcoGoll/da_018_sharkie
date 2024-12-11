@@ -1,6 +1,16 @@
 class Jellyfish extends MoveableObject {
+    x;
+    y;
+    width;
+    height;
+
     constructor(x, y, width, height, img) {
-        super(x, y, width, height);
+        super();
         super.loadImage(img);
+
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     }
 }

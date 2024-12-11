@@ -1,6 +1,9 @@
 class Character extends MoveableObject {
-    constructor(x, y, width, height, img) {
-        super(x, y, width, height);
+    width = 180;
+    height = 200;
+
+    constructor(img) {
+        super();
         super.loadImage(img);
     }
 }
