@@ -32,7 +32,7 @@ class Pufferfish extends MoveableObject {
             let path = this.IMAGES_SWIM[i];
             this.img = this.imageCache[path];
             this.currentImage++;
-        }, 1000 / 5);
+        }, 1000 / 10);
     }
 
 }
