@@ -5,8 +5,7 @@ class Jellyfish extends MoveableObject {
     height;
 
     constructor(x, y, width, height, img) {
-        super();
-        super.loadImage(img);
+        super().loadImage(img);
 
         this.x = x;
         this.y = y;
