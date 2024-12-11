@@ -2,7 +2,7 @@ class BackgroundObject extends MoveableObject {
     constructor(img) {
         // VARAINTE 1 (so initial bei mir - obwohl ich gar kein constructor in der Superklasse hab (wird hier automatisch einer erzeugt, den man nicht sieht?))
         //super();
-        //super.loadImage(img);
+        //this.loadImage(img);
 
         // VARIANTE 2 (so bei Junus)
         super().loadImage(img);

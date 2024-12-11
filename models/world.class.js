@@ -21,11 +21,14 @@ class World {
         new BackgroundObject("../assets/img/3. Background/Layers/3.Fondo 1/L1.png"),
         new BackgroundObject("../assets/img/3. Background/Layers/2. Floor/L1.png"),
     ];
+    keyboard;
 
-    constructor(canvas) {
+    constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
         this.canvas = canvas;
+        this.keyboard = keyboard;
         this.draw();
+        this.setWorld();
     }
 
     draw() {
@@ -51,6 +54,10 @@ class World {
         arryOfMoveableObjects.forEach(moveableObject => {
             this.addObjectToMap(moveableObject);
         });
+    }
+
+    setWorld() {
+        this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
     }
 }
 

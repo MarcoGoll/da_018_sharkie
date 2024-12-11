@@ -1,6 +1,5 @@
 class Light extends MoveableObject {
 
-
     constructor(img) {
         super().loadImage(img);
         this.x = Math.random() * 500;
@@ -8,9 +7,6 @@ class Light extends MoveableObject {
     }
 
     animate() {
-        setInterval(() => {
-            this.x -= 0.15;
-        }, 1000 / 60); // 60fps
-
+        this.moveLeft();
     }
 }

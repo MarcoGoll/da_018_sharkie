@@ -5,14 +5,79 @@ const Y = 0;
 
 let canvasRef;
 let world;
+let keyboard = new Keyboard();
 
 
 function init() {
     canvasRef = document.getElementById('canvas');
-    world = new World(canvasRef);
+    world = new World(canvasRef, keyboard);
 
     console.log('My character: ', world.character);
     console.log('My Jelly enemies: ', world.enemiesJellyfish);
     console.log('My Puffer enemies: ', world.enemiesPufferfish);
 }
 
+window.addEventListener('keydown', (event) => {
+    console.log(event.keyCode);
+    switch (event.keyCode) {
+        case 37:
+        case 65:
+            keyboard.LEFT = true;
+            break;
+        case 38:
+        case 87:
+            keyboard.UP = true;
+            break;
+        case 39:
+        case 68:
+            keyboard.RIGHT = true;
+            break;
+        case 40:
+        case 83:
+            keyboard.DOWN = true;
+            break;
+        case 32:
+            keyboard.SPACE = true;
+            break;
+        default:
+            break;
+    }
+    console.log("L: " + keyboard.LEFT);
+    console.log("R: " + keyboard.RIGHT);
+    console.log("U: " + keyboard.UP);
+    console.log("D: " + keyboard.DOWN);
+    console.log("Space: " + keyboard.SPACE);
+
+})
+
+window.addEventListener('keyup', (event) => {
+    console.log(event.keyCode);
+    switch (event.keyCode) {
+        case 37:
+        case 65:
+            keyboard.LEFT = false;
+            break;
+        case 38:
+        case 87:
+            keyboard.UP = false;
+            break;
+        case 39:
+        case 68:
+            keyboard.RIGHT = false;
+            break;
+        case 40:
+        case 83:
+            keyboard.DOWN = false;
+            break;
+        case 32:
+            keyboard.SPACE = false;
+            break;
+        default:
+            break;
+    }
+    console.log("L: " + keyboard.LEFT);
+    console.log("R: " + keyboard.RIGHT);
+    console.log("U: " + keyboard.UP);
+    console.log("D: " + keyboard.DOWN);
+    console.log("Space: " + keyboard.SPACE);
+})

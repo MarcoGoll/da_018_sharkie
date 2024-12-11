@@ -20,11 +20,17 @@ class Jellyfish extends MoveableObject {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.speed = 0.15 + Math.random() * 0.5;
 
         this.animate();
     }
 
     animate() {
+        this.moveLeft();
+        if (Math.random() > 0.5) {
+            this.moveUp();
+        } else { this.moveDown(); }
+
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_SWIM.length; // Wirkt wie eine Endlosschleife. i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ... (jeweils der Rest von x % y )
             let path = this.IMAGES_SWIM[i];
