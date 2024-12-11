@@ -7,13 +7,13 @@ class World {
     lights = [
         new Light("../assets/img/3. Background/Layers/1. Light/1.png"),
     ];
-    enemiesJellyfish = [
-        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "../assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-    ];
     enemiesPufferfish = [
-        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
-        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
-        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png")
+        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "../assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
+    ];
+    enemiesJellyfish = [
+        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
+        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
+        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 100, 120, "../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png")
     ];
     backgroundObjects = [
         new BackgroundObject("../assets/img/3. Background/Layers/5. Water/L1.png"),

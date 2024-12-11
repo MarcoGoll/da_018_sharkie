@@ -19,7 +19,7 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_SWIM.length; // i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ...
+            let i = this.currentImage % this.IMAGES_SWIM.length; // Wirkt wie eine Endlosschleife. i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ... (jeweils der Rest von x % y )
             let path = this.IMAGES_SWIM[i];
             this.img = this.imageCache[path];
             this.currentImage++;
