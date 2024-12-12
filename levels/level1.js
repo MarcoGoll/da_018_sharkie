@@ -13,7 +13,7 @@ const level1 = new Level(
     ]
 );
 
-setBackgrounds(3);
+setBackgrounds(AMOUNTBACKGROUNDS);
 
 function setBackgrounds(amount) {
     let counter = 0;

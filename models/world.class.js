@@ -1,15 +1,17 @@
 class World {
-    ctx; // um den (ctx/)Context  des Canvas zu verändern (wird immer im Zusammenhang mit canvas benötigt und wird traditionell immer so benannt)
-    canvas;
-
     character = new Character("./assets/img/1.Sharkie/3.Swim/1.png");
-    lights = level1.lights;
-    enemiesPufferfish = level1.enemiesPufferfish;
-    enemiesJellyfish = level1.enemiesJellyfish;
-    backgroundObjects = level1.backgroundObjects;
-
+    canvas;
+    ctx; // um den (ctx/)Context  des Canvas zu verändern (wird immer im Zusammenhang mit canvas benötigt und wird traditionell immer so benannt)
     keyboard;
     camera_x = 0;
+
+    level = level1;
+
+    // lights = level1.lights;
+    // enemiesPufferfish = level1.enemiesPufferfish;
+    // enemiesJellyfish = level1.enemiesJellyfish;
+    // backgroundObjects = level1.backgroundObjects;
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
@@ -24,10 +26,10 @@ class World {
 
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.backgroundObjects);
-        this.addObjectsToMap(this.lights);
-        this.addObjectsToMap(this.enemiesJellyfish);
-        this.addObjectsToMap(this.enemiesPufferfish);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.lights);
+        this.addObjectsToMap(this.level.enemiesJellyfish);
+        this.addObjectsToMap(this.level.enemiesPufferfish);
         this.addObjectToMap(this.character);
 
         this.ctx.translate(-this.camera_x, 0);

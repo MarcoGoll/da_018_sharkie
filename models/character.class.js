@@ -33,22 +33,21 @@ class Character extends MoveableObject {
         //MOVEMENT
         setInterval(() => {
             if (this.world.keyboard.LEFT) {
-                this.x -= this.speed;
+                if (this.x > 0) {
+                    this.x -= this.speed;
+                }
                 this.otherDirection = true;
             }
-            if (this.world.keyboard.RIGHT) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndX - 720) {
+                console.log("current X: " + this.x + " End X: " + this.world.level.levelEndX)
                 this.x += this.speed;
                 this.otherDirection = false;
             }
-            if (this.world.keyboard.UP) {
-                if (this.y > -110) {
-                    this.y -= this.speed;
-                }
+            if (this.world.keyboard.UP && this.y > -110) {
+                this.y -= this.speed;
             }
-            if (this.world.keyboard.DOWN) {
-                if (this.y < 295) {
-                    this.y += this.speed;
-                }
+            if (this.world.keyboard.DOWN && this.y < 295) {
+                this.y += this.speed;
             }
             this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
         }, 1000 / 60)
