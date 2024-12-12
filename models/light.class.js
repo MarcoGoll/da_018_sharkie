@@ -1,8 +1,9 @@
 class Light extends MoveableObject {
 
-    constructor(img) {
+    constructor(x, img) {
         super().loadImage(img);
-        this.x = Math.random() * 500;
+        this.x = x;
+        //this.x = Math.random() * 500;
         this.animate();
     }
 

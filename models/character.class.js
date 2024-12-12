@@ -1,6 +1,6 @@
 class Character extends MoveableObject {
-    width = 180;
-    height = 200;
+    width = 220;
+    height = 240;
     IMAGES_SWIM = [
         './assets/img/1.Sharkie/3.Swim/1.png',
         './assets/img/1.Sharkie/3.Swim/2.png',
@@ -41,12 +41,12 @@ class Character extends MoveableObject {
                 this.otherDirection = false;
             }
             if (this.world.keyboard.UP) {
-                if (this.y > -90) {
+                if (this.y > -110) {
                     this.y -= this.speed;
                 }
             }
             if (this.world.keyboard.DOWN) {
-                if (this.y < 320) {
+                if (this.y < 295) {
                     this.y += this.speed;
                 }
             }

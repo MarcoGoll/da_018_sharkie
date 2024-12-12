@@ -5,7 +5,6 @@ class World {
     // character = new Character(0, 0, 180, 200, "../assets/img/1.Sharkie/3.Swim/1.png");
     character = new Character("./assets/img/1.Sharkie/3.Swim/1.png");
     lights = [
-        new Light("./assets/img/3. Background/Layers/1. Light/1.png"),
     ];
     enemiesPufferfish = [
         new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
@@ -16,11 +15,9 @@ class World {
         new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png")
     ];
     backgroundObjects = [
-        new BackgroundObject("./assets/img/3. Background/Layers/5. Water/L1.png"),
-        new BackgroundObject("./assets/img/3. Background/Layers/4.Fondo 2/L1.png"),
-        new BackgroundObject("./assets/img/3. Background/Layers/3.Fondo 1/L1.png"),
-        new BackgroundObject("./assets/img/3. Background/Layers/2. Floor/L1.png"),
     ];
+
+
     keyboard;
     camera_x = 0;
 
@@ -28,6 +25,7 @@ class World {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.createRepeatedElements(5);
         this.draw();
         this.setWorld();
     }
@@ -45,9 +43,8 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
 
-        self = this; // wird benötigt, da in der Methode requestAnimationFrame "this" nicht bekannt ist. Wenn wir this (also das aktuelle Objekt) aber vorher einer Variablen zuordnen, können wir diese in der Funktion requestAnimationFrame nutzen
-        requestAnimationFrame(function () {
-            self.draw();
+        requestAnimationFrame(() => {
+            this.draw();
         }); // requestAnimationFrame wird so häufig aufgerufen, wie es die Grafikkarte hergibt
     }
 
@@ -74,5 +71,24 @@ class World {
     setWorld() {
         this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
     }
-}
 
+    createRepeatedElements(amount) {
+        let counter = 0;
+        for (let i = 0; i < amount; i++) {
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L1.png"));
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L1.png"));
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L1.png"));
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L1.png"));
+            this.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/1.png"));
+            counter++;
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L2.png"));
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L2.png"));
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L2.png"));
+            this.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L2.png"));
+            this.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/2.png"));
+            counter++;
+
+
+        }
+    }
+}
