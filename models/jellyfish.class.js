@@ -5,10 +5,10 @@ class Jellyfish extends MoveableObject {
     height;
 
     IMAGES_SWIM = [
-        '../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
-        '../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
-        '../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png',
-        '../assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
+        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
+        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
+        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png',
+        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
     ];
     currentImage = 0;
 

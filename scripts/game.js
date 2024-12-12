@@ -18,7 +18,6 @@ function init() {
 }
 
 window.addEventListener('keydown', (event) => {
-    console.log(event.keyCode);
     switch (event.keyCode) {
         case 37:
         case 65:
@@ -42,16 +41,9 @@ window.addEventListener('keydown', (event) => {
         default:
             break;
     }
-    console.log("L: " + keyboard.LEFT);
-    console.log("R: " + keyboard.RIGHT);
-    console.log("U: " + keyboard.UP);
-    console.log("D: " + keyboard.DOWN);
-    console.log("Space: " + keyboard.SPACE);
-
 })
 
 window.addEventListener('keyup', (event) => {
-    console.log(event.keyCode);
     switch (event.keyCode) {
         case 37:
         case 65:
@@ -75,9 +67,4 @@ window.addEventListener('keyup', (event) => {
         default:
             break;
     }
-    console.log("L: " + keyboard.LEFT);
-    console.log("R: " + keyboard.RIGHT);
-    console.log("U: " + keyboard.UP);
-    console.log("D: " + keyboard.DOWN);
-    console.log("Space: " + keyboard.SPACE);
 })

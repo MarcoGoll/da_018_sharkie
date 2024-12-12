@@ -6,6 +6,7 @@ class MoveableObject {
     img;
 
     speed = 0.15;
+    otherDirection = false;
     imageCache = {};
 
     loadImage(path) {

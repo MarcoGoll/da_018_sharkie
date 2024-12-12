@@ -2,15 +2,16 @@ class Character extends MoveableObject {
     width = 180;
     height = 200;
     IMAGES_SWIM = [
-        '../assets/img/1.Sharkie/3.Swim/1.png',
-        '../assets/img/1.Sharkie/3.Swim/2.png',
-        '../assets/img/1.Sharkie/3.Swim/3.png',
-        '../assets/img/1.Sharkie/3.Swim/4.png',
-        '../assets/img/1.Sharkie/3.Swim/5.png',
-        '../assets/img/1.Sharkie/3.Swim/6.png',
+        './assets/img/1.Sharkie/3.Swim/1.png',
+        './assets/img/1.Sharkie/3.Swim/2.png',
+        './assets/img/1.Sharkie/3.Swim/3.png',
+        './assets/img/1.Sharkie/3.Swim/4.png',
+        './assets/img/1.Sharkie/3.Swim/5.png',
+        './assets/img/1.Sharkie/3.Swim/6.png',
     ];
     currentImage = 0;
     world;
+    speed = 4;
 
     constructor(img) {
         super().loadImage(img);
@@ -32,17 +33,24 @@ class Character extends MoveableObject {
         //MOVEMENT
         setInterval(() => {
             if (this.world.keyboard.LEFT) {
-                this.moveLeft();
+                this.x -= this.speed;
+                this.otherDirection = true;
             }
             if (this.world.keyboard.RIGHT) {
-                this.moveRight();
+                this.x += this.speed;
+                this.otherDirection = false;
             }
             if (this.world.keyboard.UP) {
-                this.moveUp();
+                if (this.y > -90) {
+                    this.y -= this.speed;
+                }
             }
             if (this.world.keyboard.DOWN) {
-                this.moveDown();
+                if (this.y < 320) {
+                    this.y += this.speed;
+                }
             }
+            this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
         }, 1000 / 60)
     }
 
