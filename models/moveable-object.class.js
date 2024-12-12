@@ -7,6 +7,7 @@ class MoveableObject {
 
     speed = 0.15;
     otherDirection = false;
+    currentImage = 0;
     imageCache = {};
 
     loadImage(path) {
@@ -46,5 +47,12 @@ class MoveableObject {
         setInterval(() => {
             this.y += this.speed;
         }, 1000 / 60); // 60fps
+    }
+
+    playAnimation(images) {
+        let i = this.currentImage % this.IMAGES_SWIM.length; // Wirkt wie eine Endlosschleife. i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ... (jeweils der Rest von x % y )
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
 }

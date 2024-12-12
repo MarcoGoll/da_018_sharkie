@@ -1,16 +1,22 @@
 const level1 = new Level(
     [
+        //Lights
     ],
     [
-        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png")
-    ],
-    [
+        //Enemies
+        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
+        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
+        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
+        new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
         new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
         new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
-        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png")
+        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
+        new Endboss()
     ],
     [
+        //Backgrounds
     ]
+
 );
 
 setBackgrounds(AMOUNTBACKGROUNDS);

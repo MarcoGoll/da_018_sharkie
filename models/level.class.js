@@ -1,14 +1,12 @@
 class Level {
     lights;
-    enemiesPufferfish;
-    enemiesJellyfish;
+    enemies;
     backgroundObjects;
     levelEndX = AMOUNTBACKGROUNDS * 1440;
 
-    constructor(lights, enemiesPufferfish, enemiesJellyfish, backgroundObjects) {
+    constructor(lights, enemies, backgroundObjects) {
         this.lights = lights;
-        this.enemiesPufferfish = enemiesPufferfish;
-        this.enemiesJellyfish = enemiesJellyfish;
+        this.enemies = enemies;
         this.backgroundObjects = backgroundObjects;
     }
 }

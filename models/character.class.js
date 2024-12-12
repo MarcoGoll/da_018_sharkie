@@ -9,7 +9,6 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/3.Swim/5.png',
         './assets/img/1.Sharkie/3.Swim/6.png',
     ];
-    currentImage = 0;
     world;
     speed = 4;
     swimSound = new Audio('./assets/audio/splash.mp3');
@@ -25,10 +24,7 @@ class Character extends MoveableObject {
         setInterval(() => {
             //WALKANIMATION
             if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
-                let i = this.currentImage % this.IMAGES_SWIM.length; // Wirkt wie eine Endlosschleife. i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ... (jeweils der Rest von x % y )
-                let path = this.IMAGES_SWIM[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.playAnimation(this.IMAGES_SWIM);
             }
         }, 1000 / 8);
 
@@ -42,7 +38,6 @@ class Character extends MoveableObject {
                 this.swimSound.play();
             }
             if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndX - 720) {
-                // console.log("current X: " + this.x + " End X: " + this.world.level.levelEndX)
                 this.x += this.speed;
                 this.otherDirection = false;
                 this.swimSound.play();
@@ -64,8 +59,8 @@ class Character extends MoveableObject {
         }, 1000 / 60)
     }
 
-
     swim() {
 
     }
 }
+

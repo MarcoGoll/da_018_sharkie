@@ -7,12 +7,6 @@ class World {
 
     level = level1;
 
-    // lights = level1.lights;
-    // enemiesPufferfish = level1.enemiesPufferfish;
-    // enemiesJellyfish = level1.enemiesJellyfish;
-    // backgroundObjects = level1.backgroundObjects;
-
-
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
         this.canvas = canvas;
@@ -28,8 +22,7 @@ class World {
 
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.lights);
-        this.addObjectsToMap(this.level.enemiesJellyfish);
-        this.addObjectsToMap(this.level.enemiesPufferfish);
+        this.addObjectsToMap(this.level.enemies);
         this.addObjectToMap(this.character);
 
         this.ctx.translate(-this.camera_x, 0);

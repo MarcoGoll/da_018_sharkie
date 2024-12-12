@@ -11,7 +11,6 @@ class Pufferfish extends MoveableObject {
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim4.png',
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png',
     ];
-    currentImage = 0;
 
     constructor(x, y, width, height, img) {
         super().loadImage(img);
@@ -30,10 +29,7 @@ class Pufferfish extends MoveableObject {
     animate() {
         this.moveLeft();
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_SWIM.length; // Wirkt wie eine Endlosschleife. i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ... (jeweils der Rest von x % y )
-            let path = this.IMAGES_SWIM[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_SWIM);
         }, 1000 / 10);
     }
 
