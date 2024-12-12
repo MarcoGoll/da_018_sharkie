@@ -12,6 +12,8 @@ class Character extends MoveableObject {
     currentImage = 0;
     world;
     speed = 4;
+    swimSound = new Audio('./assets/audio/splash.mp3');
+
 
     constructor(img) {
         super().loadImage(img);
@@ -37,18 +39,27 @@ class Character extends MoveableObject {
                     this.x -= this.speed;
                 }
                 this.otherDirection = true;
+                this.swimSound.play();
             }
             if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndX - 720) {
-                console.log("current X: " + this.x + " End X: " + this.world.level.levelEndX)
+                // console.log("current X: " + this.x + " End X: " + this.world.level.levelEndX)
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.swimSound.play();
             }
             if (this.world.keyboard.UP && this.y > -110) {
                 this.y -= this.speed;
+                this.swimSound.play();
             }
             if (this.world.keyboard.DOWN && this.y < 295) {
                 this.y += this.speed;
+                this.swimSound.play();
             }
+
+            if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) {
+                this.swimSound.pause();
+            }
+
             this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
         }, 1000 / 60)
     }
