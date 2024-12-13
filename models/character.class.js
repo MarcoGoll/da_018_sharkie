@@ -18,6 +18,7 @@ class Character extends MoveableObject {
         super().loadImage(img);
         this.loadImages(this.IMAGES_SWIM);
         this.animate();
+        this.applyGravity();
     }
 
     animate() {
@@ -31,22 +32,23 @@ class Character extends MoveableObject {
         //MOVEMENT
         setInterval(() => {
             if (this.world.keyboard.LEFT) {
-                if (this.x > 0) {
+                if (this.isStartOfLevelReached()) {
                     this.x -= this.speed;
                 }
                 this.otherDirection = true;
                 this.swimSound.play();
             }
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndX - 720) {
+            if (this.world.keyboard.RIGHT && this.isEndOfLevelReached()) {
                 this.x += this.speed;
                 this.otherDirection = false;
                 this.swimSound.play();
             }
-            if (this.world.keyboard.UP && this.y > -110) {
+            if (this.world.keyboard.UP && this.isUnderTop()) {
                 this.y -= this.speed;
+                this.speedGravity = 0;
                 this.swimSound.play();
             }
-            if (this.world.keyboard.DOWN && this.y < 295) {
+            if (this.world.keyboard.DOWN && this.isAboveGround()) {
                 this.y += this.speed;
                 this.swimSound.play();
             }

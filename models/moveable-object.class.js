@@ -6,6 +6,8 @@ class MoveableObject {
     img;
 
     speed = 0.15;
+    speedGravity = 0;
+    acceleration = 0.01;
     otherDirection = false;
     currentImage = 0;
     imageCache = {};
@@ -13,6 +15,7 @@ class MoveableObject {
     loadImage(path) {
         this.img = new Image(); //Image Objekt funktioniert wie das <img> HTML-Tag (also z.B. auch mit dem Attribut src)
         this.img.src = path;
+
     }
 
     /**
@@ -54,5 +57,30 @@ class MoveableObject {
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+    applyGravity() {
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.y -= this.speedGravity;
+                this.speedGravity -= this.acceleration;
+            }
+
+        }, 1000 / 25);
+    }
+
+    isAboveGround() {
+        return this.y < 295;
+    }
+
+    isUnderTop() {
+        return this.y > -110;
+    }
+
+    isStartOfLevelReached() {
+        return this.x > 0;
+    }
+    isEndOfLevelReached() {
+        return this.x < this.world.level.levelEndX - 720;
     }
 }
