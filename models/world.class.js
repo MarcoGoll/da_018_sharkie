@@ -34,16 +34,27 @@ class World {
 
     addObjectToMap(moveableObject) {
         if (moveableObject.otherDirection) { // Vor dem Zeichnen spiegeln, wenn otherdirection == true
-            this.ctx.save(); // aktueller Status vom Kontext wird zwischengespeichert, um ihn später wieder laden zu können
-            this.ctx.translate(moveableObject.width, 0) // Nötig, um beim Spiegeln den Sprung des Characters zu verhindern 
-            this.ctx.scale(-1, 1); // Sagt dem Kontext, dass das nächste Bild gespiegelt gezeichnet werden soll
-            moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position, ist nötig da wir den Context gespiegelt haben
+            this.flipImage(moveableObject);
         }
-        this.ctx.drawImage(moveableObject.img, moveableObject.x, moveableObject.y, moveableObject.width, moveableObject.height); // ctx.drawImage(image, dx, dy, dWidth, dHeight) - eine Methode, die  dank der Zuweisung via getContext('2d') nun möglich ist. Sie Zeichnet im Context des Canvas ein Bild
+
+        moveableObject.draw(this.ctx);
+        moveableObject.drawFrame(this.ctx);
+
         if (moveableObject.otherDirection) { // Nach dem Zeichnen zurückspiegeln, wenn otherdirection == true
-            moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position zur Ausgangssituation zurück
-            this.ctx.restore(); // läd den Status vom Kontext, bevor wir die Eigenschaften zum Spiegeln eingestellt haben. Damit die nächsten Bilder wieder normal gezeichnet werden
+            this.flipImageBack(moveableObject);
         }
+    }
+
+    flipImage(moveableObject) {
+        this.ctx.save(); // aktueller Status vom Kontext wird zwischengespeichert, um ihn später wieder laden zu können
+        this.ctx.translate(moveableObject.width, 0) // Nötig, um beim Spiegeln den Sprung des Characters zu verhindern 
+        this.ctx.scale(-1, 1); // Sagt dem Kontext, dass das nächste Bild gespiegelt gezeichnet werden soll
+        moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position, ist nötig da wir den Context gespiegelt haben
+    }
+
+    flipImageBack(moveableObject) {
+        moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position zur Ausgangssituation zurück
+        this.ctx.restore(); // läd den Status vom Kontext, bevor wir die Eigenschaften zum Spiegeln eingestellt haben. Damit die nächsten Bilder wieder normal gezeichnet werden
     }
 
     addObjectsToMap(arryOfMoveableObjects) {
