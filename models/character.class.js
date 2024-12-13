@@ -92,24 +92,24 @@ class Character extends MoveableObject {
         //MOVEMENT
         setInterval(() => {
             if (this.world.keyboard.LEFT) {
-                if (this.isStartOfLevelReached()) {
-                    this.x -= this.speed;
+                if (!this.isStartOfLevelReached()) {
+                    this.moveLeft();
                 }
                 this.otherDirection = true;
                 this.swimSound.play();
             }
-            if (this.world.keyboard.RIGHT && this.isEndOfLevelReached()) {
-                this.x += this.speed;
+            if (this.world.keyboard.RIGHT && !this.isEndOfLevelReached()) {
+                this.moveRight();
                 this.otherDirection = false;
                 this.swimSound.play();
             }
             if (this.world.keyboard.UP && this.isUnderTop()) {
-                this.y -= this.speed;
+                this.moveUp();
                 this.speedGravity = 0;
                 this.swimSound.play();
             }
             if (this.world.keyboard.DOWN && this.isAboveGround()) {
-                this.y += this.speed;
+                this.moveDown();
                 this.swimSound.play();
             }
 

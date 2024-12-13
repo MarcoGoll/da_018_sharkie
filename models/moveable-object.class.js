@@ -32,24 +32,16 @@ class MoveableObject {
     }
 
     moveRight() {
-        setInterval(() => {
-            this.x += this.speed;
-        }, 1000 / 60); // 60fps
+        this.x += this.speed;
     }
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60); // 60fps
+        this.x -= this.speed;
     }
     moveUp() {
-        setInterval(() => {
-            this.y -= this.speed;
-        }, 1000 / 60); // 60fps
+        this.y -= this.speed;
     }
     moveDown() {
-        setInterval(() => {
-            this.y += this.speed;
-        }, 1000 / 60); // 60fps
+        this.y += this.speed;
     }
 
     playAnimation(images) {
@@ -78,9 +70,9 @@ class MoveableObject {
     }
 
     isStartOfLevelReached() {
-        return this.x > 0;
+        return this.x <= 0;
     }
     isEndOfLevelReached() {
-        return this.x < this.world.level.levelEndX - 720;
+        return this.x >= this.world.level.levelEndX - 720;
     }
 }

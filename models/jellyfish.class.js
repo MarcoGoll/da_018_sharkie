@@ -26,10 +26,12 @@ class Jellyfish extends MoveableObject {
     }
 
     animate() {
-        this.moveLeft();
-        if (Math.random() > 0.5) {
-            this.moveUp();
-        } else { this.moveDown(); }
+        setInterval(() => {
+            this.moveLeft();
+            if (Math.random() > 0.5) {
+                this.moveUp();
+            } else { this.moveDown(); }
+        }, 1000 / 60); // 60fps
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_SWIM);

@@ -19,25 +19,28 @@ function init() {
 }
 
 window.addEventListener('keydown', (event) => {
-    switch (event.keyCode) {
-        case 37:
-        case 65:
+    switch (event.key) {
+        case 'a':
+        case 'ArrowLeft':
             keyboard.LEFT = true;
             break;
-        case 38:
-        case 87:
+        case 'w':
+        case 'ArrowUp':
             keyboard.UP = true;
-            break;
-        case 39:
-        case 68:
+            break; a
+        case 'd':
+        case 'ArrowRight':
             keyboard.RIGHT = true;
             break;
-        case 40:
-        case 83:
+        case 's':
+        case 'ArrowDown':
             keyboard.DOWN = true;
             break;
-        case 32:
+        case ' ':
             keyboard.SPACE = true;
+            break;
+        case 'Shift':
+            keyboard.SHIFT = true;
             break;
         default:
             break;
@@ -45,25 +48,28 @@ window.addEventListener('keydown', (event) => {
 })
 
 window.addEventListener('keyup', (event) => {
-    switch (event.keyCode) {
-        case 37:
-        case 65:
+    switch (event.key) {
+        case 'a':
+        case 'ArrowLeft':
             keyboard.LEFT = false;
             break;
-        case 38:
-        case 87:
+        case 'w':
+        case 'ArrowUp':
             keyboard.UP = false;
-            break;
-        case 39:
-        case 68:
+            break; a
+        case 'd':
+        case 'ArrowRight':
             keyboard.RIGHT = false;
             break;
-        case 40:
-        case 83:
+        case 's':
+        case 'ArrowDown':
             keyboard.DOWN = false;
             break;
-        case 32:
+        case ' ':
             keyboard.SPACE = false;
+            break;
+        case 'Shift':
+            keyboard.SHIFT = false;
             break;
         default:
             break;
