@@ -89,4 +89,13 @@ class MoveableObject {
             ctx.stroke();
         }
     }
+
+    // Beispiel: character.isColliding(chicken)
+    isColliding(movableObject) {
+        return this.x + this.with > movableObject.x &&
+            this.y + this.height > movableObject.y &&
+            this.x < movableObject.x &&
+            this.y < movableObject.y + movableObject.height;
+    }
+
 } 
