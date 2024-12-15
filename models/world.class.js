@@ -4,7 +4,6 @@ class World {
     ctx; // um den (ctx/)Context  des Canvas zu verändern (wird immer im Zusammenhang mit canvas benötigt und wird traditionell immer so benannt)
     keyboard;
     camera_x = 0;
-
     level = level1;
 
     constructor(canvas, keyboard) {
@@ -72,9 +71,11 @@ class World {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
-                    console.log('Collision with Character:', enemy);
+                    this.character.energy -= 2;
+                    console.log(this.character.energy);
+
                 }
             });
-        }, 1000);
+        }, 200);
     }
 }

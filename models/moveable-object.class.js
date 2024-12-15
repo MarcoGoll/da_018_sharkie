@@ -11,6 +11,7 @@ class MoveableObject {
     otherDirection = false;
     currentImage = 0;
     imageCache = {};
+    energy = 100;
 
     loadImage(path) {
         this.img = new Image(); //Image Objekt funktioniert wie das <img> HTML-Tag (also z.B. auch mit dem Attribut src)
@@ -92,7 +93,7 @@ class MoveableObject {
 
     // Beispiel: character.isColliding(chicken)
     isColliding(movableObject) {
-        return this.x + this.with > movableObject.x &&
+        return this.x + this.width > movableObject.x &&
             this.y + this.height > movableObject.y &&
             this.x < movableObject.x &&
             this.y < movableObject.y + movableObject.height;
