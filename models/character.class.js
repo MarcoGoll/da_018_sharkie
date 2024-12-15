@@ -120,9 +120,5 @@ class Character extends MoveableObject {
             this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
         }, 1000 / 60)
     }
-
-    swim() {
-
-    }
 }
 
