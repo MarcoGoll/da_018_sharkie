@@ -5,6 +5,8 @@ class World {
     keyboard;
     camera_x = 0;
     level = level1;
+    statusBarHealth = new StatusBar();
+    throwableObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
@@ -12,7 +14,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     draw() {
@@ -22,8 +24,15 @@ class World {
 
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.lights);
+        this.addObjectsToMap(this.throwableObjects);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectToMap(this.character);
+
+        this.ctx.translate(-this.camera_x, 0);
+        // -----------START: SPACE FOR FIXED OBJECTS-----------
+        this.addObjectToMap(this.statusBarHealth);
+        // -----------END: SPACE FOR FIXED OBJECTS-----------
+        this.ctx.translate(this.camera_x, 0);
 
         this.ctx.translate(-this.camera_x, 0);
 
@@ -67,13 +76,27 @@ class World {
         this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                }
-            });
+            //Check Collisions
+            this.checkCollisions();
+            this.checkThrowObjects();
         }, 200);
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBarHealth.setPercentage(this.character.energy)
+            }
+        });
+    }
+
+    checkThrowObjects() {
+        if (this.keyboard.SPACE) {
+            let poison = new ThrowableObject(this.character.x + 150, this.character.y);
+            this.throwableObjects.push(poison);
+        }
     }
 }

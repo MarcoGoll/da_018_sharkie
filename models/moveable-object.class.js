@@ -28,7 +28,7 @@ class MoveableObject extends DrawableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isAboveGround() || this.speedGravity > 0) {
                 this.y -= this.speedGravity;
                 this.speedGravity -= this.acceleration;
             }
@@ -37,7 +37,11 @@ class MoveableObject extends DrawableObject {
     }
 
     isAboveGround() {
-        return this.y < 295;
+        if (this instanceof ThrowableObject) { //ThrowableObject should always fall
+            return true;
+        } else {
+            return this.y < 295;
+        }
     }
 
     isUnderTop() {
@@ -51,16 +55,7 @@ class MoveableObject extends DrawableObject {
         return this.x >= this.world.level.levelEndX - 720;
     }
 
-    drawFrame(ctx) {
-        //Draw Rectangle
-        if (this instanceof Character || this instanceof Jellyfish || this instanceof Pufferfish || this instanceof Endboss) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
+
 
     // Beispiel: character.isColliding(chicken)
     isColliding(movableObject) {
