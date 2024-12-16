@@ -92,7 +92,6 @@ class World {
             }
         });
     }
-
     checkThrowObjects() {
         if (this.keyboard.SPACE) {
             let poison = new ThrowableObject(this.character.x + 150, this.character.y);
