@@ -55,6 +55,28 @@ class Character extends MoveableObject {
     IMAGES_ATTACKFINSLAP = [
     ];
 
+    IMAGES_DEADNORMAL = [
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/1.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/2.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/3.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/4.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/5.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/6.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/7.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/8.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/9.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/10.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/11.png',
+        './assets/img/1.Sharkie/6.dead/1.Poisoned/12.png',
+    ];
+
+    IMAGES_HURTNORMAL = [
+        './assets/img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        './assets/img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        './assets/img/1.Sharkie/5.Hurt/1.Poisoned/4.png',
+        './assets/img/1.Sharkie/5.Hurt/1.Poisoned/5.png',
+    ];
+
     world;
     speed = 4;
     swimSound = new Audio('./assets/audio/splash.mp3');
@@ -65,6 +87,9 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_LONGIDLE);
+        this.loadImages(this.IMAGES_DEADNORMAL);
+        this.loadImages(this.IMAGES_HURTNORMAL);
+
 
         this.animate();
         //this.applyGravity(); <= macht für Sharkie nicht viel Sinn
@@ -72,14 +97,14 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            //WALKANIMATION
-            if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+            if (this.isDead()) { //DEADANIMATION
+                this.playAnimation(this.IMAGES_DEADNORMAL);
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURTNORMAL);
+            } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
                 this.playAnimation(this.IMAGES_SWIM);
                 this.idleCount = 0;
-            }
-
-            //IDLEANIMATION
-            if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) {
+            } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
                 if (this.idleCount < 100) {
                     this.playAnimation(this.IMAGES_IDLE);
                     this.idleCount++;

@@ -1,36 +1,10 @@
-class MoveableObject {
-    x = X;
-    y = Y;
-    height = HEIGHT;
-    width = WIDTH;
-    img;
-
+class MoveableObject extends DrawableObject {
     speed = 0.15;
     speedGravity = 0;
     acceleration = 0.5;
     otherDirection = false;
-    currentImage = 0;
-    imageCache = {};
     energy = 100;
-
-    loadImage(path) {
-        this.img = new Image(); //Image Objekt funktioniert wie das <img> HTML-Tag (also z.B. auch mit dem Attribut src)
-        this.img.src = path;
-
-    }
-
-    /**
-     * 
-     * @param {Array} array - ['img/image1.png','img/image1.png', ...] 
-     */
-    loadImages(array) {
-        array.forEach(path => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img; // this.imageCache[path] does not exist, thats why a new Key:Value Pair will added to imageCache. 
-            //The Key will be the value of the Variable "path" (in our case an relative path) and the Value will be the variable "img"
-        });
-    }
+    lastHit = 0;
 
     moveRight() {
         this.x += this.speed;
@@ -77,9 +51,6 @@ class MoveableObject {
         return this.x >= this.world.level.levelEndX - 720;
     }
 
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height); // ctx.drawImage(image, dx, dy, dWidth, dHeight) - eine Methode, die  dank der Zuweisung via getContext('2d') nun möglich ist. Sie Zeichnet im Context des Canvas ein Bild 
-    }
     drawFrame(ctx) {
         //Draw Rectangle
         if (this instanceof Character || this instanceof Jellyfish || this instanceof Pufferfish || this instanceof Endboss) {
@@ -99,4 +70,22 @@ class MoveableObject {
             this.y < movableObject.y + movableObject.height;
     }
 
+    hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime(); // aktuelle Zeit (in ms seit dem 1.1.1970)
+        }
+    }
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit // aktuelle Zeit  (in ms seit dem 1.1.1970) - die Zeit (in ms seit dem 1.1.1970), die wir beim Hit gespeichert haben (see hit())
+        timepassed = timepassed / 1000 // ms in s
+        return timepassed < 1;
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
 } 

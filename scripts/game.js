@@ -12,10 +12,6 @@ let keyboard = new Keyboard();
 function init() {
     canvasRef = document.getElementById('canvas');
     world = new World(canvasRef, keyboard);
-
-    console.log('My character: ', world.character);
-    console.log('My Jelly enemies: ', world.enemiesJellyfish);
-    console.log('My Puffer enemies: ', world.enemiesPufferfish);
 }
 
 window.addEventListener('keydown', (event) => {
