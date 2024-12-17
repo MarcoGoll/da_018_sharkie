@@ -12,6 +12,12 @@ body {
     gap: 24px;
     height: 100vh;
     background-color: black;
+    font-family: 'anton_SC',
+        Arial,
+        Helvetica,
+        sans-serif;
+
+
 
     &::before {
         content: '';
@@ -33,8 +39,8 @@ canvas {
     background-color: black;
     border-radius: 32px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    /* border-bottom: 5px solid black;
-    border-right: 3px solid black; */
+    border-bottom: 5px solid black;
+    border-right: 3px solid black;
 }
 
 h1 {
@@ -42,9 +48,7 @@ h1 {
     color: white;
     margin-top: 32px;
     font-size: 48px;
-    font-family: Arial,
-        Helvetica,
-        sans-serif;
+    letter-spacing: 8px;
     filter: drop-shadow(2px 4px 3px black);
 
 }

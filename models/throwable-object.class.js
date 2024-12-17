@@ -11,13 +11,15 @@ class ThrowableObject extends MoveableObject {
         './assets/img/4. Marcadores/Posión/Animada/8.png',
     ];
 
+
+
     constructor(x, y) {
-        super().loadImage('./assets/img/4. Marcadores/Posión/Animada/1.png');
+        super();
         this.loadImages(this.IMAGES_POISON);
         this.x = x;
         this.y = y;
-        this.width = 80;
-        this.height = 100;
+        this.width = 60;
+        this.height = 80;
         this.throw(this.x, this.y);
         this.animate();
     }

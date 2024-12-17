@@ -59,10 +59,10 @@ class MoveableObject extends DrawableObject {
 
     // Beispiel: character.isColliding(chicken)
     isColliding(movableObject) {
-        return this.x + this.width > movableObject.x &&
-            this.y + this.height > movableObject.y &&
-            this.x < movableObject.x &&
-            this.y < movableObject.y + movableObject.height;
+        return this.x + 30 + this.width - 80 > movableObject.x &&
+            this.y + 110 + this.height - 160 > movableObject.y &&
+            this.x + 30 < movableObject.x &&
+            this.y + 110 < movableObject.y + movableObject.height;
     }
 
     hit() {
