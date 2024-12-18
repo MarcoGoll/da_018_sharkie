@@ -7,6 +7,7 @@ class World {
     level = LEVEL1;
     statusBarHealth = new StatusBar();
     throwableObjects = [];
+    hadFirstContact = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
@@ -74,7 +75,6 @@ class World {
 
     setWorld() {
         this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
-        //this.level.enemies[this.level.enemies.lenght - 1].world = this; // Wir müssen dem Endboss (letzter enemie) eine Referenz zur World geben, um auf die xAchse des in der World existierenden Character zuzugreifen
     }
 
     run() {
@@ -82,6 +82,7 @@ class World {
             //Check Collisions
             this.checkCollisions();
             this.checkThrowObjects();
+            this.createEndboss();
         }, 200);
     }
 
@@ -95,8 +96,15 @@ class World {
     }
     checkThrowObjects() {
         if (this.keyboard.SPACE) {
-            let poison = new ThrowableObject(this.character.x + 150, this.character.y);
+            let poison = new ThrowableObject(this.character.x + 150, this.character.y + 130);
             this.throwableObjects.push(poison);
+        }
+    }
+
+    createEndboss() {
+        if (this.character.x > this.level.enbossSpawnPoint && !this.hadFirstContact) {
+            this.level.enemies.push(new Endboss());
+            this.hadFirstContact = true;
         }
     }
 }

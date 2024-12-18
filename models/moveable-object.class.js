@@ -1,7 +1,7 @@
 class MoveableObject extends DrawableObject {
     speed = 0.15;
     speedGravity = 0;
-    acceleration = 0.5;
+    acceleration = 0.3;
     otherDirection = false;
     energy = 100;
     lastHit = 0;
@@ -35,24 +35,24 @@ class MoveableObject extends DrawableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround() || this.speedGravity > 0) {
+            if (this.isUnderTop() || this.speedGravity < 0) {
                 this.y -= this.speedGravity;
-                this.speedGravity -= this.acceleration;
+                this.speedGravity += this.acceleration;
             }
 
         }, 1000 / 25);
     }
 
     isAboveGround() {
-        if (this instanceof ThrowableObject) { //ThrowableObject should always fall
-            return true;
-        } else {
-            return this.y < 295;
-        }
+        return this.y < 295;
     }
 
     isUnderTop() {
-        return this.y > -110;
+        if (this instanceof ThrowableObject) { //ThrowableObject should always go up
+            return true;
+        } else {
+            return this.y > -110;
+        }
     }
 
     isStartOfLevelReached() {

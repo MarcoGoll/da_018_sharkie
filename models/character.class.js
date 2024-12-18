@@ -97,7 +97,7 @@ class Character extends MoveableObject {
 
 
         this.animate();
-        //this.applyGravity(); <= macht für Sharkie nicht viel Sinn
+        //this.applyGravity();
     }
 
     animate() {
@@ -139,12 +139,12 @@ class Character extends MoveableObject {
             }
             if (this.world.keyboard.UP && this.isUnderTop()) {
                 this.moveUp();
-                this.speedGravity = 0;
                 this.swimSound.play();
             }
             if (this.world.keyboard.DOWN && this.isAboveGround()) {
                 this.moveDown();
                 this.swimSound.play();
+                this.speedGravity = 0;
             }
 
             if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) {

@@ -39,11 +39,9 @@ class Endboss extends MoveableObject {
         widht: 80,
         height: 310,
     }
-    hadFirstContact = false;
-    spawnPoint = 350;
 
     constructor() {
-        super().loadImage(this.IMAGES_SWIM[0]);
+        super().loadImage(this.IMAGES_SPAWNING[0]);
         this.loadImages(this.IMAGES_SPAWNING);
         this.loadImages(this.IMAGES_SWIM);
 
@@ -61,15 +59,6 @@ class Endboss extends MoveableObject {
                 this.playAnimation(this.IMAGES_SWIM);
             }
             i++;
-
-            if (world.character.x > this.spawnPoint && !this.hadFirstContact) {
-                i = 0;
-                this.hadFirstContact = true;
-                console.log(world.character.x, "x vom Character wird erkannt");
-            }
         }, 1000 / 10);
-
-        // Die Welt ist noch nicht da wenn der Boss initiert wird. Daher kann ich auf world.character.x erst nach Zeit x zugreiffen
-        //console.log(world.character.x, "x vom Character wird erkannt");
     }
 }
