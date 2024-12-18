@@ -66,6 +66,7 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/6.dead/1.Poisoned/9.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/10.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/11.png',
+
         './assets/img/1.Sharkie/6.dead/1.Poisoned/12.png',
     ];
     IMAGES_HURTNORMAL = [
@@ -100,22 +101,25 @@ class Character extends MoveableObject {
     }
 
     animate() {
-        setInterval(() => {
+
+        let characterInterval = setInterval(() => {
             if (this.isDead()) { //DEADANIMATION
                 this.playAnimation(this.IMAGES_DEADNORMAL);
-            } else if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURTNORMAL);
-            } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
-                this.playAnimation(this.IMAGES_SWIM);
-                this.idleCount = 0;
-            } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
-                if (this.idleCount < 100) {
-                    this.playAnimation(this.IMAGES_IDLE);
-                    this.idleCount++;
-                } else {
-                    this.playAnimation(this.IMAGES_LONGIDLE);
+                //clearInterval(characterInterval); TODO: so hört es nach dem ersten Image auf. Ich muss das Ende vom ersten Imagedurchlauf abfangen/abfragen
+            } else
+                if (this.isHurt()) {
+                    this.playAnimation(this.IMAGES_HURTNORMAL);
+                } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
+                    this.playAnimation(this.IMAGES_SWIM);
+                    this.idleCount = 0;
+                } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
+                    if (this.idleCount < 100) {
+                        this.playAnimation(this.IMAGES_IDLE);
+                        this.idleCount++;
+                    } else {
+                        this.playAnimation(this.IMAGES_LONGIDLE);
+                    }
                 }
-            }
         }, 1000 / 8);
 
         //MOVEMENT
@@ -131,6 +135,7 @@ class Character extends MoveableObject {
                 this.moveRight();
                 this.otherDirection = false;
                 this.swimSound.play();
+                console.log(this.x);
             }
             if (this.world.keyboard.UP && this.isUnderTop()) {
                 this.moveUp();
