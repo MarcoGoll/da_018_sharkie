@@ -49,8 +49,25 @@ class Character extends MoveableObject {
 
     ];
     IMAGES_ATTACKBUBBLENORMAL = [
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
+
     ];
     IMAGES_ATTACKBUBBLEPOISON = [
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
     ];
     IMAGES_ATTACKFINSLAP = [
     ];
@@ -94,6 +111,7 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_LONGIDLE);
         this.loadImages(this.IMAGES_DEADNORMAL);
         this.loadImages(this.IMAGES_HURTNORMAL);
+        this.loadImages(this.IMAGES_ATTACKBUBBLENORMAL);
 
 
         this.animate();
@@ -106,20 +124,22 @@ class Character extends MoveableObject {
             if (this.isDead()) { //DEADANIMATION
                 this.playAnimation(this.IMAGES_DEADNORMAL);
                 //clearInterval(characterInterval); TODO: so hört es nach dem ersten Image auf. Ich muss das Ende vom ersten Imagedurchlauf abfangen/abfragen
-            } else
-                if (this.isHurt()) {
-                    this.playAnimation(this.IMAGES_HURTNORMAL);
-                } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
-                    this.playAnimation(this.IMAGES_SWIM);
-                    this.idleCount = 0;
-                } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
-                    if (this.idleCount < 100) {
-                        this.playAnimation(this.IMAGES_IDLE);
-                        this.idleCount++;
-                    } else {
-                        this.playAnimation(this.IMAGES_LONGIDLE);
-                    }
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURTNORMAL);
+            } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
+                this.playAnimation(this.IMAGES_SWIM);
+                this.idleCount = 0;
+            } else if (this.world.keyboard.SPACE) {
+                this.playAnimation(this.IMAGES_ATTACKBUBBLENORMAL);
+            }
+            else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
+                if (this.idleCount < 100) {
+                    this.playAnimation(this.IMAGES_IDLE);
+                    this.idleCount++;
+                } else {
+                    this.playAnimation(this.IMAGES_LONGIDLE);
                 }
+            }
         }, 1000 / 8);
 
         //MOVEMENT

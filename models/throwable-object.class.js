@@ -1,27 +1,16 @@
 class ThrowableObject extends MoveableObject {
 
-    IMAGES_POISON = [
-        './assets/img/4. Marcadores/Posión/Animada/1.png',
-        './assets/img/4. Marcadores/Posión/Animada/2.png',
-        './assets/img/4. Marcadores/Posión/Animada/3.png',
-        './assets/img/4. Marcadores/Posión/Animada/4.png',
-        './assets/img/4. Marcadores/Posión/Animada/5.png',
-        './assets/img/4. Marcadores/Posión/Animada/6.png',
-        './assets/img/4. Marcadores/Posión/Animada/7.png',
-        './assets/img/4. Marcadores/Posión/Animada/8.png',
-    ];
-
-
+    IMAGE_BUBBLE = './assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png';
+    IMAGE_BUBBLE_POISONED = './assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png';
 
     constructor(x, y) {
-        super().loadImage('./assets/img/4. Marcadores/Posión/Animada/1.png');
-        this.loadImages(this.IMAGES_POISON);
+        super().loadImage(this.IMAGE_BUBBLE);
         this.x = x;
         this.y = y;
-        this.width = 60;
-        this.height = 80;
+        this.width = 40;
+        this.height = 40;
         this.throw(this.x, this.y);
-        this.animate();
+        //this.animate();
     }
 
     throw(x, y) {
@@ -32,13 +21,5 @@ class ThrowableObject extends MoveableObject {
         setInterval(() => {
             this.x += 10;
         }, 25)
-
-    }
-
-
-    animate() {
-        setInterval(() => {
-            this.playAnimation(this.IMAGES_POISON);
-        }, 1000 / 6);
     }
 }

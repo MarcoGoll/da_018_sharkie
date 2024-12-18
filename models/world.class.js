@@ -96,8 +96,8 @@ class World {
     }
     checkThrowObjects() {
         if (this.keyboard.SPACE) {
-            let poison = new ThrowableObject(this.character.x + 150, this.character.y + 130);
-            this.throwableObjects.push(poison);
+            let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130);
+            this.throwableObjects.push(bubble);
         }
     }
 
