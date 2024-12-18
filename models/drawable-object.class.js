@@ -31,27 +31,11 @@ class DrawableObject {
 
     drawFrame(ctx) {
         //Draw Rectangle
-        if (this instanceof Jellyfish || this instanceof Pufferfish || this instanceof ThrowableObject) {
+        if (this instanceof Jellyfish || this instanceof Pufferfish || this instanceof ThrowableObject || this instanceof Character || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-
-        if (this instanceof Endboss) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 30, this.y + 200, this.width - 80, this.height - 310);
-            ctx.stroke();
-        }
-
-        if (this instanceof Character) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 30, this.y + 140, this.width - 80, this.height - 210);
+            ctx.rect(this.x + this.offset.x, this.y + this.offset.y, this.width - this.offset.widht, this.height - this.offset.height);
             ctx.stroke();
         }
     }

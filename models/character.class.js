@@ -54,7 +54,6 @@ class Character extends MoveableObject {
     ];
     IMAGES_ATTACKFINSLAP = [
     ];
-
     IMAGES_DEADNORMAL = [
         './assets/img/1.Sharkie/6.dead/1.Poisoned/1.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/2.png',
@@ -69,7 +68,6 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/6.dead/1.Poisoned/11.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/12.png',
     ];
-
     IMAGES_HURTNORMAL = [
         './assets/img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
         './assets/img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
@@ -81,6 +79,12 @@ class Character extends MoveableObject {
     speed = 4;
     swimSound = new Audio('./assets/audio/splash.mp3');
 
+    offset = {
+        x: 30,
+        y: 140,
+        widht: 80,
+        height: 210,
+    }
 
     constructor(img) {
         super().loadImage(img);

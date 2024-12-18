@@ -6,6 +6,13 @@ class MoveableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
 
+    offset = {
+        x: 0,
+        y: 0,
+        widht: 0,
+        height: 0,
+    }
+
     moveRight() {
         this.x += this.speed;
     }
@@ -59,18 +66,10 @@ class MoveableObject extends DrawableObject {
 
     // Beispiel: character.isColliding(chicken)
     isColliding(movableObject) {
-        if (movableObject instanceof Endboss) {
-            return this.x + 30 + this.width - 80 > movableObject.x + 30 && // xAbstand rechte Seite Carachter > xKoordinate linke Seite vom MovableObject
-                this.y + 110 + this.height - 160 > movableObject.y + 200 &&
-                this.x + 30 < movableObject.x + 30 + movableObject.width - 80 &&
-                this.y + 110 < movableObject.y + 200 + movableObject.height - 310;
-        }
-        else {
-            return this.x + 30 + this.width - 80 > movableObject.x &&
-                this.y + 110 + this.height - 160 > movableObject.y &&
-                this.x + 30 < movableObject.x + movableObject.width &&
-                this.y + 110 < movableObject.y + movableObject.height;
-        }
+        return this.x + this.offset.x + this.width - this.offset.widht > movableObject.x + movableObject.offset.x &&
+            this.y + this.offset.y + this.height - this.offset.height > movableObject.y + movableObject.offset.y &&
+            this.x + this.offset.x < movableObject.x + movableObject.offset.x + movableObject.width - movableObject.offset.widht &&
+            this.y + this.offset.y < movableObject.y + movableObject.offset.y + movableObject.height - movableObject.offset.height;
     }
 
     hit() {

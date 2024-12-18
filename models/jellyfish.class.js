@@ -11,6 +11,14 @@ class Jellyfish extends MoveableObject {
         './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
     ];
 
+    offset = {
+        x: 30,
+        y: 30,
+        widht: 60,
+        height: 70,
+    }
+
+
 
     constructor(x, y, width, height, img) {
         super().loadImage(img);

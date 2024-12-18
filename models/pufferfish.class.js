@@ -12,6 +12,13 @@ class Pufferfish extends MoveableObject {
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png',
     ];
 
+    offset = {
+        x: 10,
+        y: 10,
+        widht: 30,
+        height: 50,
+    }
+
     constructor(x, y, width, height, img) {
         super().loadImage(img);
 
