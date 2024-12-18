@@ -10,21 +10,31 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/fonts.css">
 
-    <script src="./models/drawable-object.class.js" defer></script>
-    <script src="./models/moveable-object.class.js" defer></script>
-    <script src="./models/character.class.js" defer></script>
-    <script src="./models/pufferfish.class.js" defer></script>
-    <script src="./models/jellyfish.class.js" defer></script>
-    <script src="./models/light.class.js" defer></script>
-    <script src="./models/background-object.css.js" defer></script>
-    <script src="./models/keyboard.class.js" defer></script>
-    <script src="./models/level.class.js" defer></script>
-    <script src="./models/endboss.class.js" defer></script>
-    <script src="./models/status-bar.class.js" defer></script>
-    <script src="./models/throwable-object.class.js" defer></script>
-    <script src="./models/world.class.js" defer></script>
-    <script src="./scripts/game.js" defer></script>
-    <script src="./levels/level1.js" defer></script>
+    <!-- ORDER IS IMPORTANT -->
+    <!-- 01 - SOME IMPORTANT GLOBAL VARIABLES -->
+    <script src="./scripts/constGlobalVariables.js"></script>
+    <!-- 02 - PARENT CLASSES -->
+    <script src="./models/drawable-object.class.js"></script>
+    <script src="./models/moveable-object.class.js"></script>
+    <!-- 03 - CHILD CLASSES -->
+    <script src="./models/character.class.js"></script>
+    <script src="./models/pufferfish.class.js"></script>
+    <script src="./models/jellyfish.class.js"></script>
+    <script src="./models/light.class.js"></script>
+    <script src="./models/background-object.css.js"></script>
+    <script src="./models/endboss.class.js"></script>
+    <script src="./models/status-bar.class.js"></script>
+    <script src="./models/throwable-object.class.js"></script>
+    <!-- 04 - LEVEL SPECIFIC JS -->
+    <script src="./models/level.class.js"></script>
+    <script src="./levels/level1.js"></script>
+    <!-- 05 - KEYBOARD SPECIFIC JS -->
+    <script src="./models/keyboard.class.js"></script>
+    <!-- 06 - WORLD SPECIFIC JS -->
+    <script src="./models/world.class.js"></script>
+    <!-- 07 - GAME SPECIFIC JS -->
+    <script src="./scripts/game.js"></script>
+
 </head>
 
 <body onload="init()">

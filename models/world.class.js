@@ -4,7 +4,7 @@ class World {
     ctx; // um den (ctx/)Context  des Canvas zu verändern (wird immer im Zusammenhang mit canvas benötigt und wird traditionell immer so benannt)
     keyboard;
     camera_x = 0;
-    level = level1;
+    level = LEVEL1;
     statusBarHealth = new StatusBar();
     throwableObjects = [];
 
@@ -74,6 +74,7 @@ class World {
 
     setWorld() {
         this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
+        //this.level.enemies[this.level.enemies.lenght - 1].world = this; // Wir müssen dem Endboss (letzter enemie) eine Referenz zur World geben, um auf die xAchse des in der World existierenden Character zuzugreifen
     }
 
     run() {

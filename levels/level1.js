@@ -1,4 +1,4 @@
-const level1 = new Level(
+const LEVEL1 = new Level(
     [
         //Lights
     ],
@@ -19,22 +19,22 @@ const level1 = new Level(
 
 );
 
-setBackgrounds(AMOUNTBACKGROUNDS);
+setBackgroundsAndLights(AMOUNTBACKGROUNDS);
 
-function setBackgrounds(amount) {
+function setBackgroundsAndLights(amount) {
     let counter = 0;
     for (let i = 0; i < amount; i++) {
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L1.png"));
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L1.png"));
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L1.png"));
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L1.png"));
-        level1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/1.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L1.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L1.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L1.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L1.png"));
+        LEVEL1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/1.png"));
         counter++;
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L2.png"));
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L2.png"));
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L2.png"));
-        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L2.png"));
-        level1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/2.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L2.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L2.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L2.png"));
+        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L2.png"));
+        LEVEL1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/2.png"));
         counter++;
     }
 }
