@@ -33,6 +33,10 @@ class MoveableObject extends DrawableObject {
         this.currentImage++;
     }
 
+    playAnimationOnetimeComplete(images) {
+
+    }
+
     applyGravity() {
         setInterval(() => {
             if (this.isUnderTop() || this.speedGravity < 0) {
@@ -61,8 +65,6 @@ class MoveableObject extends DrawableObject {
     isEndOfLevelReached() {
         return this.x >= this.world.level.levelEndX - 720;
     }
-
-
 
     // Beispiel: character.isColliding(chicken)
     isColliding(movableObject) {

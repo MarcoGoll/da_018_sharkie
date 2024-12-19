@@ -113,14 +113,13 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_HURTNORMAL);
         this.loadImages(this.IMAGES_ATTACKBUBBLENORMAL);
 
-
         this.animate();
         //this.applyGravity();
     }
 
     animate() {
 
-        let characterInterval = setInterval(() => {
+        let characterAnimationInterval = setInterval(() => {
             if (this.isDead()) { //DEADANIMATION
                 this.playAnimation(this.IMAGES_DEADNORMAL);
                 //clearInterval(characterInterval); TODO: so hört es nach dem ersten Image auf. Ich muss das Ende vom ersten Imagedurchlauf abfangen/abfragen
@@ -129,10 +128,7 @@ class Character extends MoveableObject {
             } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
                 this.playAnimation(this.IMAGES_SWIM);
                 this.idleCount = 0;
-            } else if (this.world.keyboard.SPACE) {
-                this.playAnimation(this.IMAGES_ATTACKBUBBLENORMAL);
-            }
-            else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
+            } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
                 if (this.idleCount < 100) {
                     this.playAnimation(this.IMAGES_IDLE);
                     this.idleCount++;

@@ -32,6 +32,9 @@ class Endboss extends MoveableObject {
     ];
 
     world;
+    endbossSpawnAudio = new Audio('./assets/audio/endboss_spawn.mp3')
+    endbossIsHitAudio = new Audio('./assets/audio/endboss_isHit.mp3')
+    endbossDyingAudio = new Audio('./assets/audio/endboss_dying.mp3')
 
     offset = {
         x: 30,
@@ -54,6 +57,8 @@ class Endboss extends MoveableObject {
         setInterval(() => {
             if (i < this.IMAGES_SPAWNING.length) {
                 this.playAnimation(this.IMAGES_SPAWNING);
+                this.endbossSpawnAudio.volume = 0.5;
+                this.endbossSpawnAudio.play();
             }
             else {
                 this.playAnimation(this.IMAGES_SWIM);
