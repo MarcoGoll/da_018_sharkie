@@ -2,6 +2,9 @@ class Character extends MoveableObject {
     width = 220;
     height = 240;
     idleCount = 0;
+    deadAnimationWasPlayed = false;
+    attackBubbleAnimationIsPlaying = false;
+    attackHitAnimationIsPlaying = false;
 
     IMAGES_SWIM = [
         './assets/img/1.Sharkie/3.Swim/1.png',
@@ -83,7 +86,6 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/6.dead/1.Poisoned/9.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/10.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/11.png',
-
         './assets/img/1.Sharkie/6.dead/1.Poisoned/12.png',
     ];
     IMAGES_HURTNORMAL = [
@@ -115,17 +117,44 @@ class Character extends MoveableObject {
 
         this.animate();
         //this.applyGravity();
-    }
+    } d
 
     animate() {
+        let iDead = 0;
+        let iAttackBubble = 0;
+        let iAttackHit = 0;
 
-        let characterAnimationInterval = setInterval(() => {
+
+        setInterval(() => {
             if (this.isDead()) { //DEADANIMATION
-                this.playAnimation(this.IMAGES_DEADNORMAL);
+                if (iDead < this.IMAGES_DEADNORMAL.length) {
+                    if (this.deadAnimationWasPlayed == false) {
+                        this.currentImage = 0;
+                        this.deadAnimationWasPlayed = true;
+                    }
+                    this.playAnimation(this.IMAGES_DEADNORMAL);
+                    iDead++
+                }
+                else {
+                    this.loadImage(this.IMAGES_DEADNORMAL[this.IMAGES_DEADNORMAL.length - 1]);
+                }
                 //clearInterval(characterInterval); TODO: so hört es nach dem ersten Image auf. Ich muss das Ende vom ersten Imagedurchlauf abfangen/abfragen
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURTNORMAL);
-            } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
+            } else if (this.world.keyboard.SPACE || this.attackBubbleAnimationIsPlaying) {
+                if (iAttackBubble < this.IMAGES_ATTACKBUBBLENORMAL.length) {
+                    if (this.attackBubbleAnimationIsPlaying == false) {
+                        this.attackBubbleAnimationIsPlaying = true;
+                        this.currentImage = 0;
+                    }
+                    this.playAnimation(this.IMAGES_ATTACKBUBBLENORMAL);
+                    iAttackBubble++;
+                } else {
+                    this.attackBubbleAnimationIsPlaying = false;
+                    iAttackBubble = 0;
+                }
+            }
+            else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
                 this.playAnimation(this.IMAGES_SWIM);
                 this.idleCount = 0;
             } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
@@ -151,7 +180,6 @@ class Character extends MoveableObject {
                 this.moveRight();
                 this.otherDirection = false;
                 this.swimSound.play();
-                console.log(this.x);
             }
             if (this.world.keyboard.UP && this.isUnderTop()) {
                 this.moveUp();

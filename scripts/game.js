@@ -68,10 +68,10 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
-window.addEventListener('mousemove', (event) => {
-    gameSound.play();
-})
+// window.addEventListener('mousemove', (event) => {
+//     gameSound.play();
+// })
 
-gameSound.addEventListener('ended', function () {
-    gameSound.play();
-})
+// gameSound.addEventListener('ended', function () {
+//     gameSound.play();
+// })

@@ -31,10 +31,9 @@ class MoveableObject extends DrawableObject {
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-    }
-
-    playAnimationOnetimeComplete(images) {
-
+        if (this instanceof Character) {
+            console.log(this.img, this.currentImage)
+        }
     }
 
     applyGravity() {
