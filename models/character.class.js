@@ -4,7 +4,8 @@ class Character extends MoveableObject {
     idleCount = 0;
     deadAnimationWasPlayed = false;
     attackBubbleAnimationIsPlaying = false;
-    attackHitAnimationIsPlaying = false;
+    attackBubblePoisonAnimationIsPlaying = false;
+    attackSlapAnimationIsPlaying = false;
 
     IMAGES_SWIM = [
         './assets/img/1.Sharkie/3.Swim/1.png',
@@ -72,7 +73,16 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
         './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
     ];
-    IMAGES_ATTACKFINSLAP = [
+    IMAGES_ATTACKSLAP = [
+        './assets/img/1.Sharkie/4.Attack/Fin slap/1.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/2.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/3.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/4.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/5.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/6.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/7.png',
+        './assets/img/1.Sharkie/4.Attack/Fin slap/8.png',
+
     ];
     IMAGES_DEADNORMAL = [
         './assets/img/1.Sharkie/6.dead/1.Poisoned/1.png',
@@ -114,6 +124,8 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_DEADNORMAL);
         this.loadImages(this.IMAGES_HURTNORMAL);
         this.loadImages(this.IMAGES_ATTACKBUBBLENORMAL);
+        this.loadImages(this.IMAGES_ATTACKBUBBLEPOISON);
+        this.loadImages(this.IMAGES_ATTACKSLAP);
 
         this.animate();
         //this.applyGravity();
@@ -122,7 +134,8 @@ class Character extends MoveableObject {
     animate() {
         let iDead = 0;
         let iAttackBubble = 0;
-        let iAttackHit = 0;
+        let iAttackBubblePoison = 0;
+        let iAttackSlap = 0;
 
 
         setInterval(() => {
@@ -141,30 +154,60 @@ class Character extends MoveableObject {
                 //clearInterval(characterInterval); TODO: so hört es nach dem ersten Image auf. Ich muss das Ende vom ersten Imagedurchlauf abfangen/abfragen
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURTNORMAL);
-            } else if (this.world.keyboard.SPACE || this.attackBubbleAnimationIsPlaying) { //attackBubbleANIMATION
+            } else if (this.world.keyboard.Q || this.attackBubbleAnimationIsPlaying) { //attackBubbleANIMATION
                 if (iAttackBubble < this.IMAGES_ATTACKBUBBLENORMAL.length) {
                     if (this.attackBubbleAnimationIsPlaying == false) {
                         this.attackBubbleAnimationIsPlaying = true;
                         this.currentImage = 0;
                     }
                     this.playAnimation(this.IMAGES_ATTACKBUBBLENORMAL);
+                    this.idleCount = 0;
                     iAttackBubble++;
                 } else {
                     this.attackBubbleAnimationIsPlaying = false;
                     iAttackBubble = 0;
                 }
             }
-            else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
-                this.playAnimation(this.IMAGES_SWIM);
-                this.idleCount = 0;
-            } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
-                if (this.idleCount < 100) {
-                    this.playAnimation(this.IMAGES_IDLE);
-                    this.idleCount++;
+            else if (this.world.keyboard.E || this.attackBubblePoisonAnimationIsPlaying) { //attackBubblePoisonANIMATION
+                if (iAttackBubblePoison < this.IMAGES_ATTACKBUBBLEPOISON.length) {
+                    if (this.attackBubblePoisonAnimationIsPlaying == false) {
+                        this.attackBubblePoisonAnimationIsPlaying = true;
+                        this.currentImage = 0;
+                    }
+                    this.playAnimation(this.IMAGES_ATTACKBUBBLEPOISON);
+                    this.idleCount = 0;
+                    iAttackBubblePoison++;
                 } else {
-                    this.playAnimation(this.IMAGES_LONGIDLE);
+                    this.attackBubblePoisonAnimationIsPlaying = false;
+                    iAttackBubblePoison = 0;
                 }
             }
+            else if (this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying) { //attackSlapANIMATION
+                if (iAttackSlap < this.IMAGES_ATTACKSLAP.length) {
+                    if (this.attackSlapAnimationIsPlaying == false) {
+                        this.attackSlapAnimationIsPlaying = true;
+                        this.currentImage = 0;
+                    }
+                    this.playAnimation(this.IMAGES_ATTACKSLAP);
+                    this.idleCount = 0;
+                    iAttackSlap++;
+                } else {
+                    this.attackSlapAnimationIsPlaying = false;
+                    iAttackSlap = 0;
+                }
+            }
+            else
+                if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
+                    this.playAnimation(this.IMAGES_SWIM);
+                    this.idleCount = 0;
+                } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
+                    if (this.idleCount < 100) {
+                        this.playAnimation(this.IMAGES_IDLE);
+                        this.idleCount++;
+                    } else {
+                        this.playAnimation(this.IMAGES_LONGIDLE);
+                    }
+                }
         }, 1000 / 8);
 
         //MOVEMENT

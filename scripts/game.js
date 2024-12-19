@@ -11,6 +11,7 @@ function init() {
 }
 
 window.addEventListener('keydown', (event) => {
+    console.log(event.key);
     switch (event.key) {
         case 'a':
         case 'ArrowLeft':
@@ -31,8 +32,11 @@ window.addEventListener('keydown', (event) => {
         case ' ':
             keyboard.SPACE = true;
             break;
-        case 'Shift':
-            keyboard.SHIFT = true;
+        case 'q':
+            keyboard.Q = true;
+            break;
+        case 'e':
+            keyboard.E = true;
             break;
         default:
             break;
@@ -60,8 +64,11 @@ window.addEventListener('keyup', (event) => {
         case ' ':
             keyboard.SPACE = false;
             break;
-        case 'Shift':
-            keyboard.SHIFT = false;
+        case 'q':
+            keyboard.Q = false;
+            break;
+        case 'e':
+            keyboard.E = false;
             break;
         default:
             break;

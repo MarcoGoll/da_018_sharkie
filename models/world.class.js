@@ -95,9 +95,13 @@ class World {
         });
     }
     checkThrowObjects() {
-        if (this.keyboard.SPACE) {
-            let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130);
+        if (this.keyboard.Q) {
+            let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130, false);
             this.throwableObjects.push(bubble);
+        }
+        if (this.keyboard.E) {
+            let bubblePoison = new ThrowableObject(this.character.x + 150, this.character.y + 130, true);
+            this.throwableObjects.push(bubblePoison);
         }
     }
 
