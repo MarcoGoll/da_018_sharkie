@@ -1,8 +1,8 @@
 let canvasRef;
 let world;
 let keyboard = new Keyboard();
-let gameSound = new Audio('./assets/audio/gamesound.mp3');
-gameSound.volume = 0.3;
+let gameSound = new Audio('./assets/audio/gamesound_loopable.mp3');
+gameSound.volume = 0.15;
 
 function init() {
     canvasRef = document.getElementById('canvas');

@@ -142,7 +142,7 @@ class Character extends MoveableObject {
             if (this.isDead()) { //DEADANIMATION
                 if (iDead < this.IMAGES_DEADNORMAL.length) {
                     if (this.deadAnimationWasPlayed == false) {
-                        //  this.currentImage = 0;
+                        this.currentImage = 0;
                         this.deadAnimationWasPlayed = true;
                     }
                     this.playAnimation(this.IMAGES_DEADNORMAL);

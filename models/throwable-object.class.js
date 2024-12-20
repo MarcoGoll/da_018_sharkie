@@ -18,7 +18,6 @@ class ThrowableObject extends MoveableObject {
             this.loadImage(this.IMAGE_BUBBLE);
         }
         this.throw(this.x, this.y);
-        //this.animate();
     }
 
     throw(x, y) {

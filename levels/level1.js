@@ -20,7 +20,7 @@ const LEVEL1 = new Level(
     ],
     [
         //Poison
-        new Poison(20, 20)
+        new Poison(620, 250)
     ],
 
 );
