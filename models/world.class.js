@@ -83,7 +83,7 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.createEndboss();
-        }, 200);
+        }, 150);
     }
 
     checkCollisions() {

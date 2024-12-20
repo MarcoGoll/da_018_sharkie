@@ -14,7 +14,14 @@ const LEVEL1 = new Level(
     ],
     [
         //Backgrounds
-    ]
+    ],
+    [
+        //Coins
+    ],
+    [
+        //Poison
+        new Poison(20, 20)
+    ],
 
 );
 
