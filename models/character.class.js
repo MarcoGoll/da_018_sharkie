@@ -7,6 +7,7 @@ class Character extends MoveableObject {
     attackBubblePoisonAnimationIsPlaying = false;
     attackSlapAnimationIsPlaying = false;
 
+
     IMAGES_SWIM = [
         './assets/img/1.Sharkie/3.Swim/1.png',
         './assets/img/1.Sharkie/3.Swim/2.png',

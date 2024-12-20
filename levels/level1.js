@@ -17,10 +17,24 @@ const LEVEL1 = new Level(
     ],
     [
         //Coins
+        new Coin(220, 250),
+        new Coin(270, 200),
+        new Coin(320, 150),
+        new Coin(370, 100),
+        new Coin(420, 150),
+        new Coin(470, 200),
+        new Coin(520, 250),
     ],
     [
         //Poison
-        new Poison(620, 250)
+        new Poison(520, 250),
+        new Poison(620, 300),
+        new Poison(720, 350),
+        new Poison(820, 400),
+        new Poison(920, 350),
+        new Poison(1120, 300),
+        new Poison(1220, 250),
+
     ],
 
 );

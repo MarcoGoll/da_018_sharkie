@@ -95,7 +95,26 @@ class World {
                 this.statusBarHealth.setPercentage(this.character.energy)
             }
         });
+
+        this.level.poisons.forEach((poison, index) => {
+            if (this.character.isColliding(poison)) {
+                this.character.addPoison();
+                this.level.poisons.splice(index, 1);
+                poisonSound.play();
+                //this.statusBarHealth.setPercentage(this.character.energy)
+            }
+        });
+
+        this.level.coins.forEach((coin, index) => {
+            if (this.character.isColliding(coin)) {
+                this.character.addCoin();
+                this.level.coins.splice(index, 1);
+                coinSound.play();
+                //this.statusBarHealth.setPercentage(this.character.energy)
+            }
+        });
     }
+
     checkThrowObjects() {
         if (this.keyboard.Q) {
             let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130, false);

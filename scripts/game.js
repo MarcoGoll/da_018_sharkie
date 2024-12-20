@@ -1,13 +1,13 @@
 let canvasRef;
 let world;
 let keyboard = new Keyboard();
-let gameSound = new Audio('./assets/audio/gamesound_loopable.mp3');
+let gameSound = new Audio('./assets/audio/gamesound.mp3');
 gameSound.volume = 0.15;
+gameSound.loop = true;
 
 function init() {
     canvasRef = document.getElementById('canvas');
     world = new World(canvasRef, keyboard);
-
 }
 
 window.addEventListener('keydown', (event) => {
@@ -74,10 +74,6 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
-// window.addEventListener('mousemove', (event) => {
-//     gameSound.play();
-// })
-
-// gameSound.addEventListener('ended', function () {
-//     gameSound.play();
-// })
+window.addEventListener('mousemove', (event) => {
+    //gameSound.play();
+})

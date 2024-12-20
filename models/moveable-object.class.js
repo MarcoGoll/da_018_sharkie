@@ -5,6 +5,8 @@ class MoveableObject extends DrawableObject {
     otherDirection = false;
     energy = 100;
     lastHit = 0;
+    poisonCounter = 0;
+    coinCounter = 0;
 
     offset = {
         x: 0,
@@ -87,5 +89,15 @@ class MoveableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
+    }
+
+    addPoison() {
+        this.poisonCounter += 1;
+        console.log("PoisonCounter: ", this.poisonCounter);
+    }
+
+    addCoin() {
+        this.coinCounter += 1;
+        console.log("CoinCounter: ", this.coinCounter);
     }
 } 

@@ -28,5 +28,6 @@ class ThrowableObject extends MoveableObject {
         setInterval(() => {
             this.x += 10;
         }, 25)
+        shootBubbleSound.play();
     }
 }

@@ -17,10 +17,10 @@ class Poison extends MoveableObject {
     ];
 
     offset = {
-        x: 0,
-        y: 0,
-        widht: 0,
-        height: 0,
+        x: 15,
+        y: 30,
+        widht: 30,
+        height: 30,
     }
 
     constructor(x, y) {
