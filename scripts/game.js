@@ -75,5 +75,5 @@ window.addEventListener('keyup', (event) => {
 })
 
 window.addEventListener('mousemove', (event) => {
-    gameSound.play();
+    //gameSound.play();
 })

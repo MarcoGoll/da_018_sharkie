@@ -6,6 +6,8 @@ class World {
     camera_x = 0;
     level = LEVEL1;
     statusBarHealth = new StatusBar();
+    poisonBar = new PoisonBar();
+    coinBar = new CoinBar();
     throwableObjects = [];
     hadFirstContact = false;
 
@@ -34,6 +36,8 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         // -----------START: SPACE FOR FIXED OBJECTS-----------
         this.addObjectToMap(this.statusBarHealth);
+        this.addObjectToMap(this.poisonBar);
+        this.addObjectToMap(this.coinBar);
         // -----------END: SPACE FOR FIXED OBJECTS-----------
         this.ctx.translate(this.camera_x, 0);
 
@@ -101,7 +105,7 @@ class World {
                 this.character.addPoison();
                 this.level.poisons.splice(index, 1);
                 poisonSound.play();
-                //this.statusBarHealth.setPercentage(this.character.energy)
+                this.poisonBar.setPercentage(this.character.poisonAmmunition, 10);
             }
         });
 
@@ -110,7 +114,7 @@ class World {
                 this.character.addCoin();
                 this.level.coins.splice(index, 1);
                 coinSound.play();
-                //this.statusBarHealth.setPercentage(this.character.energy)
+                this.coinBar.setPercentage(this.character.coinCounter, 10)
             }
         });
     }
@@ -121,8 +125,12 @@ class World {
             this.throwableObjects.push(bubble);
         }
         if (this.keyboard.E) {
-            let bubblePoison = new ThrowableObject(this.character.x + 150, this.character.y + 130, true);
-            this.throwableObjects.push(bubblePoison);
+            if (this.character.poisonAmmunition > 0) {
+                let bubblePoison = new ThrowableObject(this.character.x + 150, this.character.y + 130, true);
+                this.throwableObjects.push(bubblePoison);
+                this.character.deletePoison();
+                this.poisonBar.setPercentage(this.character.poisonAmmunition, 10);
+            }
         }
     }
 

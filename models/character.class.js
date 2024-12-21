@@ -170,6 +170,7 @@ class Character extends MoveableObject {
                 }
             }
             else if (this.world.keyboard.E || this.attackBubblePoisonAnimationIsPlaying) { //attackBubblePoisonANIMATION
+
                 if (iAttackBubblePoison < this.IMAGES_ATTACKBUBBLEPOISON.length) {
                     if (this.attackBubblePoisonAnimationIsPlaying == false) {
                         this.attackBubblePoisonAnimationIsPlaying = true;
@@ -182,6 +183,7 @@ class Character extends MoveableObject {
                     this.attackBubblePoisonAnimationIsPlaying = false;
                     iAttackBubblePoison = 0;
                 }
+
             }
             else if (this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying) { //attackSlapANIMATION
                 if (iAttackSlap < this.IMAGES_ATTACKSLAP.length) {
