@@ -72,8 +72,8 @@ class MoveableObject extends DrawableObject {
             this.y + this.offset.y < movableObject.y + movableObject.offset.y + movableObject.height - movableObject.offset.height;
     }
 
-    hit() {
-        this.energy -= 5;
+    hit(attackPower) {
+        this.energy -= attackPower;
         if (this.energy < 0) {
             this.energy = 0;
         } else {

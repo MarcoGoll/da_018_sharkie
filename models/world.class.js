@@ -10,6 +10,7 @@ class World {
     coinBar = new CoinBar();
     throwableObjects = [];
     hadFirstContact = false;
+    collisionPower = 5;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
@@ -95,17 +96,25 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
+                this.character.hit(this.collisionPower);
                 this.statusBarHealth.setPercentage(this.character.energy)
             }
         });
 
-        this.throwableObjects.forEach((bubble, index) => {
-            this.level.enemies.forEach((enemy) => {
+        this.throwableObjects.forEach((bubble, indexBubble) => {
+            this.level.enemies.forEach((enemy, indexEnemy) => {
                 if (bubble.isColliding(enemy)) {
-                    this.throwableObjects.splice(index, 1);
+                    this.throwableObjects.splice(indexBubble, 1);
                     console.log("Hit enemy");
-                    //TODO: Kill Enemy after xHits (Health)
+                    if (!(bubble.isPoisonedBubble)) {
+                        enemy.hit(bubble.bubblePower);
+                    }
+                    else {
+                        enemy.energy -= bubble.bubblePowerPoison;
+                    }
+                    if (enemy.isDead()) {
+                        this.level.enemies.splice(indexEnemy, 1);
+                    }
                 }
             });
         });

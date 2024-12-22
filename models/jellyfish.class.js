@@ -17,6 +17,7 @@ class Jellyfish extends MoveableObject {
         widht: 60,
         height: 70,
     }
+    energy = 200;
 
 
 

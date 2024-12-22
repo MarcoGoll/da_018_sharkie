@@ -4,6 +4,8 @@ class ThrowableObject extends MoveableObject {
     IMAGE_BUBBLE_POISONED = './assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png';
 
     isPoisonedBubble = false;
+    bubblePower = 100;
+    bubblePowerPoison = 200;
 
     constructor(x, y, isPoisonedBubble) {
         super();

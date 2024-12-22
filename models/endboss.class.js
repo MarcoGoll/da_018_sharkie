@@ -1,6 +1,7 @@
 class Endboss extends MoveableObject {
     width = 400;
     height = 400;
+    energy = 500;
 
     IMAGES_SPAWNING = [
         './assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
