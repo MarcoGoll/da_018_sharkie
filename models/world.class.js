@@ -108,15 +108,19 @@ class World {
                     console.log("Hit enemy");
                     if (!(bubble.isPoisonedBubble)) {
                         enemy.hit(bubble.bubblePower);
+                        console.log(enemy.energy);
                     }
                     else {
                         enemy.hit(bubble.bubblePowerPoison);
+                        console.log(enemy.energy);
                     }
                     if (enemy instanceof Pufferfish) {
                         enemy.offset.height = 10;
                     }
                     if (enemy.isDead()) {
-                        this.level.enemies.splice(indexEnemy, 1);
+                        setTimeout(() => {
+                            this.level.enemies.splice(indexEnemy, 1);
+                        }, 500);
                     }
                 }
             });
