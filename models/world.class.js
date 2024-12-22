@@ -55,7 +55,7 @@ class World {
         }
 
         moveableObject.draw(this.ctx);
-        //moveableObject.drawFrame(this.ctx);
+        moveableObject.drawFrame(this.ctx);
 
         if (moveableObject.otherDirection) { // Nach dem Zeichnen zurückspiegeln, wenn otherdirection == true
             this.flipImageBack(moveableObject);
@@ -110,7 +110,10 @@ class World {
                         enemy.hit(bubble.bubblePower);
                     }
                     else {
-                        enemy.energy -= bubble.bubblePowerPoison;
+                        enemy.hit(bubble.bubblePowerPoison);
+                    }
+                    if (enemy instanceof Pufferfish) {
+                        enemy.offset.height = 10;
                     }
                     if (enemy.isDead()) {
                         this.level.enemies.splice(indexEnemy, 1);

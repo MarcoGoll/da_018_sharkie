@@ -152,7 +152,6 @@ class Character extends MoveableObject {
                 else {
                     this.loadImage(this.IMAGES_DEADNORMAL[this.IMAGES_DEADNORMAL.length - 1]);
                 }
-                //clearInterval(characterInterval); TODO: so hört es nach dem ersten Image auf. Ich muss das Ende vom ersten Imagedurchlauf abfangen/abfragen
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURTNORMAL);
             } else if (this.world.keyboard.Q || this.attackBubbleAnimationIsPlaying) { //attackBubbleANIMATION
