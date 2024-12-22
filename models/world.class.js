@@ -105,6 +105,7 @@ class World {
                 if (bubble.isColliding(enemy)) {
                     this.throwableObjects.splice(index, 1);
                     console.log("Hit enemy");
+                    //TODO: Kill Enemy after xHits (Health)
                 }
             });
         });
