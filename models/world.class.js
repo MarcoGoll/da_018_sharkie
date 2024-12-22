@@ -100,6 +100,15 @@ class World {
             }
         });
 
+        this.throwableObjects.forEach((bubble, index) => {
+            this.level.enemies.forEach((enemy) => {
+                if (bubble.isColliding(enemy)) {
+                    this.throwableObjects.splice(index, 1);
+                    console.log("Hit enemy");
+                }
+            });
+        });
+
         this.level.poisons.forEach((poison, index) => {
             if (this.character.isColliding(poison)) {
                 this.character.addPoison();

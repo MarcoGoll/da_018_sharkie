@@ -53,7 +53,7 @@ class MoveableObject extends DrawableObject {
         if (this instanceof ThrowableObject) { //ThrowableObject should always go up
             return true;
         } else {
-            return this.y > -110;
+            return this.y > -65;
         }
     }
 
