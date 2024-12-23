@@ -1,6 +1,7 @@
 class Character extends MoveableObject {
     width = 220;
     height = 240;
+    x = 110;
     idleCount = 0;
     deadAnimationWasPlayed = false;
     attackBubbleAnimationIsPlaying = false;

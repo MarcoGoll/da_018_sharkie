@@ -5,7 +5,7 @@ class Level {
     poisons;
     coins;
     levelEndX = AMOUNTBACKGROUNDS * 1440;
-    enbossSpawnPoint = 800;
+    enbossSpawnPoint = (AMOUNTBACKGROUNDS * 1440) - 1800;
 
     constructor(lights, enemies, backgroundObjects, coins, poisons) {
         this.lights = lights;

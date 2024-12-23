@@ -49,7 +49,7 @@ class Endboss extends MoveableObject {
         this.loadImages(this.IMAGES_SPAWNING);
         this.loadImages(this.IMAGES_SWIM);
 
-        this.x = 1000;
+        this.x = (AMOUNTBACKGROUNDS * 1440) - 1200;
         this.animate();
     }
 

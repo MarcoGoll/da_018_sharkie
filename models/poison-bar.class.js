@@ -31,12 +31,14 @@ class PoisonBar extends DrawableObject {
         if (this.percentage * multiplier == 100) {
             return 5;
         } else if (this.percentage * multiplier > 80) {
-            return 4;
+            return 5;
         } else if (this.percentage * multiplier > 60) {
-            return 3;
+            return 4;
         } else if (this.percentage * multiplier > 40) {
-            return 2;
+            return 3;
         } else if (this.percentage * multiplier > 20) {
+            return 2;
+        } else if (this.percentage * multiplier > 0) {
             return 1;
         } else {
             return 0;
