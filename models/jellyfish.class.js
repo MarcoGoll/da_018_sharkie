@@ -4,33 +4,22 @@ class Jellyfish extends MoveableObject {
     width;
     height;
 
-    IMAGES_SWIM = [
-        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
-        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
-        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png',
-        './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
-    ];
-
     offset = {
         x: 30,
         y: 30,
         widht: 60,
         height: 70,
     }
+    energyMax = 200;
     energy = 200;
 
-
-
-    constructor(x, y, width, height, img) {
-        super().loadImage(img);
-        this.loadImages(this.IMAGES_SWIM);
+    constructor(x, y, width, height) {
+        super();
 
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.speed = 0.15 + Math.random() * 0.5;
-
         this.animate();
     }
 

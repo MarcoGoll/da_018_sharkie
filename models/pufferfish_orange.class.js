@@ -12,7 +12,7 @@ class PufferfishOrange extends Pufferfish {
 
     IMAGES_TRANSITION = [
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition1.png',
-        './assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2transition2.png',
+        './assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition2.png',
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition3.png',
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition4.png',
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition5.png',

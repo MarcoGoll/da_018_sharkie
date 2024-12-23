@@ -4,15 +4,13 @@ const LEVEL1 = new Level(
     ],
     [
         //Enemies
-        new PufferfishGreen(((Math.random() * 1000) + 180), ((Math.random() * 300)), 80, 75, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-        new PufferfishOrange(((Math.random() * 1000) + 180), ((Math.random() * 300)), 90, 85, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-        new PufferfishRed(((Math.random() * 1000) + 180), ((Math.random() * 300)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-        //new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-        //new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-        //new Pufferfish(((Math.random() * 500) + 180), ((Math.random() * 100)), 100, 95, "./assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png"),
-        //new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
-        //new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
-        new Jellyfish(((Math.random() * 500) + 180), ((Math.random() * 500)), 150, 180, "./assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png"),
+        new PufferfishGreen(((Math.random() * 1000) + 180), ((Math.random() * 300)), 80, 75, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
+        new PufferfishOrange(((Math.random() * 1000) + 180), ((Math.random() * 300)), 90, 85, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
+        new PufferfishRed(((Math.random() * 1000) + 180), ((Math.random() * 300)), 100, 95, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
+        new JellyfishLila(400, 100, 150, 180, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png'),
+        new JellyfishYellow(500, 100, 150, 180, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png'),
+        new JellyfishGreen(600, 100, 150, 180, './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png'),
+        new JellyfishPink(700, 100, 150, 180, './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png'),
     ],
     [
         //Backgrounds
