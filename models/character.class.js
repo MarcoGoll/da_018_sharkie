@@ -6,6 +6,7 @@ class Character extends MoveableObject {
     attackBubbleAnimationIsPlaying = false;
     attackBubblePoisonAnimationIsPlaying = false;
     attackSlapAnimationIsPlaying = false;
+    isShooting = false;
 
 
     IMAGES_SWIM = [

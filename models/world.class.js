@@ -55,7 +55,7 @@ class World {
         }
 
         moveableObject.draw(this.ctx);
-        moveableObject.drawFrame(this.ctx);
+        //moveableObject.drawFrame(this.ctx);
 
         if (moveableObject.otherDirection) { // Nach dem Zeichnen zurückspiegeln, wenn otherdirection == true
             this.flipImageBack(moveableObject);
@@ -146,16 +146,24 @@ class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.Q) {
-            let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130, false);
-            this.throwableObjects.push(bubble);
+        if (this.keyboard.Q && !(this.character.isShooting)) {
+            this.character.isShooting = true;
+            setTimeout(() => {
+                let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130, false);
+                this.throwableObjects.push(bubble);
+                this.character.isShooting = false;
+            }, 700)
         }
-        if (this.keyboard.E) {
+        if (this.keyboard.E && !(this.character.isShooting)) {
             if (this.character.poisonAmmunition > 0) {
-                let bubblePoison = new ThrowableObject(this.character.x + 150, this.character.y + 130, true);
-                this.throwableObjects.push(bubblePoison);
-                this.character.deletePoison();
-                this.poisonBar.setPercentage(this.character.poisonAmmunition, 10);
+                this.character.isShooting = true;
+                setTimeout(() => {
+                    let bubblePoison = new ThrowableObject(this.character.x + 150, this.character.y + 130, true);
+                    this.throwableObjects.push(bubblePoison);
+                    this.character.deletePoison();
+                    this.poisonBar.setPercentage(this.character.poisonAmmunition, 10);
+                    this.character.isShooting = false;
+                }, 700)
             }
         }
     }
