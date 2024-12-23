@@ -18,6 +18,9 @@ class Pufferfish extends MoveableObject {
         height: 30,
     }
 
+    isHitAudio = new Audio('./assets/audio/enemyIsHit.mp3')
+    isDyingAudio = new Audio('./assets/audio/pufferfishIsDying.mp3')
+
     constructor(x, y, width, height) {
         super();
         this.x = x;

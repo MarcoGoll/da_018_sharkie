@@ -1,6 +1,6 @@
 class JellyfishGreen extends Jellyfish {
-    energyMax = 200;
-    energy = 200;
+    energyMax = 300;
+    energy = 300;
 
     offset = {
         x: 30,

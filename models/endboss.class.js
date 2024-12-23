@@ -1,7 +1,8 @@
 class Endboss extends MoveableObject {
     width = 400;
     height = 400;
-    energy = 500;
+    energyMax = 800;
+    energy = 800;
 
     IMAGES_SPAWNING = [
         './assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -33,9 +34,7 @@ class Endboss extends MoveableObject {
     ];
 
     world;
-    endbossSpawnAudio = new Audio('./assets/audio/endboss_spawn.mp3')
-    endbossIsHitAudio = new Audio('./assets/audio/endboss_isHit.mp3')
-    endbossDyingAudio = new Audio('./assets/audio/endboss_dying.mp3')
+
 
     offset = {
         x: 30,
@@ -44,12 +43,20 @@ class Endboss extends MoveableObject {
         height: 310,
     }
 
+    isSpawnAudio = new Audio('./assets/audio/endboss_spawn.mp3')
+    isHitAudio = new Audio('./assets/audio/endboss_isHit.mp3')
+    isDyingAudio = new Audio('./assets/audio/endboss_dying.mp3')
+
     constructor() {
         super().loadImage(this.IMAGES_SPAWNING[0]);
         this.loadImages(this.IMAGES_SPAWNING);
         this.loadImages(this.IMAGES_SWIM);
-
         this.x = (AMOUNTBACKGROUNDS * 1440) - 1200;
+
+
+        this.isSpawnAudio.volume = 0.5;
+        this.isHitAudio.volume = 0.5;
+        this.isDyingAudio.volume = 0.5;
         this.animate();
     }
 
@@ -58,8 +65,7 @@ class Endboss extends MoveableObject {
         setInterval(() => {
             if (i < this.IMAGES_SPAWNING.length) {
                 this.playAnimation(this.IMAGES_SPAWNING);
-                this.endbossSpawnAudio.volume = 0.5;
-                this.endbossSpawnAudio.play();
+                this.isSpawnAudio.play();
             }
             else {
                 this.playAnimation(this.IMAGES_SWIM);

@@ -16,6 +16,9 @@ class Jellyfish extends MoveableObject {
     energyMax = 200;
     energy = 200;
 
+    isHitAudio = new Audio('./assets/audio/enemyIsHit.mp3')
+    isDyingAudio = new Audio('./assets/audio/jellyfishIsDying.mp3')
+
     constructor(x, y, width, height) {
         super();
 
@@ -33,7 +36,6 @@ class Jellyfish extends MoveableObject {
             if (this.y < 300 && this.isMovingDown) {
                 this.moveDown();
                 this.isMovingDown = true;
-                console.log(this.y, "moving down");
                 if (this.y > 300) {
                     this.isMovingDown = false;
                     this.isMovingUp = true;
@@ -42,7 +44,6 @@ class Jellyfish extends MoveableObject {
 
             if (this.y > 0 && this.isMovingUp) {
                 this.moveUp();
-                console.log(this.y, "moving up");
                 this.isMovingUp = true;
                 if (this.y < 0) {
                     this.isMovingUp = false;

@@ -1,6 +1,6 @@
 class JellyfishLila extends Jellyfish {
-    energyMax = 200;
-    energy = 200;
+    energyMax = 100;
+    energy = 100;
 
     offset = {
         x: 30,
