@@ -6,6 +6,7 @@ class Jellyfish extends MoveableObject {
 
     isMovingUp = false;
     isMovingDown = true;
+    iDead = 0;
 
     offset = {
         x: 30,
@@ -53,7 +54,20 @@ class Jellyfish extends MoveableObject {
         }, 1000 / 60); // 60fps
 
         setInterval(() => {
-            this.playAnimation(this.IMAGES_SWIM);
+            if (this.isDead()) {
+                if (this.iDead < this.IMAGES_DEAD.length) {
+                    if (this.deadAnimationWasPlayed == false) {
+                        this.currentImage = 0;
+                        this.deadAnimationWasPlayed = true;
+                    }
+                    this.playAnimation(this.IMAGES_DEAD);
+                    this.iDead++
+                    console.log(this.iDead);
+                }
+            }
+            else {
+                this.playAnimation(this.IMAGES_SWIM);
+            }
         }, 1000 / 6);
     }
 }

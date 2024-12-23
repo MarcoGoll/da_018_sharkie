@@ -121,9 +121,15 @@ class World {
                     }
                     if (enemy.isDead()) {
                         enemy.isDyingAudio.play();
-                        setTimeout(() => {
-                            this.level.enemies.splice(indexEnemy, 1);
-                        }, 500);
+                        if (enemy instanceof Endboss) {
+                            setTimeout(() => {
+                                this.level.enemies.splice(indexEnemy, 1);
+                            }, 3000);
+                        } else {
+                            setTimeout(() => {
+                                this.level.enemies.splice(indexEnemy, 1);
+                            }, 500);
+                        }
                     }
                 }
             });

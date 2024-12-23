@@ -3,6 +3,7 @@ class Endboss extends MoveableObject {
     height = 400;
     energyMax = 800;
     energy = 800;
+    iDead = 0;
 
     IMAGES_SPAWNING = [
         './assets/img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
@@ -32,8 +33,24 @@ class Endboss extends MoveableObject {
         './assets/img/2.Enemy/3 Final Enemy/2.floating/12.png',
         './assets/img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
+    IMAGES_DEAD = [
+        './assets/img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png',
+        './assets/img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png',
+        './assets/img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png',
+        './assets/img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
+        './assets/img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
+
+    ];
+
+    IMAGES_HURT = [
+        './assets/img/2.Enemy/3 Final Enemy/Hurt/1.png',
+        './assets/img/2.Enemy/3 Final Enemy/Hurt/2.png',
+        './assets/img/2.Enemy/3 Final Enemy/Hurt/3.png',
+        './assets/img/2.Enemy/3 Final Enemy/Hurt/4.png',
+    ];
 
     world;
+    deadAnimationWasPlayed = false;
 
 
     offset = {
@@ -51,6 +68,8 @@ class Endboss extends MoveableObject {
         super().loadImage(this.IMAGES_SPAWNING[0]);
         this.loadImages(this.IMAGES_SPAWNING);
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_HURT);
         this.x = (AMOUNTBACKGROUNDS * 1440) - 1200;
 
 
@@ -66,6 +85,20 @@ class Endboss extends MoveableObject {
             if (i < this.IMAGES_SPAWNING.length) {
                 this.playAnimation(this.IMAGES_SPAWNING);
                 this.isSpawnAudio.play();
+            } else if (this.isDead()) { //DEADANIMATION
+                if (this.iDead < this.IMAGES_DEAD.length) {
+                    if (this.deadAnimationWasPlayed == false) {
+                        this.currentImage = 0;
+                        this.deadAnimationWasPlayed = true;
+                    }
+                    this.playAnimation(this.IMAGES_DEAD);
+                    this.iDead++
+                }
+                else {
+                    this.loadImage(this.IMAGES_DEAD[this.IMAGES_DEAD.length - 1]);
+                }
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
             }
             else {
                 this.playAnimation(this.IMAGES_SWIM);

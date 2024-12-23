@@ -30,6 +30,7 @@ class JellyfishLila extends Jellyfish {
         super(x, y, width, height).loadImage(img);
 
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_DEAD);
 
         this.speed = 0.15 + Math.random() * 0.5;
 

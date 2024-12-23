@@ -111,6 +111,8 @@ class Character extends MoveableObject {
     world;
     speed = 4;
     swimSound = new Audio('./assets/audio/splash.mp3');
+    isHitAudio = new Audio('./assets/audio/characterIsHit.mp3');
+
 
     offset = {
         x: 30,
@@ -130,9 +132,9 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_ATTACKBUBBLEPOISON);
         this.loadImages(this.IMAGES_ATTACKSLAP);
 
+        this.isHitAudio.volume = 0.5;
         this.animate();
-        //this.applyGravity();
-    } d
+    }
 
     animate() {
         let iDead = 0;
