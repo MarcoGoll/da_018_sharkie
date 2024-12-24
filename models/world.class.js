@@ -186,24 +186,26 @@ class World {
 
     moveEndboss() {
         setInterval(() => {
-            // TODO: Bessere Möglichkeit auf Endboss zuzugreifen? Diese verhindert das neue Gegner eingefügt werden. Da ich den Endboss daran erkenne, dass es der letzte Enemy ist
-            //MOVE LEFT
-            if (this.level.enemies[this.level.enemies.length - 1].x > this.character.x - 50) {
-                this.level.enemies[this.level.enemies.length - 1].x -= 1;
-                this.level.enemies[this.level.enemies.length - 1].otherDirection = false;
-            }
-            //MOVE RIGHT
-            if (this.level.enemies[this.level.enemies.length - 1].x < this.character.x - 50) {
-                this.level.enemies[this.level.enemies.length - 1].x += 1;
-                this.level.enemies[this.level.enemies.length - 1].otherDirection = true;
-            }
-            //MOVE DOWN
-            if (this.level.enemies[this.level.enemies.length - 1].y < this.character.y - 100) {
-                this.level.enemies[this.level.enemies.length - 1].y += 1;
-            }
-            //MOVE UP
-            if (this.level.enemies[this.level.enemies.length - 1].y > this.character.y - 100) {
-                this.level.enemies[this.level.enemies.length - 1].y -= 1;
+            if (!(this.level.enemies[this.level.enemies.length - 1].isDead())) {
+                // TODO: Bessere Möglichkeit auf Endboss zuzugreifen? Diese verhindert das neue Gegner eingefügt werden. Da ich den Endboss daran erkenne, dass es der letzte Enemy ist
+                //MOVE LEFT
+                if (this.level.enemies[this.level.enemies.length - 1].x > this.character.x - 50) {
+                    this.level.enemies[this.level.enemies.length - 1].x -= 1;
+                    this.level.enemies[this.level.enemies.length - 1].otherDirection = false;
+                }
+                //MOVE RIGHT
+                if (this.level.enemies[this.level.enemies.length - 1].x < this.character.x - 50) {
+                    this.level.enemies[this.level.enemies.length - 1].x += 1;
+                    this.level.enemies[this.level.enemies.length - 1].otherDirection = true;
+                }
+                //MOVE DOWN
+                if (this.level.enemies[this.level.enemies.length - 1].y < this.character.y - 100) {
+                    this.level.enemies[this.level.enemies.length - 1].y += 1;
+                }
+                //MOVE UP
+                if (this.level.enemies[this.level.enemies.length - 1].y > this.character.y - 100) {
+                    this.level.enemies[this.level.enemies.length - 1].y -= 1;
+                }
             }
         }, 1000 / 60);
     }
