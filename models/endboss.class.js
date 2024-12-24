@@ -105,5 +105,6 @@ class Endboss extends MoveableObject {
             }
             i++;
         }, 1000 / 10);
+
     }
 }

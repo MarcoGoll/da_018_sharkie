@@ -14,3 +14,5 @@ coinSound.playbackRate = 1.0;
 shootBubbleSound = new Audio('./assets/audio/shootBubble.mp3');
 shootBubbleSound.volume = 0.1;
 
+lostSound = new Audio('./assets/audio/lost.wav');
+winSound = new Audio('./assets/audio/success.mp3');

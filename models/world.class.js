@@ -122,9 +122,8 @@ class World {
                     if (enemy.isDead()) {
                         enemy.isDyingAudio.play();
                         if (enemy instanceof Endboss) {
-                            setTimeout(() => {
-                                this.level.enemies.splice(indexEnemy, 1);
-                            }, 3000);
+                            winSound.play();
+                            //TODO: WIN SCREEN
                         } else {
                             setTimeout(() => {
                                 this.level.enemies.splice(indexEnemy, 1);
@@ -181,6 +180,31 @@ class World {
         if (this.character.x > this.level.enbossSpawnPoint && !this.hadFirstContact) {
             this.level.enemies.push(new Endboss());
             this.hadFirstContact = true;
+            this.moveEndboss();
         }
+    }
+
+    moveEndboss() {
+        setInterval(() => {
+            // TODO: Bessere Möglichkeit auf Endboss zuzugreifen? Diese verhindert das neue Gegner eingefügt werden. Da ich den Endboss daran erkenne, dass es der letzte Enemy ist
+            //MOVE LEFT
+            if (this.level.enemies[this.level.enemies.length - 1].x > this.character.x - 50) {
+                this.level.enemies[this.level.enemies.length - 1].x -= 1;
+                this.level.enemies[this.level.enemies.length - 1].otherDirection = false;
+            }
+            //MOVE RIGHT
+            if (this.level.enemies[this.level.enemies.length - 1].x < this.character.x - 50) {
+                this.level.enemies[this.level.enemies.length - 1].x += 1;
+                this.level.enemies[this.level.enemies.length - 1].otherDirection = true;
+            }
+            //MOVE DOWN
+            if (this.level.enemies[this.level.enemies.length - 1].y < this.character.y - 100) {
+                this.level.enemies[this.level.enemies.length - 1].y += 1;
+            }
+            //MOVE UP
+            if (this.level.enemies[this.level.enemies.length - 1].y > this.character.y - 100) {
+                this.level.enemies[this.level.enemies.length - 1].y -= 1;
+            }
+        }, 1000 / 60);
     }
 }

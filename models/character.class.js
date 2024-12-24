@@ -8,6 +8,7 @@ class Character extends MoveableObject {
     attackBubblePoisonAnimationIsPlaying = false;
     attackSlapAnimationIsPlaying = false;
     isShooting = false;
+    deadSoundWasPlayed = false;
 
 
     IMAGES_SWIM = [
@@ -145,6 +146,10 @@ class Character extends MoveableObject {
 
         setInterval(() => {
             if (this.isDead()) { //DEADANIMATION
+                if (!this.deadSoundWasPlayed) {
+                    lostSound.play();
+                    this.deadSoundWasPlayed = true;
+                }
                 if (iDead < this.IMAGES_DEADNORMAL.length) {
                     if (this.deadAnimationWasPlayed == false) {
                         this.currentImage = 0;
