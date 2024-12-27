@@ -45,12 +45,41 @@
     <script src="./models/world.class.js"></script>
     <!-- 07 - GAME SPECIFIC JS -->
     <script src="./scripts/game.js"></script>
+    <script src="./scripts/basics.js"></script>
 
 </head>
 
-<body onload="init()">
-    <h1>Sharkie</h1>
-    <canvas id="canvas" width="720px" height="480px"></canvas>
+<body>
+    <div class="gameContainer">
+        <h1>Sharkie</h1>
+        <canvas id="canvas" width="720px" height="480px">
+        </canvas>
+        <div id="controlBTNAreaALL" class="d_none">
+            <div id="controlBTNAreaLeft">
+                <div id="controlBTNAreaLeftFirstLine">
+                    <button class="controlBTN">Top</button>
+                </div>
+                <div id="controlBTNAreaLeftSecondLine">
+                    <button class="controlBTN">Left</button>
+                    <button class="controlBTN">Down</button>
+                    <button class="controlBTN">Right</button>
+                </div>
+            </div>
+            <div id="controlBTNAreaRight">
+                <div id="controlBTNAreaRightFirstLine">
+                    <button class="controlBTN">Attack</button>
+                </div>
+                <div id="controlBTNAreaRightSecondLine">
+                    <button class="controlBTN">Bubble</button>
+                    <button class="controlBTN">PoisonBubble</button>
+                </div>
+            </div>
+        </div>
+        <div id="menue" class="">
+            <button id="startBTN" class="menueBTN" onclick="init(); toggleClass('d_none', 'menue')">START</button>
+            <button id="descriptionBTN" class="menueBTN">SPIELBESCHREIBUNG</button>
+        </div>
+    </div>
 </body>
 
 </html>

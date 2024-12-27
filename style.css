@@ -40,7 +40,7 @@ canvas {
     border-radius: 32px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-bottom: 5px solid black;
-    border-right: 3px solid black;
+    display: block;
 }
 
 h1 {
@@ -50,5 +50,101 @@ h1 {
     font-size: 48px;
     letter-spacing: 8px;
     filter: drop-shadow(2px 4px 3px black);
+
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
+}
+
+.gameContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#controlBTNAreaALL {
+    position: absolute;
+    z-index: 99;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#controlBTNAreaLeft,
+#controlBTNAreaRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 20px;
+}
+
+#controlBTNAreaLeftFirstLine,
+#controlBTNAreaLeftSecondLine,
+#controlBTNAreaRightFirstLine,
+#controlBTNAreaRightSecondLine {
+    display: flex;
+    gap: 8px;
+}
+
+.controlBTN {
+    width: 90px;
+    height: 50px;
+    border-radius: 250px;
+}
+
+.d_none {
+    display: none !important;
+}
+
+#menue {
+    position: absolute;
+    /* background-color: #104a70; */
+    background-image: url("./assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px
+}
+
+.menueBTN {
+    width: 300px;
+    padding: 10px 50px;
+    border-radius: 5px;
+    background-color: #2894b8;
+    color: white;
+    font-family: 'anton_SC',
+        Arial,
+        Helvetica,
+        sans-serif;
+    letter-spacing: 4px;
+
+}
+
+.menueBTN:hover {
+    background-color: #91d3e3;
 
 }
