@@ -101,14 +101,23 @@ h1 {
 }
 
 .controlBTN {
-    width: 55px;
-    height: 55px;
-    border: none;
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.controlBTN:hover,
+.controlBTN:active {
+    background-color: rgba(0, 0, 255, 0.7);
+}
+
+.controlBTN:focus {
+    border: 2px solid white;
 }
 
 .controlBTN img {

@@ -18,34 +18,34 @@
     <script src="./models/drawable-object.class.js"></script>
     <script src="./models/moveable-object.class.js"></script>
     <!-- 03 - CHILD CLASSES -->
-    <script src="./models/character.class.js"></script>
-    <script src="./models/pufferfish.class.js"></script>
-    <script src="./models/pufferfish_green.class.js"></script>
-    <script src="./models/pufferfish_orange.class.js"></script>
-    <script src="./models/pufferfish_red.class.js"></script>
-    <script src="./models/jellyfish.class.js"></script>
-    <script src="./models/jellyfishLila.class.js"></script>
-    <script src="./models/jellyfishYellow.class.js"></script>
-    <script src="./models/jellyfishPink.class.js"></script>
-    <script src="./models/jellyfishGreen.class.js"></script>
-    <script src="./models/light.class.js"></script>
-    <script src="./models/background-object.css.js"></script>
-    <script src="./models/endboss.class.js"></script>
-    <script src="./models/status-bar.class.js"></script>
-    <script src="./models/poison-bar.class.js"></script>
-    <script src="./models/coin-bar.class.js"></script>
-    <script src="./models/throwable-object.class.js"></script>
-    <script src="./models/coin.class.js"></script>
-    <script src="./models/poison.class.js"></script>
+    <script src="./models/character.class.js" defer></script>
+    <script src="./models/pufferfish.class.js" defer></script>
+    <script src="./models/pufferfish_green.class.js" defer></script>
+    <script src="./models/pufferfish_orange.class.js" defer></script>
+    <script src="./models/pufferfish_red.class.js" defer></script>
+    <script src="./models/jellyfish.class.js" defer></script>
+    <script src="./models/jellyfishLila.class.js" defer></script>
+    <script src="./models/jellyfishYellow.class.js" defer></script>
+    <script src="./models/jellyfishPink.class.js" defer></script>
+    <script src="./models/jellyfishGreen.class.js" defer></script>
+    <script src="./models/light.class.js" defer></script>
+    <script src="./models/background-object.css.js" defer></script>
+    <script src="./models/endboss.class.js" defer></script>
+    <script src="./models/status-bar.class.js" defer></script>
+    <script src="./models/poison-bar.class.js" defer></script>
+    <script src="./models/coin-bar.class.js" defer></script>
+    <script src="./models/throwable-object.class.js" defer></script>
+    <script src="./models/coin.class.js" defer></script>
+    <script src="./models/poison.class.js" defer></script>
     <!-- 04 - LEVEL SPECIFIC JS -->
-    <script src="./models/level.class.js"></script>
-    <script src="./levels/level1.js"></script>
+    <script src="./models/level.class.js" defer></script>
+    <script src="./levels/level1.js" defer></script>
     <!-- 05 - KEYBOARD SPECIFIC JS -->
-    <script src="./models/keyboard.class.js"></script>
+    <script src="./models/keyboard.class.js" defer></script>
     <!-- 06 - WORLD SPECIFIC JS -->
-    <script src="./models/world.class.js"></script>
+    <script src="./models/world.class.js" defer></script>
     <!-- 07 - GAME SPECIFIC JS -->
-    <script src="./scripts/game.js"></script>
+    <script src="./scripts/game.js" defer></script>
 
 </head>
 
@@ -61,27 +61,28 @@
         <div id="controlBTNAreaALL" class="d_none">
             <div id="controlBTNAreaLeft">
                 <div id="controlBTNAreaLeftFirstLine">
-                    <button class="controlBTN"><img src="./assets/img/icons/googleFontsIcons/circle_up.svg"
+                    <button id="btnUP" class="controlBTN"><img src="./assets/img/icons/googleFontsIcons/circle_up.svg"
                             alt="up"></button>
                 </div>
                 <div id="controlBTNAreaLeftSecondLine">
-                    <button class="controlBTN"><img src="./assets/img/icons/googleFontsIcons/circle_left.svg"
-                            alt="left"></button>
-                    <button class="controlBTN"><img src="./assets/img/icons/googleFontsIcons/circle_down.svg"
-                            alt="down"></button>
-                    <button class="controlBTN"><img src="./assets/img/icons/googleFontsIcons/circle_right.svg"
-                            alt="right"></button>
+                    <button id="btnLeft" class="controlBTN"><img
+                            src="./assets/img/icons/googleFontsIcons/circle_left.svg" alt="left"></button>
+                    <button id="btnDown" class="controlBTN"><img
+                            src="./assets/img/icons/googleFontsIcons/circle_down.svg" alt="down"></button>
+                    <button id="btnRight" class="controlBTN"><img
+                            src="./assets/img/icons/googleFontsIcons/circle_right.svg" alt="right"></button>
                 </div>
             </div>
             <div id="controlBTNAreaRight">
                 <div id="controlBTNAreaRightFirstLine">
-                    <button class="controlBTN"><img src="./assets/img/1.Sharkie/4.Attack/Fin slap/attack.png"
-                            alt="attack"></button>
+                    <button id="btnTailAttack" class="controlBTN"><img
+                            src="./assets/img/1.Sharkie/4.Attack/Fin slap/attack.png" alt="attack"></button>
                 </div>
                 <div id="controlBTNAreaRightSecondLine">
-                    <button class="controlBTN"><img src="./assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png"
-                            alt="bubble"></button>
-                    <button class="controlBTN"><img src="./assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png"
+                    <button id="btnBubbleAttack" class="controlBTN"><img
+                            src="./assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="bubble"></button>
+                    <button id="btnPoisonAttack" class="controlBTN"><img
+                            src="./assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png"
                             alt="bubblePoisoned"></button>
                 </div>
             </div>

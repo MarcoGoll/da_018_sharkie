@@ -1,6 +1,13 @@
 let canvasRef;
 let world;
 let keyboard = new Keyboard();
+let upBTNRef = document.getElementById('btnUP');
+let leftBTNRef = document.getElementById('btnLeft');
+let downBTNRef = document.getElementById('btnDown');
+let rightBTNRef = document.getElementById('btnRight');
+let tailAttackBTNRef = document.getElementById('btnTailAttack');
+let bubbleAttackBTNRef = document.getElementById('btnBubbleAttack');
+let poisonAttackBTNRef = document.getElementById('btnPoisonAttack');
 
 
 function start() {
@@ -20,7 +27,7 @@ window.addEventListener('keydown', (event) => {
         case 'w':
         case 'ArrowUp':
             keyboard.UP = true;
-            break; a
+            break;
         case 'd':
         case 'ArrowRight':
             keyboard.RIGHT = true;
@@ -73,6 +80,76 @@ window.addEventListener('keyup', (event) => {
         default:
             break;
     }
+})
+
+upBTNRef.addEventListener('mousedown', () => {
+    keyboard.UP = true;
+})
+upBTNRef.addEventListener('mouseup', () => {
+    keyboard.UP = false;
+})
+upBTNRef.addEventListener('mouseout', () => {
+    keyboard.UP = false;
+})
+
+leftBTNRef.addEventListener('mousedown', () => {
+    keyboard.LEFT = true;
+})
+leftBTNRef.addEventListener('mouseup', () => {
+    keyboard.LEFT = false;
+})
+leftBTNRef.addEventListener('mouseout', () => {
+    keyboard.LEFT = false;
+})
+
+downBTNRef.addEventListener('mousedown', () => {
+    keyboard.DOWN = true;
+})
+downBTNRef.addEventListener('mouseup', () => {
+    keyboard.DOWN = false;
+})
+downBTNRef.addEventListener('mouseout', () => {
+    keyboard.DOWN = false;
+})
+
+rightBTNRef.addEventListener('mousedown', () => {
+    keyboard.RIGHT = true;
+})
+rightBTNRef.addEventListener('mouseup', () => {
+    keyboard.RIGHT = false;
+})
+rightBTNRef.addEventListener('mouseout', () => {
+    keyboard.RIGHT = false;
+})
+
+tailAttackBTNRef.addEventListener('mousedown', () => {
+    keyboard.SPACE = true;
+})
+tailAttackBTNRef.addEventListener('mouseup', () => {
+    keyboard.SPACE = false;
+})
+tailAttackBTNRef.addEventListener('mouseout', () => {
+    keyboard.SPACE = false;
+})
+
+bubbleAttackBTNRef.addEventListener('mousedown', () => {
+    keyboard.Q = true;
+})
+bubbleAttackBTNRef.addEventListener('mouseup', () => {
+    keyboard.Q = false;
+})
+bubbleAttackBTNRef.addEventListener('mouseout', () => {
+    keyboard.Q = false;
+})
+
+poisonAttackBTNRef.addEventListener('mousedown', () => {
+    keyboard.E = true;
+})
+poisonAttackBTNRef.addEventListener('mouseup', () => {
+    keyboard.E = false;
+})
+poisonAttackBTNRef.addEventListener('mouseout', () => {
+    keyboard.E = false;
 })
 
 function initSounds() {
