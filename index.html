@@ -90,21 +90,29 @@
         <div id="controlBTNDescription" class="d_none">
             <div id="controlBTNDescriptionMove">
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">W</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_up.svg"
                             alt="up"></button>
                     <span>MOVE UP</span>
                 </div>
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">A</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_left.svg"
                             alt="left"></button>
                     <span>MOVE LEFT</span>
                 </div>
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">S</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_down.svg"
                             alt="down"></button>
                     <span>MOVE DOWN</span>
                 </div>
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">R</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_right.svg"
                             alt="right"></button>
                     <span>MOVE RIGHT</span>
@@ -112,16 +120,22 @@
             </div>
             <div id="controlBTNDescriptionAttack">
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">_</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/1.Sharkie/4.Attack/Fin slap/attack.png"
                             alt="attack"></button>
                     <span> TAIL ATTACK</span>
                 </div>
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">Q</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png"
                             alt="bubble"></button>
                     <span> BUBBLE ATTACK</span>
                 </div>
                 <div class="descriptionBTNContainer">
+                    <button class="descriptionBTN">E</button>
+                    <span>/</span>
                     <button class="descriptionBTN"><img
                             src="./assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png"
                             alt="bubblePoisoned"></button>
@@ -129,6 +143,16 @@
                 </div>
 
             </div>
+        </div>
+        <div id="winScreen" class="endScreen d_none">
+            <span>WIN</span>
+            <button id="btnRestart" class="menueBTN"
+                onclick="start(); toggleClass('d_none', 'winScreen')">Restart</button>
+        </div>
+        <div id="lostScreen" class="endScreen d_none">
+            <span>LOST</span>
+            <button id="btnRestart" class="menueBTN"
+                onclick="start(); toggleClass('d_none', 'lostScreen')">Restart</button>
         </div>
         <div id="menue" class="">
             <button id="startBTN" class="menueBTN" onclick="start(); toggleClass('d_none', 'menue')">START</button>

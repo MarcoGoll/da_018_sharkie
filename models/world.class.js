@@ -98,6 +98,9 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit(this.collisionPower);
                 this.statusBarHealth.setPercentage(this.character.energy)
+                if (this.character.isDead()) {
+                    this.gameOver('CharacterDeath');
+                }
             }
         });
 
@@ -122,8 +125,7 @@ class World {
                     if (enemy.isDead()) {
                         enemy.isDyingAudio.play();
                         if (enemy instanceof Endboss) {
-                            winSound.play();
-                            //TODO: WIN SCREEN
+                            this.gameOver('EndbossDeath');
                         } else {
                             setTimeout(() => {
                                 this.level.enemies.splice(indexEnemy, 1);
@@ -215,6 +217,26 @@ class World {
         this.level.enemies.forEach((enemy) => {
             enemy.setSounds();
         });
+    }
+
+    gameOver(whoIsDeath) {
+        if (whoIsDeath == 'EndbossDeath') {
+            /*
+            //WINN
+            winSound.play();
+            toggleClass('d_none', 'winScreen');
+            */
+            console.log("youWIN");
+        }
+
+        if (whoIsDeath == 'CharacterDeath') {
+            /*
+            // LOST
+            lostSound.play();
+            toggleClass('d_none', 'lostScreen');
+            */
+            console.log("youLOSE");
+        }
     }
 
 }
