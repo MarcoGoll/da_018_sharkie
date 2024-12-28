@@ -13,6 +13,7 @@
     <!-- ORDER IS IMPORTANT -->
     <!-- 01 - SOME IMPORTANT GLOBAL VARIABLES -->
     <script src="./scripts/globalVariables.js"></script>
+    <script src="./scripts/basics.js"></script>
     <!-- 02 - PARENT CLASSES -->
     <script src="./models/drawable-object.class.js"></script>
     <script src="./models/moveable-object.class.js"></script>
@@ -45,7 +46,6 @@
     <script src="./models/world.class.js"></script>
     <!-- 07 - GAME SPECIFIC JS -->
     <script src="./scripts/game.js"></script>
-    <script src="./scripts/basics.js"></script>
 
 </head>
 
@@ -54,6 +54,10 @@
         <h1>Sharkie</h1>
         <canvas id="canvas" width="720px" height="480px">
         </canvas>
+        <div id="muteContainer">
+            <button id="muteBtn" onclick="changeMuteMode()"><img
+                    src="./assets/img/icons/googleFontsIcons/volume_off.svg"></button>
+        </div>
         <div id="controlBTNAreaALL" class="d_none">
             <div id="controlBTNAreaLeft">
                 <div id="controlBTNAreaLeftFirstLine">
@@ -76,7 +80,7 @@
             </div>
         </div>
         <div id="menue" class="">
-            <button id="startBTN" class="menueBTN" onclick="init(); toggleClass('d_none', 'menue')">START</button>
+            <button id="startBTN" class="menueBTN" onclick="start(); toggleClass('d_none', 'menue')">START</button>
             <button id="descriptionBTN" class="menueBTN">SPIELBESCHREIBUNG</button>
         </div>
     </div>

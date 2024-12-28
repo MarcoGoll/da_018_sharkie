@@ -71,11 +71,7 @@ class Endboss extends MoveableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
         this.x = (AMOUNTBACKGROUNDS * 1440) - 1200;
-
-
-        this.isSpawnAudio.volume = 0.5;
-        this.isHitAudio.volume = 0.5;
-        this.isDyingAudio.volume = 0.5;
+        this.setSounds();
         this.animate();
     }
 
@@ -106,5 +102,17 @@ class Endboss extends MoveableObject {
             i++;
         }, 1000 / 10);
 
+    }
+
+    setSounds() {
+        if (muteMode) {
+            this.isSpawnAudio.volume = 0;
+            this.isHitAudio.volume = 0;
+            this.isDyingAudio.volume = 0;
+        } else {
+            this.isSpawnAudio.volume = 0.5;
+            this.isHitAudio.volume = 0.5;
+            this.isDyingAudio.volume = 0.5;
+        }
     }
 }

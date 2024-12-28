@@ -22,11 +22,11 @@ class Jellyfish extends MoveableObject {
 
     constructor(x, y, width, height) {
         super();
-
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.setSounds();
         this.animate();
     }
 
@@ -69,5 +69,15 @@ class Jellyfish extends MoveableObject {
                 this.playAnimation(this.IMAGES_SWIM);
             }
         }, 1000 / 6);
+    }
+
+    setSounds() {
+        if (muteMode) {
+            this.isHitAudio.volume = 0;
+            this.isDyingAudio.volume = 0;
+        } else {
+            this.isHitAudio.volume = 0.5;
+            this.isDyingAudio.volume = 0.5;
+        }
     }
 }

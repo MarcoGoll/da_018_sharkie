@@ -132,8 +132,9 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_ATTACKBUBBLENORMAL);
         this.loadImages(this.IMAGES_ATTACKBUBBLEPOISON);
         this.loadImages(this.IMAGES_ATTACKSLAP);
+        this.setSounds();
 
-        this.isHitAudio.volume = 0.5;
+
         this.animate();
     }
 
@@ -251,6 +252,16 @@ class Character extends MoveableObject {
 
             this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
         }, 1000 / 60)
+    }
+
+    setSounds() {
+        if (muteMode) {
+            this.swimSound.volume = 0;
+            this.isHitAudio.volume = 0;
+        } else {
+            this.swimSound.volume = 1;
+            this.isHitAudio.volume = 0.5;
+        }
     }
 }
 

@@ -148,3 +148,24 @@ h1 {
     background-color: #91d3e3;
 
 }
+
+#muteContainer {
+    position: absolute;
+    top: 115px;
+    right: 15px;
+}
+
+#muteBtn {
+    position: sticky;
+    top: 16px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    transition: all 200ms ease-in-out;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+#muteBtn:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}

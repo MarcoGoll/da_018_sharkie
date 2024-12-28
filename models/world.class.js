@@ -209,4 +209,12 @@ class World {
             }
         }, 1000 / 60);
     }
+
+    setWorldSounds() {
+        this.character.setSounds();
+        this.level.enemies.forEach((enemy) => {
+            enemy.setSounds();
+        });
+    }
+
 }
