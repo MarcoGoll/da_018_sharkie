@@ -101,9 +101,62 @@ h1 {
 }
 
 .controlBTN {
-    width: 90px;
-    height: 50px;
-    border-radius: 250px;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controlBTN img {
+    width: 80%;
+    height: 80%;
+}
+
+#controlBTNDescription {
+    position: absolute;
+    z-index: 99;
+    bottom: -80px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#controlBTNDescriptionMove,
+#controlBTNDescriptionAttack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    color: white;
+    font-size: 14px;
+}
+
+.descriptionBTNContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionBTN {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionBTN img {
+    width: 80%;
+    height: 80%;
 }
 
 .d_none {

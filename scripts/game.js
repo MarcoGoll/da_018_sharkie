@@ -6,7 +6,9 @@ let keyboard = new Keyboard();
 function start() {
     canvasRef = document.getElementById('canvas');
     world = new World(canvasRef, keyboard);
-    init();
+    initSounds();
+    displayControllBTN();
+
 }
 
 window.addEventListener('keydown', (event) => {
@@ -73,7 +75,12 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
-function init() {
+function initSounds() {
     setSoundVolume();
     gameSound.play();
+}
+
+function displayControllBTN() {
+    toggleClass('d_none', 'controlBTNAreaALL');
+    toggleClass('d_none', 'controlBTNDescription');
 }
