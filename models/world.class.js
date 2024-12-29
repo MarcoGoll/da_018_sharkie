@@ -241,7 +241,7 @@ class World {
             clearIntervalls();
             if (whoIsDeath == 'EndbossDeath') {
                 //WINN
-                toggleClass('d_none', 'winScreen'); d
+                toggleClass('d_none', 'winScreen');
                 console.log("youWIN");
             }
 
