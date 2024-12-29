@@ -32,8 +32,8 @@ class Poison extends MoveableObject {
     }
 
     animate() {
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             this.playAnimation(this.IMAGES_POISON);
-        }, 1000 / 8);
+        }, 1000 / 8));
     }
 }

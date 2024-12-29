@@ -21,3 +21,5 @@ let gameSound = new Audio('./assets/audio/gamesound.mp3');
 
 gameSound.loop = true;
 
+let intervallIds = [];
+

@@ -145,7 +145,7 @@ class Character extends MoveableObject {
         let iAttackSlap = 0;
 
 
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             if (this.isDead()) { //DEADANIMATION
                 if (!this.deadSoundWasPlayed) {
                     lostSound.play();
@@ -220,10 +220,10 @@ class Character extends MoveableObject {
                         this.playAnimation(this.IMAGES_LONGIDLE);
                     }
                 }
-        }, 1000 / 8);
+        }, 1000 / 8))
 
         //MOVEMENT
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             if (this.world.keyboard.LEFT) {
                 if (!this.isStartOfLevelReached()) {
                     this.moveLeft();
@@ -251,7 +251,7 @@ class Character extends MoveableObject {
             }
 
             this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
-        }, 1000 / 60)
+        }, 1000 / 60))
     }
 
     setSounds() {

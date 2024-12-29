@@ -31,7 +31,7 @@ class Jellyfish extends MoveableObject {
     }
 
     animate() {
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             //this.moveLeft();   
 
             if (this.y < 300 && this.isMovingDown) {
@@ -51,9 +51,9 @@ class Jellyfish extends MoveableObject {
                     this.isMovingDown = true;
                 }
             }
-        }, 1000 / 60); // 60fps
+        }, 1000 / 60)); // 60fps
 
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             if (this.isDead()) {
                 if (this.iDead < this.IMAGES_DEAD.length) {
                     if (this.deadAnimationWasPlayed == false) {
@@ -68,7 +68,7 @@ class Jellyfish extends MoveableObject {
             else {
                 this.playAnimation(this.IMAGES_SWIM);
             }
-        }, 1000 / 6);
+        }, 1000 / 6));
     }
 
     setSounds() {

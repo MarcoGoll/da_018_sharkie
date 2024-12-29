@@ -219,10 +219,7 @@ h1 {
     right: 15px;
 }
 
-#muteBtn {
-    position: sticky;
-    top: 16px;
-    z-index: 999;
+.specialBTN {
     background-color: rgba(0, 0, 0, 0.4);
     border: none;
     transition: all 200ms ease-in-out;
@@ -230,8 +227,15 @@ h1 {
     border-radius: 5px;
 }
 
-#muteBtn:hover {
+.specialBTN:hover {
     background-color: rgba(0, 0, 0, 0.6);
+
+}
+
+#muteBtn {
+    position: sticky;
+    top: 16px;
+    z-index: 999;
 }
 
 .endScreen {
@@ -251,4 +255,17 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#fullscreenBTN {
+    position: absolute;
+    top: 170px;
+    right: 15px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    z-index: 99;
+}
+
+#fullscreenBTN:hover {
+    transform: scale(1.1);
 }

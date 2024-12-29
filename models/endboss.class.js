@@ -77,7 +77,7 @@ class Endboss extends MoveableObject {
 
     animate() {
         let i = 0;
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             if (i < this.IMAGES_SPAWNING.length) {
                 this.playAnimation(this.IMAGES_SPAWNING);
                 this.isSpawnAudio.play();
@@ -100,7 +100,7 @@ class Endboss extends MoveableObject {
                 this.playAnimation(this.IMAGES_SWIM);
             }
             i++;
-        }, 1000 / 10);
+        }, 1000 / 10))
 
     }
 

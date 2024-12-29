@@ -35,11 +35,11 @@ class Pufferfish extends MoveableObject {
         let iTransition = 0;
 
 
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             this.moveLeft();
-        }, 1000 / 60); // 60fps
+        }, 1000 / 60)); // 60fps
 
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
 
             if (this.energy < this.energyMax && !(this.isDead())) { //Transition Animation
                 if (iTransition < this.IMAGES_TRANSITION.length) {
@@ -69,7 +69,7 @@ class Pufferfish extends MoveableObject {
             }
 
 
-        }, 1000 / 10);
+        }, 1000 / 10));
     }
 
     setSounds() {

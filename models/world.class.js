@@ -85,12 +85,12 @@ class World {
     }
 
     run() {
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             //Check Collisions
             this.checkCollisions();
             this.checkThrowObjects();
             this.createEndboss();
-        }, 150);
+        }, 150))
     }
 
     checkCollisions() {
@@ -187,7 +187,7 @@ class World {
     }
 
     moveEndboss() {
-        setInterval(() => {
+        intervallIds.push(setInterval(() => {
             if (!(this.level.enemies[this.level.enemies.length - 1].isDead())) {
                 // TODO: Bessere Möglichkeit auf Endboss zuzugreifen? Diese verhindert das neue Gegner eingefügt werden. Da ich den Endboss daran erkenne, dass es der letzte Enemy ist
                 //MOVE LEFT
@@ -209,7 +209,7 @@ class World {
                     this.level.enemies[this.level.enemies.length - 1].y -= 1;
                 }
             }
-        }, 1000 / 60);
+        }, 1000 / 60));
     }
 
     setWorldSounds() {
@@ -220,6 +220,10 @@ class World {
     }
 
     gameOver(whoIsDeath) {
+        setTimeout(() => {
+            clearIntervalls();
+        }, 2000);
+
         if (whoIsDeath == 'EndbossDeath') {
             /*
             //WINN

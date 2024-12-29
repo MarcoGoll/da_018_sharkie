@@ -50,12 +50,13 @@
 </head>
 
 <body>
-    <div class="gameContainer">
+    <div id="gameContainer" class="gameContainer">
+
         <h1>Sharkie</h1>
         <canvas id="canvas" width="720px" height="480px">
         </canvas>
         <div id="muteContainer">
-            <button id="muteBtn" onclick="changeMuteMode()"><img
+            <button id="muteBtn" class="specialBTN" onclick="changeMuteMode()"><img
                     src="./assets/img/icons/googleFontsIcons/volume_off.svg"></button>
         </div>
         <div id="controlBTNAreaALL" class="d_none">
@@ -158,6 +159,10 @@
             <button id="startBTN" class="menueBTN" onclick="start(); toggleClass('d_none', 'menue')">START</button>
             <button id="descriptionBTN" class="menueBTN">SPIELBESCHREIBUNG</button>
         </div>
+        <button id="fullscreenBTN" class="specialBTN" onclick="startFullscreen()">
+            <img id="fullscreenIMG" src="./assets/img/icons/googleFontsIcons/fullscreen.svg" alt="fullscreen">
+        </button>
+
     </div>
 </body>
 
