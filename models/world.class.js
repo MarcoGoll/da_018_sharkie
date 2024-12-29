@@ -11,6 +11,7 @@ class World {
     throwableObjects = [];
     hadFirstContact = false;
     collisionPower = 5;
+    gameIsOver = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
@@ -99,7 +100,10 @@ class World {
                 this.character.hit(this.collisionPower);
                 this.statusBarHealth.setPercentage(this.character.energy)
                 if (this.character.isDead()) {
-                    this.gameOver('CharacterDeath');
+                    if (!(this.gameIsOver)) {
+                        this.gameOver('CharacterDeath');
+                        this.gameIsOver = true;
+                    }
                 }
             }
         });
@@ -125,7 +129,10 @@ class World {
                     if (enemy.isDead()) {
                         enemy.isDyingAudio.play();
                         if (enemy instanceof Endboss) {
-                            this.gameOver('EndbossDeath');
+                            if (!(this.gameIsOver)) {
+                                this.gameOver('EndbossDeath');
+                                this.gameIsOver = true;
+                            }
                         } else {
                             setTimeout(() => {
                                 this.level.enemies.splice(indexEnemy, 1);
@@ -220,27 +227,30 @@ class World {
     }
 
     gameOver(whoIsDeath) {
-        setTimeout(() => {
-            clearIntervalls();
-        }, 2000);
-
         if (whoIsDeath == 'EndbossDeath') {
-            /*
             //WINN
             winSound.play();
-            toggleClass('d_none', 'winScreen');
-            */
-            console.log("youWIN");
         }
 
         if (whoIsDeath == 'CharacterDeath') {
-            /*
             // LOST
             lostSound.play();
-            toggleClass('d_none', 'lostScreen');
-            */
-            console.log("youLOSE");
         }
+
+        setTimeout(() => {
+            clearIntervalls();
+            if (whoIsDeath == 'EndbossDeath') {
+                //WINN
+                toggleClass('d_none', 'winScreen'); d
+                console.log("youWIN");
+            }
+
+            if (whoIsDeath == 'CharacterDeath') {
+                // LOST
+                toggleClass('d_none', 'lostScreen');
+                console.log("youLOSE");
+            }
+        }, 2000);
     }
 
 }
