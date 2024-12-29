@@ -4,7 +4,7 @@ class World {
     ctx; // um den (ctx/)Context  des Canvas zu verändern (wird immer im Zusammenhang mit canvas benötigt und wird traditionell immer so benannt)
     keyboard;
     camera_x = 0;
-    level = LEVEL1;
+    level = level1;
     statusBarHealth = new StatusBar();
     poisonBar = new PoisonBar();
     coinBar = new CoinBar();

@@ -1,4 +1,8 @@
-const LEVEL1 = new Level(
+let level1
+
+function initLevel() { }
+
+level1 = new Level(
     [
         //Lights
     ],
@@ -9,13 +13,6 @@ const LEVEL1 = new Level(
         new PufferfishRed(((Math.random() * 5000) + 300), ((Math.random() * 400)), 100, 95, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
         new PufferfishGreen(((Math.random() * 5000) + 300), ((Math.random() * 400)), 80, 75, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
         new PufferfishOrange(((Math.random() * 5000) + 300), ((Math.random() * 400)), 90, 85, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishRed(((Math.random() * 5000) + 300), ((Math.random() * 400)), 100, 95, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishGreen(((Math.random() * 5000) + 300), ((Math.random() * 400)), 80, 75, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishOrange(((Math.random() * 5000) + 300), ((Math.random() * 400)), 90, 85, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishRed(((Math.random() * 5000) + 300), ((Math.random() * 400)), 100, 95, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishGreen(((Math.random() * 5000) + 300), ((Math.random() * 400)), 80, 75, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishOrange(((Math.random() * 5000) + 300), ((Math.random() * 400)), 90, 85, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
-        // new PufferfishRed(((Math.random() * 5000) + 300), ((Math.random() * 400)), 100, 95, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
 
         new PufferfishGreen(((Math.random() * 5000) + 5300), ((Math.random() * 400)), 80, 75, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
         new PufferfishOrange(((Math.random() * 5000) + 5300), ((Math.random() * 400)), 90, 85, './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png'),
@@ -30,13 +27,9 @@ const LEVEL1 = new Level(
         new JellyfishLila(((Math.random() * 2500) + 300), ((Math.random() * 400)), 90, 120, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png'),
         new JellyfishLila(((Math.random() * 2500) + 300), ((Math.random() * 400)), 90, 120, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png'),
         new JellyfishLila(((Math.random() * 2500) + 300), ((Math.random() * 400)), 90, 120, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png'),
-        // new JellyfishLila(((Math.random() * 2500) + 300), ((Math.random() * 400)), 90, 120, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png'),
-        // new JellyfishYellow(((Math.random() * 2500) + 300), ((Math.random() * 400)), 110, 140, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png'),
         new JellyfishYellow(((Math.random() * 2500) + 300), ((Math.random() * 400)), 110, 140, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png'),
         new JellyfishYellow(((Math.random() * 2500) + 300), ((Math.random() * 400)), 110, 140, './assets/img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png'),
-        // new JellyfishGreen(((Math.random() * 2500) + 300), ((Math.random() * 400)), 130, 160, './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png'),
         new JellyfishGreen(((Math.random() * 2500) + 300), ((Math.random() * 400)), 130, 160, './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png'),
-        // new JellyfishPink(((Math.random() * 2500) + 300), ((Math.random() * 400)), 150, 180, './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png'),
         new JellyfishPink(((Math.random() * 2500) + 300), ((Math.random() * 400)), 150, 180, './assets/img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png'),
 
 
@@ -110,17 +103,17 @@ setBackgroundsAndLights(AMOUNTBACKGROUNDS);
 function setBackgroundsAndLights(amount) {
     let counter = 0;
     for (let i = 0; i < amount; i++) {
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L1.png"));
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L1.png"));
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L1.png"));
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L1.png"));
-        LEVEL1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/1.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L1.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L1.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L1.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L1.png"));
+        level1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/1.png"));
         counter++;
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L2.png"));
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L2.png"));
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L2.png"));
-        LEVEL1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L2.png"));
-        LEVEL1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/2.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/5. Water/L2.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/4.Fondo 2/L2.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/3.Fondo 1/L2.png"));
+        level1.backgroundObjects.push(new BackgroundObject(counter * 720, "./assets/img/3. Background/Layers/2. Floor/L2.png"));
+        level1.lights.push(new Light(counter * 720, "./assets/img/3. Background/Layers/1. Light/2.png"));
         counter++;
     }
 }

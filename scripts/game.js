@@ -12,6 +12,7 @@ let poisonAttackBTNRef = document.getElementById('btnPoisonAttack');
 
 function start() {
     canvasRef = document.getElementById('canvas');
+    initLevel();
     world = new World(canvasRef, keyboard);
     initSounds();
     displayControllBTN();
