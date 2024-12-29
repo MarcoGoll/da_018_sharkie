@@ -191,27 +191,41 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 32px
+    gap: 16px
+}
+
+button {
+    cursor: pointer;
 }
 
 .menueBTN {
     width: 300px;
     padding: 10px 50px;
-    border-radius: 5px;
-    background-color: #2894b8;
+    border-radius: 16px;
+    background-color: #bf067f;
     color: white;
+    border: 2px solid white;
     font-family: 'anton_SC',
         Arial,
         Helvetica,
         sans-serif;
     letter-spacing: 4px;
-
+    box-shadow: 0 4px 0 #630040;
+    transition: all 200ms ease-in-out;
 }
 
 .menueBTN:hover {
-    background-color: #91d3e3;
-
+    background-color: #d81d97;
+    box-shadow: 0 5px 0 #630040;
+    transform: translateY(-1px);
 }
+
+.menueBTN:active {
+    background-color: #da1093;
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
 
 #muteContainer {
     position: absolute;
@@ -225,6 +239,11 @@ h1 {
     transition: all 200ms ease-in-out;
     padding: 8px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: auto;
 }
 
 .specialBTN:hover {
@@ -251,8 +270,12 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 32px;
+}
 
-
+.resultIMG {
+    width: 90%;
+    transform: rotate(-8deg);
 }
 
 #fullscreenBTN {
