@@ -9,10 +9,12 @@ let tailAttackBTNRef = document.getElementById('btnTailAttack');
 let bubbleAttackBTNRef = document.getElementById('btnBubbleAttack');
 let poisonAttackBTNRef = document.getElementById('btnPoisonAttack');
 let menueRef = document.getElementById('menue');
-let descriptionMenueRef = document.getElementById('descriptionMenue');
+let controlMenueRef = document.getElementById('controlMenue');
 let lostScreenRef = document.getElementById('lostScreen');
 let winScreenRef = document.getElementById('winScreen');
 let impressumMenueRef = document.getElementById('impressumMenue');
+let controlBTNAreaALLRef = document.getElementById('controlBTNAreaALL');
+
 
 
 
@@ -22,8 +24,7 @@ function start() {
     world = new World(canvasRef, keyboard);
     initSounds();
     setTimeout(() => {
-        menueRef.classList.add('d_none');
-        displayControllBTN();
+        showGame();
     }, 300);
 }
 
@@ -173,11 +174,6 @@ function initSounds() {
     gameSound.play();
 }
 
-function displayControllBTN() {
-    toggleClass('d_none', 'controlBTNAreaALL');
-    //toggleClass('d_none', 'controlBTNDescription');
-}
-
 // FULLSCREEN
 function startFullscreen() {
     let fullScreenDiv = document.getElementById('canvas');
@@ -211,12 +207,22 @@ function clearIntervalls() {
     })
 }
 
-function showMenue() {
-    menueRef.classList.remove('d_none');
-    descriptionMenueRef.classList.add('d_none');
+function showGame() {
+    menueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.remove('d_none');
+}
+
+function showMenue() {
+    menueRef.classList.remove('d_none');
+    controlMenueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
 }
 
 function showDescription() {
@@ -224,17 +230,19 @@ function showDescription() {
 }
 
 function showControl() {
-    descriptionMenueRef.classList.remove('d_none');
+    controlMenueRef.classList.remove('d_none');
     menueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
 }
 
 function showImpressum() {
     impressumMenueRef.classList.remove('d_none');
-    descriptionMenueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
     menueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
 }

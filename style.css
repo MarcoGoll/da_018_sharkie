@@ -145,7 +145,7 @@ h1 {
     font-size: 14px;
 }
 
-.descriptionBTNContainer {
+.controlBTNContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -327,14 +327,14 @@ button {
     filter: drop-shadow(2px 4px 3px black);
 }
 
-.descriptionMenueAreas {
+.controlMenueAreas {
     display: flex;
     justify-content: center;
     gap: 24px;
 }
 
-#descriptionMenueAttack,
-#descriptionMenueMove {
+#controlMenueAttack,
+#controlMenueMove {
     display: flex;
     flex-direction: column;
     gap: 8px;
