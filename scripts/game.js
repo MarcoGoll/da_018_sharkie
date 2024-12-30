@@ -57,6 +57,7 @@ window.addEventListener('keydown', (event) => {
         case 'Q':
             keyboard.Q = true;
             break;
+        case 'e':
         case 'E':
             keyboard.E = true;
             break;
