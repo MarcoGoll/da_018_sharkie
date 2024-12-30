@@ -56,7 +56,7 @@ class World {
         }
 
         moveableObject.draw(this.ctx);
-        //moveableObject.drawFrame(this.ctx);
+        moveableObject.drawFrame(this.ctx);
 
         if (moveableObject.otherDirection) { // Nach dem Zeichnen zurückspiegeln, wenn otherdirection == true
             this.flipImageBack(moveableObject);

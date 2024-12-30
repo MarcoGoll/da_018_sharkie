@@ -352,3 +352,12 @@ button {
 #winMenueBTN {
     background-color: #571d86;
 }
+
+.legalLink {
+    font-size: 12px;
+}
+
+.impressumText {
+    text-align: center;
+    font-size: 16px;
+}

@@ -12,6 +12,8 @@ let menueRef = document.getElementById('menue');
 let descriptionMenueRef = document.getElementById('descriptionMenue');
 let lostScreenRef = document.getElementById('lostScreen');
 let winScreenRef = document.getElementById('winScreen');
+let impressumMenueRef = document.getElementById('impressumMenue');
+
 
 
 function start() {
@@ -207,6 +209,7 @@ function showMenue() {
     descriptionMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
 }
 
 function showDescription() {
@@ -215,6 +218,15 @@ function showDescription() {
 
 function showControl() {
     descriptionMenueRef.classList.remove('d_none');
+    menueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
+}
+
+function showImpressum() {
+    impressumMenueRef.classList.remove('d_none');
+    descriptionMenueRef.classList.add('d_none');
     menueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');

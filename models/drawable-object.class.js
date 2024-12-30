@@ -36,7 +36,7 @@ class DrawableObject {
 
     drawFrame(ctx) {
         //Draw Rectangle
-        if (this instanceof Jellyfish || this instanceof Pufferfish || this instanceof ThrowableObject || this instanceof Character || this instanceof Endboss) {
+        if (this instanceof Jellyfish || this instanceof Pufferfish || this instanceof ThrowableObject || this instanceof Character || this instanceof Endboss || this instanceof Coin || this instanceof Poison) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
