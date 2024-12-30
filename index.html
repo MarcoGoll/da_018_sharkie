@@ -155,67 +155,72 @@
             <button id="btnRestart" class="menueBTN" onclick="start(); toggleClass('d_none', 'lostScreen')">TRY
                 AGAIN</button>
         </div>
-        <div id="descriptionMenue" class="d_none">
-            <div id="descriptionMenueMove">
-                <h2>Description</h2>
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">W</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_up.svg"
-                            alt="up"></button>
-                    <span>MOVE UP</span>
+        <div id="descriptionMenue" class="menuePage d_none">
+            <h2>Description</h2>
+            <div class="descriptionMenueAreas">
+                <div id="descriptionMenueMove">
+                    <h3>MOVE</h3>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">W</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/icons/googleFontsIcons/circle_up.svg" alt="up"></button>
+                        <span class="descriptionBTNText">MOVE UP</span>
+                    </div>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">A</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/icons/googleFontsIcons/circle_left.svg" alt="left"></button>
+                        <span class="descriptionBTNText">MOVE LEFT</span>
+                    </div>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">S</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/icons/googleFontsIcons/circle_down.svg" alt="down"></button>
+                        <span class="descriptionBTNText">MOVE DOWN</span>
+                    </div>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">R</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/icons/googleFontsIcons/circle_right.svg" alt="right"></button>
+                        <span class="descriptionBTNText">MOVE RIGHT</span>
+                    </div>
                 </div>
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">A</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_left.svg"
-                            alt="left"></button>
-                    <span>MOVE LEFT</span>
-                </div>
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">S</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_down.svg"
-                            alt="down"></button>
-                    <span>MOVE DOWN</span>
-                </div>
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">R</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_right.svg"
-                            alt="right"></button>
-                    <span>MOVE RIGHT</span>
-                </div>
-            </div>
-            <div id="controlBTNDescriptionAttack">
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">_</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img src="./assets/img/1.Sharkie/4.Attack/Fin slap/attack.png"
-                            alt="attack"></button>
-                    <span> TAIL ATTACK</span>
-                </div>
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">Q</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img src="./assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png"
-                            alt="bubble"></button>
-                    <span> BUBBLE ATTACK</span>
-                </div>
-                <div class="descriptionBTNContainer">
-                    <button class="descriptionBTN">E</button>
-                    <span>/</span>
-                    <button class="descriptionBTN"><img
-                            src="./assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png"
-                            alt="bubblePoisoned"></button>
-                    <span> POISON ATTACK</span>
+                <div id="descriptionMenueAttack">
+                    <h3>ATTACK</h3>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">_</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/1.Sharkie/4.Attack/Fin slap/attack.png" alt="attack"></button>
+                        <span class="descriptionBTNText">TAIL ATTACK</span>
+                    </div>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">Q</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="bubble"></button>
+                        <span class="descriptionBTNText">BUBBLE ATTACK</span>
+                    </div>
+                    <div class="descriptionBTNContainer">
+                        <button class="descriptionBTN descriptionMenueBTN">E</button>
+                        <span>/</span>
+                        <button class="descriptionBTN descriptionMenueBTN"><img
+                                src="./assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png"
+                                alt="bubblePoisoned"></button>
+                        <span class="descriptionBTNText">POISON ATTACK</span>
+                    </div>
                 </div>
             </div>
             <button class="menueBTN" onclick="showMenue()">back</button>
         </div>
         <div id="menue" class="">
-            <button id="startBTN" class="menueBTN" onclick="start()">START</button>
-            <button id="descriptionBTN" class="menueBTN" onclick="showDescription()">DESCRIPTION</button>
+            <button id="startBTN" class="menueBTN cta" onclick="start()">START</button>
+            <button id="menueControlBTN" class="menueBTN" onclick="showControl()">CONTROL</button>
+            <button id="menueDescriptionBTN" class="menueBTN" onclick="showDescription()">DESCRIPTION</button>
         </div>
         <button id="fullscreenBTN" class="specialBTN" onclick="startFullscreen()">
             <img id="fullscreenIMG" src="./assets/img/icons/googleFontsIcons/fullscreen.svg" alt="fullscreen">

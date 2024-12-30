@@ -210,6 +210,10 @@ function showMenue() {
 }
 
 function showDescription() {
+
+}
+
+function showControl() {
     descriptionMenueRef.classList.remove('d_none');
     menueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
