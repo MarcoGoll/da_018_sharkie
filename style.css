@@ -347,6 +347,8 @@ button {
 
 
 #menueControlBTN,
-#menueDescriptionBTN {
+#menueDescriptionBTN,
+#lostMenueBTN,
+#winMenueBTN {
     background-color: #571d86;
 }
