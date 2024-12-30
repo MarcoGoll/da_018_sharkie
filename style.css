@@ -112,7 +112,7 @@ h1 {
 
 .controlBTN:hover,
 .controlBTN:active {
-    background-color: rgba(0, 0, 255, 0.7);
+    background-color: #571d86;
 }
 
 .controlBTN:focus {
