@@ -14,6 +14,8 @@ let lostScreenRef = document.getElementById('lostScreen');
 let winScreenRef = document.getElementById('winScreen');
 let impressumMenueRef = document.getElementById('impressumMenue');
 let controlBTNAreaALLRef = document.getElementById('controlBTNAreaALL');
+let descriptionMenueRef = document.getElementById('descriptionMenue');
+
 
 
 
@@ -210,6 +212,7 @@ function clearIntervalls() {
 function showGame() {
     menueRef.classList.add('d_none');
     controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
@@ -219,29 +222,38 @@ function showGame() {
 function showMenue() {
     menueRef.classList.remove('d_none');
     controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
     controlBTNAreaALLRef.classList.add('d_none');
 }
 
 function showDescription() {
-
+    menueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.remove('d_none');
+    impressumMenueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
 }
 
 function showControl() {
-    controlMenueRef.classList.remove('d_none');
     menueRef.classList.add('d_none');
+    controlMenueRef.classList.remove('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
     controlBTNAreaALLRef.classList.add('d_none');
 }
 
 function showImpressum() {
-    impressumMenueRef.classList.remove('d_none');
-    controlMenueRef.classList.add('d_none');
     menueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    impressumMenueRef.classList.remove('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
     controlBTNAreaALLRef.classList.add('d_none');
