@@ -5,6 +5,7 @@
 }
 
 body {
+    min-height: 700px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -16,8 +17,6 @@ body {
         Arial,
         Helvetica,
         sans-serif;
-
-
 
     &::before {
         content: '';
@@ -289,4 +288,23 @@ button {
 
 #fullscreenBTN:hover {
     transform: scale(1.1);
+}
+
+#descriptionMenue {
+    position: absolute;
+    background-image: url("./assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px
 }

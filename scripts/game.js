@@ -8,6 +8,10 @@ let rightBTNRef = document.getElementById('btnRight');
 let tailAttackBTNRef = document.getElementById('btnTailAttack');
 let bubbleAttackBTNRef = document.getElementById('btnBubbleAttack');
 let poisonAttackBTNRef = document.getElementById('btnPoisonAttack');
+let menueRef = document.getElementById('menue');
+let descriptionMenueRef = document.getElementById('descriptionMenue');
+let lostScreenRef = document.getElementById('lostScreen');
+let winScreenRef = document.getElementById('winScreen');
 
 
 function start() {
@@ -15,7 +19,10 @@ function start() {
     initLevel();
     world = new World(canvasRef, keyboard);
     initSounds();
-    displayControllBTN();
+    setTimeout(() => {
+        menueRef.classList.add('d_none');
+        displayControllBTN();
+    }, 300);
 }
 
 window.addEventListener('keydown', (event) => {
@@ -159,7 +166,7 @@ function initSounds() {
 
 function displayControllBTN() {
     toggleClass('d_none', 'controlBTNAreaALL');
-    toggleClass('d_none', 'controlBTNDescription');
+    //toggleClass('d_none', 'controlBTNDescription');
 }
 
 // FULLSCREEN
@@ -193,4 +200,18 @@ function clearIntervalls() {
     intervallIds.forEach(intervallId => {
         clearInterval(intervallId);
     })
+}
+
+function showMenue() {
+    menueRef.classList.remove('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+}
+
+function showDescription() {
+    descriptionMenueRef.classList.remove('d_none');
+    menueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
 }
