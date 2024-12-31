@@ -1,6 +1,6 @@
 class CoinBar extends DrawableObject {
 
-    IMAGES_POISONBAR = [
+    IMAGES_COINBAR = [
         './assets/img/4. Marcadores/orange/0_coin1.png',
         './assets/img/4. Marcadores/orange/20_coin2.png',
         './assets/img/4. Marcadores/orange/40_coin3.png',
@@ -13,7 +13,7 @@ class CoinBar extends DrawableObject {
 
     constructor() {
         super();
-        this.loadImages(this.IMAGES_POISONBAR);
+        this.loadImages(this.IMAGES_COINBAR);
         this.x = 400;
         this.y = 0;
         this.width = 200;
@@ -23,7 +23,7 @@ class CoinBar extends DrawableObject {
 
     setPercentage(percentage, multiplier) {
         this.percentage = percentage; // => Ermittle Zahl zwischen 0...5
-        let path = this.IMAGES_POISONBAR[this.resolveImageIndex(multiplier)];
+        let path = this.IMAGES_COINBAR[this.resolveImageIndex(multiplier)];
         this.img = this.imageCache[path];
     }
 
