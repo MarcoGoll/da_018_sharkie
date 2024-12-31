@@ -433,10 +433,6 @@ button {
 .runaway {
     color: red;
     text-shadow: 2px 4px 13px rgba(209, 0, 255, 1);
-    /* animation-name: pulse;
-    animation-duration: 1000ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite; */
     animation: pulse 1000ms ease-in-out infinite;
 }
 
@@ -464,7 +460,6 @@ button {
     gap: 8px;
     font-size: 18px;
     letter-spacing: 1px;
-
 }
 
 .characterDescriptionContainer img {
