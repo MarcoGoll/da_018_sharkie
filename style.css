@@ -5,10 +5,10 @@
 }
 
 body {
-    min-height: 700px;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 24px;
     height: 100vh;
@@ -43,13 +43,16 @@ canvas {
 }
 
 h1 {
-    position: relative;
+    position: absolute;
+    z-index: 99;
+    top: -70px;
+    left: 0;
+    right: 0;
     color: white;
-    margin-top: 32px;
     font-size: 48px;
     letter-spacing: 8px;
     filter: drop-shadow(2px 4px 3px black);
-
+    text-align: center;
 }
 
 @media only screen and (max-width: 720px) {
@@ -185,7 +188,7 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
-    top: 100px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -233,7 +236,7 @@ button {
 
 #muteContainer {
     position: absolute;
-    top: 115px;
+    top: 15px;
     right: 15px;
 }
 
@@ -298,7 +301,7 @@ button {
 .menuePage {
     position: absolute;
     background-color: #571d86;
-    top: 100px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -501,4 +504,50 @@ button {
 
 .item :nth-child(2) {
     width: 50ch;
+}
+
+#handyOverlay {
+    position: absolute;
+    background-image: url('./assets/img/smartphone_horizontal_white.png');
+    /* background-position: top; */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+/* Media Screen im Querformat*/
+@media only screen and (orientation:landscape) {
+    #handyOverlay {
+        display: none;
+    }
+}
+
+/*Screen widht < Xpx*/
+@media only screen and (max-width:685px) {
+    #controlBTNDescription {
+        display: none;
+    }
+
+    h1 {
+        display: none;
+    }
+}
+
+/*Screen height < Xpx*/
+@media only screen and (max-height:600px) {
+    h1 {
+        display: none;
+    }
+}
+
+/*Screen height over Xpx*/
+@media only screen and (max-height:670px) {
+    #controlBTNDescription {
+        display: none;
+    }
 }

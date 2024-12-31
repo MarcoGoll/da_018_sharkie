@@ -98,6 +98,7 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
+//TODO: Mouse != Touch => Finde herraus was die Touchgesten sind
 upBTNRef.addEventListener('mousedown', () => {
     keyboard.UP = true;
 })
