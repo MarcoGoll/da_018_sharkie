@@ -509,7 +509,7 @@ button {
 #handyOverlay {
     position: absolute;
     background-image: url('./assets/img/smartphone_horizontal_white.png');
-    /* background-position: top; */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: white;
@@ -523,6 +523,17 @@ button {
 /* Media Screen im Querformat*/
 @media only screen and (orientation:landscape) {
     #handyOverlay {
+        display: none;
+    }
+}
+
+/* Media Screen im Hochformat*/
+@media only screen and (orientation:portrait) {
+    #muteContainer {
+        display: none;
+    }
+
+    #muteContainer {
         display: none;
     }
 }
