@@ -446,16 +446,8 @@ button {
         transform: scale(1);
     }
 
-    25% {
-        transform: scale(1.05);
-    }
-
     50% {
         transform: scale(1.1);
-    }
-
-    75% {
-        transform: scale(1.05);
     }
 
     100% {
