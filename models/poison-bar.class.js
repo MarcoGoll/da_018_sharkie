@@ -22,7 +22,7 @@ class PoisonBar extends DrawableObject {
     }
 
     setPercentage(percentage, multiplier) {
-        this.percentage = percentage; // => Ermittle Zahl zwischen 0...5
+        this.percentage = percentage;
         let path = this.IMAGES_POISONBAR[this.resolveImageIndex(multiplier)];
         this.img = this.imageCache[path];
     }
