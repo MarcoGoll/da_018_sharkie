@@ -15,10 +15,8 @@ let winScreenRef = document.getElementById('winScreen');
 let impressumMenueRef = document.getElementById('impressumMenue');
 let controlBTNAreaALLRef = document.getElementById('controlBTNAreaALL');
 let descriptionMenueRef = document.getElementById('descriptionMenue');
-
-
-
-
+let enemiesMenueRef = document.getElementById('enemiesMenue');
+let itemsMenueRef = document.getElementById('itemsMenue');
 
 function start() {
     canvasRef = document.getElementById('canvas');
@@ -213,6 +211,8 @@ function showGame() {
     menueRef.classList.add('d_none');
     controlMenueRef.classList.add('d_none');
     descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
@@ -223,6 +223,8 @@ function showMenue() {
     menueRef.classList.remove('d_none');
     controlMenueRef.classList.add('d_none');
     descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
@@ -233,6 +235,8 @@ function showDescription() {
     menueRef.classList.add('d_none');
     controlMenueRef.classList.add('d_none');
     descriptionMenueRef.classList.remove('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
@@ -243,6 +247,8 @@ function showControl() {
     menueRef.classList.add('d_none');
     controlMenueRef.classList.remove('d_none');
     descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.add('d_none');
     impressumMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
@@ -253,7 +259,33 @@ function showImpressum() {
     menueRef.classList.add('d_none');
     controlMenueRef.classList.add('d_none');
     descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.add('d_none');
     impressumMenueRef.classList.remove('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
+}
+
+function showEnemies() {
+    menueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.remove('d_none');
+    itemsMenueRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
+}
+
+function showItems() {
+    menueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.remove('d_none');
+    impressumMenueRef.classList.add('d_none');
     lostScreenRef.classList.add('d_none');
     winScreenRef.classList.add('d_none');
     controlBTNAreaALLRef.classList.add('d_none');

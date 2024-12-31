@@ -61,6 +61,8 @@
             <button id="startBTN" class="menueBTN cta" onclick="start()">START</button>
             <button id="menueControlBTN" class="menueBTN" onclick="showControl()">CONTROL</button>
             <button id="menueDescriptionBTN" class="menueBTN" onclick="showDescription()">DESCRIPTION</button>
+            <button id="menueEnemiesBTN" class="menueBTN" onclick="showEnemies()">ENEMIES</button>
+            <button id="menueItemsBTN" class="menueBTN" onclick="showItems()">ITEMS</button>
             <a class="legalLink" href="#" onclick="showImpressum()">Impressum</a>
         </div>
         <!-- Button Description under Canvas -->
@@ -88,7 +90,7 @@
                     <span>MOVE DOWN</span>
                 </div>
                 <div class="controlBTNContainer">
-                    <button class="descriptionBTN">R</button>
+                    <button class="descriptionBTN">D</button>
                     <span>/</span>
                     <button class="descriptionBTN"><img src="./assets/img/icons/googleFontsIcons/circle_right.svg"
                             alt="right"></button>
@@ -163,7 +165,7 @@
                         <span class="descriptionBTNText">MOVE DOWN</span>
                     </div>
                     <div class="controlBTNContainer">
-                        <button class="descriptionBTN descriptionMenueBTN">R</button>
+                        <button class="descriptionBTN descriptionMenueBTN">D</button>
                         <span>/</span>
                         <button class="descriptionBTN descriptionMenueBTN"><img
                                 src="./assets/img/icons/googleFontsIcons/circle_right.svg" alt="right"></button>
@@ -210,16 +212,20 @@
             </p>
             <button class="menueBTN" onclick="showMenue()">back</button>
         </div>
-        <!-- Menue Page for impressum -->
+        <!-- Menue Page for description character -->
         <div id="descriptionMenue" class="menuePage d_none">
-            <h2>Description</h2>
+            <h2>DESCRIPTION</h2>
             <div class="characterDescriptionContainer">
                 <img src="./assets/img/1.Sharkie/sharkie_profile.png" alt="sharkie">
                 <p>Help SHARKIE battle through waves of pufferfish and jellyfish to reach the ultimate
                     showdown with the evil Orca STRESSED WILLY! Swim fast, puff up enemies, and defeat the ocean’s
                     biggest threat in this underwater adventure!</p>
             </div>
-            <h3>Enemies</h3>
+            <button class="menueBTN" onclick="showMenue()">back</button>
+        </div>
+        <!-- Menue Page for description enemies -->
+        <div id="enemiesMenue" class="menuePage d_none">
+            <h2>ENEMIES</h2>
             <div class="descriptionContainers">
                 <div class="descriptionContainerEnemyType">
                     <div class="descriptionContainer">
@@ -331,19 +337,41 @@
                 <div class="descriptionContainerEnemyType">
                     <div class="descriptionContainer">
                         <div class="descriptionContainerIMG">
-                            <img src="./assets/img/2.Enemy/3 Final Enemy/boss_profile.png" alt="endboss">
+                            <img id="endbossProfileIMG" src="./assets/img/2.Enemy/3 Final Enemy/boss_profile.png"
+                                alt="endboss">
                         </div>
                         <div class="descriptionContainerText">
                             <div class="descriptionContainerTextProperty">
-
                                 <span>STRESSED WILLY</span>
                             </div>
                             <div class="descriptionContainerTextProperty">
-
                                 <span class="runaway">RUN AWAY</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <button class="menueBTN" onclick="showMenue()">back</button>
+        </div>
+        <!-- Menue Page for description items -->
+        <div id="itemsMenue" class="menuePage d_none">
+            <h2>ITEMS</h2>
+            <div class="itemsContainer">
+                <div class="item">
+                    <div class="itemMainInfo">
+                        <img src="./assets/img/4. Marcadores/1. Coins/1.png" alt="coin">
+                        <span>"Gold Coin"</span>
+                    </div>
+                    <p>Shiny, round, and great for looking rich—too bad they can’t help with your real-life problems!
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="itemMainInfo">
+                        <img src="./assets/img/4. Marcadores/Posión/Animada/1.png" alt="poison">
+                        <span>"Poison Potion"</span>
+                    </div>
+                    <p>One sip, and you’ll feel stronger... and possibly a little questionable. But hey, power comes at
+                        a price!</p>
                 </div>
             </div>
             <button class="menueBTN" onclick="showMenue()">back</button>
