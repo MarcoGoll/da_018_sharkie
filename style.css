@@ -5,6 +5,8 @@
 }
 
 body {
+    min-width: 670px;
+    min-height: 340px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -34,6 +36,8 @@ body {
 }
 
 canvas {
+    min-width: 670px;
+    min-height: 340px;
     position: relative;
     background-color: black;
     border-radius: 32px;
@@ -68,6 +72,8 @@ h1 {
 }
 
 .gameContainer {
+    min-width: 670px;
+    min-height: 340px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -183,6 +189,8 @@ h1 {
 }
 
 #menue {
+    min-width: 670px;
+    min-height: 340px;
     position: absolute;
     background-image: url("./assets/img/background.jpg");
     background-repeat: no-repeat;
@@ -268,7 +276,7 @@ button {
     position: absolute;
     background-color: #91d3e367;
     border-radius: 32px;
-    top: 104px;
+    top: 0px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -490,13 +498,6 @@ button {
     letter-spacing: 1px;
 }
 
-.itemMainInfo {
-    /* display: flex;
-    justify-content: center;
-    align-items: flex-end; */
-    /* gap: 8px; */
-}
-
 .itemMainInfo img {
     width: 35px;
     height: auto;
@@ -547,6 +548,55 @@ button {
     h1 {
         display: none;
     }
+}
+
+/*Screen height < Xpx*/
+@media only screen and (max-height:480px) {
+    .menuePage h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .menuePage h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .menuePage {
+        font-size: 16px;
+        gap: 8px;
+    }
+
+    .menueBTN {
+        padding: 8px 50px;
+    }
+
+    .descriptionMenueBTN {
+        width: 40px;
+        height: 40px;
+    }
+
+    .characterDescriptionContainer {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .characterDescriptionContainer img {
+        width: 150px;
+    }
+
+    .descriptionContainerIMG img {
+        width: 40px;
+    }
+
+    .descriptionContainerTextProperty {
+        font-size: 16px;
+    }
+
+    .descriptionContainers {
+        gap: 16px;
+    }
+
 }
 
 /*Screen height < Xpx*/
