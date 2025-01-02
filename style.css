@@ -6,14 +6,14 @@
 
 body {
     /* min-width: 670px; */
-    min-height: 340px;
+    /* min-height: 340px; */
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 24px;
-    height: 100vh;
+    height: 100dvh;
     background-color: black;
     font-family: 'anton_SC',
         Arial,
@@ -37,7 +37,7 @@ body {
 
 canvas {
     /* min-width: 670px; */
-    min-height: 340px;
+    /* min-height: 340px; */
     position: relative;
     background-color: black;
     border-radius: 32px;
@@ -67,13 +67,13 @@ h1 {
 
 @media only screen and (max-height: 480px) {
     canvas {
-        height: 100vh;
+        height: 100dvh;
     }
 }
 
 .gameContainer {
     /* min-width: 670px; */
-    min-height: 340px;
+    /* min-height: 340px; */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -262,7 +262,7 @@ button {
 #muteBtn {
     position: sticky;
     top: 16px;
-    z-index: 999;
+    z-index: 99;
 }
 
 .endScreen {
@@ -273,7 +273,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 99;
+    z-index: 998;
     display: flex;
     flex-direction: column;
     justify-content: center;

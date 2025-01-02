@@ -10,7 +10,8 @@ let shootBubbleSound = new Audio('./assets/audio/shootBubble.mp3');
 let lostSound = new Audio('./assets/audio/lost.wav');
 let winSound = new Audio('./assets/audio/success.mp3');
 let gameSound = new Audio('./assets/audio/gamesound.mp3');
-gameSound.loop = true;
+
 
 let intervallIds = [];
+let muteMode = true;
 

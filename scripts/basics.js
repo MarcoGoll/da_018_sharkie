@@ -1,4 +1,4 @@
-let muteMode = true;
+
 
 /**
 * Toggled a class of an HTML element
@@ -31,6 +31,7 @@ function setSoundVolume() {
         coinSound.volume = 0;
         shootBubbleSound.volume = 0;
         gameSound.volume = 0;
+        gameSound.loop = false;
         lostSound.volume = 0;
         winSound.volume = 0;
     }
@@ -39,6 +40,7 @@ function setSoundVolume() {
         coinSound.volume = 1;
         shootBubbleSound.volume = 0.4;
         gameSound.volume = 0.15;
+        gameSound.loop = true;
         lostSound.volume = 1;
         winSound.volume = 1;
     }
