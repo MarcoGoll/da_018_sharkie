@@ -99,70 +99,70 @@ window.addEventListener('keyup', (event) => {
 })
 
 //TODO: Mouse != Touch => Finde herraus was die Touchgesten sind
-upBTNRef.addEventListener('mousedown', () => {
+upBTNRef.addEventListener('touchstart', () => {
     keyboard.UP = true;
 })
-upBTNRef.addEventListener('mouseup', () => {
+upBTNRef.addEventListener('touchend', () => {
     keyboard.UP = false;
 })
 upBTNRef.addEventListener('mouseout', () => {
     keyboard.UP = false;
 })
 
-leftBTNRef.addEventListener('mousedown', () => {
+leftBTNRef.addEventListener('touchstart', () => {
     keyboard.LEFT = true;
 })
-leftBTNRef.addEventListener('mouseup', () => {
+leftBTNRef.addEventListener('touchend', () => {
     keyboard.LEFT = false;
 })
 leftBTNRef.addEventListener('mouseout', () => {
     keyboard.LEFT = false;
 })
 
-downBTNRef.addEventListener('mousedown', () => {
+downBTNRef.addEventListener('touchstart', () => {
     keyboard.DOWN = true;
 })
-downBTNRef.addEventListener('mouseup', () => {
+downBTNRef.addEventListener('touchend', () => {
     keyboard.DOWN = false;
 })
 downBTNRef.addEventListener('mouseout', () => {
     keyboard.DOWN = false;
 })
 
-rightBTNRef.addEventListener('mousedown', () => {
+rightBTNRef.addEventListener('touchstart', () => {
     keyboard.RIGHT = true;
 })
-rightBTNRef.addEventListener('mouseup', () => {
+rightBTNRef.addEventListener('touchend', () => {
     keyboard.RIGHT = false;
 })
 rightBTNRef.addEventListener('mouseout', () => {
     keyboard.RIGHT = false;
 })
 
-tailAttackBTNRef.addEventListener('mousedown', () => {
+tailAttackBTNRef.addEventListener('touchstart', () => {
     keyboard.SPACE = true;
 })
-tailAttackBTNRef.addEventListener('mouseup', () => {
+tailAttackBTNRef.addEventListener('touchend', () => {
     keyboard.SPACE = false;
 })
 tailAttackBTNRef.addEventListener('mouseout', () => {
     keyboard.SPACE = false;
 })
 
-bubbleAttackBTNRef.addEventListener('mousedown', () => {
+bubbleAttackBTNRef.addEventListener('touchstart', () => {
     keyboard.Q = true;
 })
-bubbleAttackBTNRef.addEventListener('mouseup', () => {
+bubbleAttackBTNRef.addEventListener('touchend', () => {
     keyboard.Q = false;
 })
 bubbleAttackBTNRef.addEventListener('mouseout', () => {
     keyboard.Q = false;
 })
 
-poisonAttackBTNRef.addEventListener('mousedown', () => {
+poisonAttackBTNRef.addEventListener('touchstart', () => {
     keyboard.E = true;
 })
-poisonAttackBTNRef.addEventListener('mouseup', () => {
+poisonAttackBTNRef.addEventListener('touchend', () => {
     keyboard.E = false;
 })
 poisonAttackBTNRef.addEventListener('mouseout', () => {
