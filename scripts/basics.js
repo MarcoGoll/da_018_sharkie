@@ -1,5 +1,3 @@
-
-
 /**
 * Toggled a class of an HTML element
 * @param {string} className - Name of the class
@@ -11,7 +9,7 @@ function toggleClass(className, identifier) {
 }
 
 /**
-* change music on/off
+* change muteMode on/off
 */
 function changeMuteMode() {
     let muteBtnRef = document.getElementById('muteBtn');
@@ -22,10 +20,13 @@ function changeMuteMode() {
         muteMode = true;
         muteBtnRef.innerHTML = '<img src="./assets/img/icons/googleFontsIcons/volume_off.svg">';
     }
-    setSoundVolume();
+    setSoundsMuted();
 }
 
-function setSoundVolume() {
+/**
+* set muted attribut of global sounds
+*/
+function setSoundsMuted() {
     if (muteMode) {
         poisonSound.muted = true;
         coinSound.muted = true;

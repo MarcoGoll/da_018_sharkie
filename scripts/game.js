@@ -1,3 +1,6 @@
+/*====================================================================================================
+    GLOBAL VARIABLES
+====================================================================================================*/
 let canvasRef;
 let world;
 let keyboard = new Keyboard();
@@ -18,16 +21,22 @@ let descriptionMenueRef = document.getElementById('descriptionMenue');
 let enemiesMenueRef = document.getElementById('enemiesMenue');
 let itemsMenueRef = document.getElementById('itemsMenue');
 
+/**
+* starts the game
+*/
 function start() {
     canvasRef = document.getElementById('canvas');
     initLevel();
     world = new World(canvasRef, keyboard);
     initSounds();
     setTimeout(() => {
-        showGame();
+        showX('game');
     }, 300);
 }
 
+/**
+* add EventListener for Keydown
+*/
 window.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'a':
@@ -66,6 +75,9 @@ window.addEventListener('keydown', (event) => {
     }
 })
 
+/**
+* add EventListener for Keyup
+*/
 window.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'a':
@@ -98,159 +110,221 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
-//TODO: Mouse != Touch => Finde herraus was die Touchgesten sind
+/**
+* add EventListener for touchstart
+*/
 upBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.)
     keyboard.UP = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 upBTNRef.addEventListener('touchend', e => {
     keyboard.UP = false;
 })
 
-
+/**
+* add EventListener for touchstart
+*/
 leftBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.LEFT = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 leftBTNRef.addEventListener('touchend', e => {
     keyboard.LEFT = false;
 })
 
-
+/**
+* add EventListener for touchstart
+*/
 downBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.DOWN = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 downBTNRef.addEventListener('touchend', e => {
     keyboard.DOWN = false;
 })
 
-
+/**
+* add EventListener for touchstart
+*/
 rightBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.RIGHT = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 rightBTNRef.addEventListener('touchend', e => {
     keyboard.RIGHT = false;
 })
 
-
+/**
+* add EventListener for touchstart
+*/
 tailAttackBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.SPACE = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 tailAttackBTNRef.addEventListener('touchend', e => {
     keyboard.SPACE = false;
 })
 
-
+/**
+* add EventListener for touchstart
+*/
 bubbleAttackBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.Q = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 bubbleAttackBTNRef.addEventListener('touchend', e => {
     keyboard.Q = false;
 })
 
+/**
+* add EventListener for touchstart
+*/
 poisonAttackBTNRef.addEventListener('touchstart', e => {
     e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.E = true;
 })
+
+/**
+* add EventListener for touchend
+*/
 poisonAttackBTNRef.addEventListener('touchend', e => {
     keyboard.E = false;
 })
 
+/**
+* add EventListener for touchend
+*/
 function initSounds() {
-    setSoundVolume();
+    setSoundsMuted();
     gameSound.play();
 }
 
+/**
+* Clears all intervals for which the interval id is present in the array intervallIds
+*/
 function clearIntervalls() {
     intervallIds.forEach(intervallId => {
         clearInterval(intervallId);
     })
 }
 
-function showGame() {
-    menueRef.classList.add('d_none');
-    controlMenueRef.classList.add('d_none');
-    descriptionMenueRef.classList.add('d_none');
-    enemiesMenueRef.classList.add('d_none');
-    itemsMenueRef.classList.add('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.remove('d_none');
-}
-
-function showMenue() {
-    menueRef.classList.remove('d_none');
-    controlMenueRef.classList.add('d_none');
-    descriptionMenueRef.classList.add('d_none');
-    enemiesMenueRef.classList.add('d_none');
-    itemsMenueRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.add('d_none');
-}
-
-function showDescription() {
-    menueRef.classList.add('d_none');
-    controlMenueRef.classList.add('d_none');
-    descriptionMenueRef.classList.remove('d_none');
-    enemiesMenueRef.classList.add('d_none');
-    itemsMenueRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.add('d_none');
-}
-
-function showControl() {
-    menueRef.classList.add('d_none');
-    controlMenueRef.classList.remove('d_none');
-    descriptionMenueRef.classList.add('d_none');
-    enemiesMenueRef.classList.add('d_none');
-    itemsMenueRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.add('d_none');
-}
-
-function showImpressum() {
-    menueRef.classList.add('d_none');
-    controlMenueRef.classList.add('d_none');
-    descriptionMenueRef.classList.add('d_none');
-    enemiesMenueRef.classList.add('d_none');
-    itemsMenueRef.classList.add('d_none');
-    impressumMenueRef.classList.remove('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.add('d_none');
-}
-
-function showEnemies() {
-    menueRef.classList.add('d_none');
-    controlMenueRef.classList.add('d_none');
-    descriptionMenueRef.classList.add('d_none');
-    enemiesMenueRef.classList.remove('d_none');
-    itemsMenueRef.classList.add('d_none');
-    impressumMenueRef.classList.add('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.add('d_none');
-}
-
-function showItems() {
-    menueRef.classList.add('d_none');
-    controlMenueRef.classList.add('d_none');
-    descriptionMenueRef.classList.add('d_none');
-    enemiesMenueRef.classList.add('d_none');
-    itemsMenueRef.classList.remove('d_none');
-    impressumMenueRef.classList.add('d_none');
-    lostScreenRef.classList.add('d_none');
-    winScreenRef.classList.add('d_none');
-    controlBTNAreaALLRef.classList.add('d_none');
+/**
+* Displays the overlay that matches the indicator and hides all other overlays
+* @param {string} areaToBeDisplayed - Indicator which overlay should be displayed
+*/
+function showX(areaToBeDisplayed) {
+    switch (areaToBeDisplayed) {
+        case 'game':
+            menueRef.classList.add('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            impressumMenueRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.remove('d_none');
+            break;
+        case 'menue':
+            menueRef.classList.remove('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.add('d_none');
+            impressumMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+        case 'description':
+            menueRef.classList.add('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.remove('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.add('d_none');
+            impressumMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+        case 'control':
+            menueRef.classList.add('d_none');
+            controlMenueRef.classList.remove('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.add('d_none');
+            impressumMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+        case 'impressum':
+            menueRef.classList.add('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.add('d_none');
+            impressumMenueRef.classList.remove('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+        case 'enemies':
+            menueRef.classList.add('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.remove('d_none');
+            itemsMenueRef.classList.add('d_none');
+            impressumMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+        case 'items':
+            menueRef.classList.add('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.remove('d_none');
+            impressumMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+        default:
+            menueRef.classList.remove('d_none');
+            controlMenueRef.classList.add('d_none');
+            descriptionMenueRef.classList.add('d_none');
+            enemiesMenueRef.classList.add('d_none');
+            itemsMenueRef.classList.add('d_none');
+            impressumMenueRef.classList.add('d_none');
+            lostScreenRef.classList.add('d_none');
+            winScreenRef.classList.add('d_none');
+            controlBTNAreaALLRef.classList.add('d_none');
+            break;
+    }
 }

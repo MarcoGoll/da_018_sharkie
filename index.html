@@ -102,11 +102,11 @@
         <!-- Main Menue-->
         <div id="menue" class="">
             <button id="startBTN" class="menueBTN cta" onclick="start()">START</button>
-            <button id="menueControlBTN" class="menueBTN" onclick="showControl()">CONTROL</button>
-            <button id="menueDescriptionBTN" class="menueBTN" onclick="showDescription()">DESCRIPTION</button>
-            <button id="menueEnemiesBTN" class="menueBTN" onclick="showEnemies()">ENEMIES</button>
-            <button id="menueItemsBTN" class="menueBTN" onclick="showItems()">ITEMS</button>
-            <a class="legalLink" href="#" onclick="showImpressum()">Impressum</a>
+            <button id="menueControlBTN" class="menueBTN" onclick="showX('control') ">CONTROL</button>
+            <button id="menueDescriptionBTN" class="menueBTN" onclick="showX('description')">DESCRIPTION</button>
+            <button id="menueEnemiesBTN" class="menueBTN" onclick="showX('enemies')">ENEMIES</button>
+            <button id="menueItemsBTN" class="menueBTN" onclick="showX('items') ">ITEMS</button>
+            <a class="legalLink" href="#" onclick="showX('impressum')">Impressum</a>
         </div>
         <!-- Button Description under Canvas -->
         <div id="controlBTNDescription" class="">
@@ -171,14 +171,14 @@
             <img class="resultIMG" src="./assets/img/6.Botones/Tittles/You win/Recurso 19.png" alt="gameover">
             <button id="btnRestart" class="menueBTN" onclick="start(); toggleClass('d_none', 'winScreen')">PLAY
                 AGAIN</button>
-            <button id="winMenueBTN" class="menueBTN" onclick="showMenue()">MENUE</button>
+            <button id="winMenueBTN" class="menueBTN" onclick="showX('menue')">MENUE</button>
         </div>
         <!-- Screen after losing -->
         <div id="lostScreen" class="endScreen d_none">
             <img class="resultIMG" src="./assets/img/6.Botones/Tittles/Game Over/Recurso 10.png" alt="gameover">
             <button id="btnRestart" class="menueBTN" onclick="start(); toggleClass('d_none', 'lostScreen')">TRY
                 AGAIN</button>
-            <button id="lostMenueBTN" class="menueBTN" onclick="showMenue()">MENUE</button>
+            <button id="lostMenueBTN" class="menueBTN" onclick="showX('menue')">MENUE</button>
         </div>
         <!-- Menue Page for controls -->
         <div id="controlMenue" class="menuePage d_none">
@@ -241,7 +241,7 @@
                     </div>
                 </div>
             </div>
-            <button class="menueBTN" onclick="showMenue()">back</button>
+            <button class="menueBTN" onclick="showX('menue')">back</button>
         </div>
         <!-- Menue Page for impressum -->
         <div id="impressumMenue" class="menuePage d_none">
@@ -253,7 +253,7 @@
                 01097 Dresden<br><br>
                 Email: <a title="marconawroth@gmx.de" href="mailto:marconawroth@gmx.de">marconawroth@gmx.de</a>
             </p>
-            <button class="menueBTN" onclick="showMenue()">back</button>
+            <button class="menueBTN" onclick="showX('menue')">back</button>
         </div>
         <!-- Menue Page for description character -->
         <div id="descriptionMenue" class="menuePage d_none">
@@ -264,7 +264,7 @@
                     showdown with the evil Orca STRESSED WILLY! Swim fast, puff up enemies, and defeat the ocean’s
                     biggest threat in this underwater adventure!</p>
             </div>
-            <button class="menueBTN" onclick="showMenue()">back</button>
+            <button class="menueBTN" onclick="showX('menue')">back</button>
         </div>
         <!-- Menue Page for description enemies -->
         <div id="enemiesMenue" class="menuePage d_none">
@@ -394,7 +394,7 @@
                     </div>
                 </div>
             </div>
-            <button class="menueBTN" onclick="showMenue()">back</button>
+            <button class="menueBTN" onclick="showX('menue')">back</button>
         </div>
         <!-- Menue Page for description items -->
         <div id="itemsMenue" class="menuePage d_none">
@@ -417,7 +417,7 @@
                         a price!</p>
                 </div>
             </div>
-            <button class="menueBTN" onclick="showMenue()">back</button>
+            <button class="menueBTN" onclick="showX('menue')">back</button>
         </div>
         <!-- Canvas Overlays (within Game)-->
         <div id="muteContainer">
