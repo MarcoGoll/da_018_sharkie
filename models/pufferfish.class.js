@@ -27,6 +27,8 @@ class Pufferfish extends MoveableObject {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.isHitAudio.volume = 0.5;
+        this.isDyingAudio.volume = 0.5;
         this.setSounds();
         this.animate();
     }
@@ -74,11 +76,11 @@ class Pufferfish extends MoveableObject {
 
     setSounds() {
         if (muteMode) {
-            this.isHitAudio.volume = 0;
-            this.isDyingAudio.volume = 0;
+            this.isHitAudio.muted = true;
+            this.isDyingAudio.muted = true;
         } else {
-            this.isHitAudio.volume = 0.5;
-            this.isDyingAudio.volume = 0.5;
+            this.isHitAudio.muted = false;
+            this.isDyingAudio.muted = false;
         }
     }
 }

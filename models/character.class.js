@@ -114,7 +114,6 @@ class Character extends MoveableObject {
     swimSound = new Audio('./assets/audio/splash.mp3');
     isHitAudio = new Audio('./assets/audio/characterIsHit.mp3');
 
-
     offset = {
         x: 30,
         y: 140,
@@ -132,9 +131,9 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_ATTACKBUBBLENORMAL);
         this.loadImages(this.IMAGES_ATTACKBUBBLEPOISON);
         this.loadImages(this.IMAGES_ATTACKSLAP);
+        this.swimSound.volume = 1;
+        this.isHitAudio.volume = 0.5;
         this.setSounds();
-
-
         this.animate();
     }
 
@@ -256,11 +255,11 @@ class Character extends MoveableObject {
 
     setSounds() {
         if (muteMode) {
-            this.swimSound.volume = 0;
-            this.isHitAudio.volume = 0;
+            this.swimSound.muted = true;
+            this.isHitAudio.muted = true;
         } else {
-            this.swimSound.volume = 1;
-            this.isHitAudio.volume = 0.5;
+            this.swimSound.muted = false;
+            this.isHitAudio.muted = false;
         }
     }
 }

@@ -27,22 +27,21 @@ function changeMuteMode() {
 
 function setSoundVolume() {
     if (muteMode) {
-        poisonSound.volume = 0;
-        coinSound.volume = 0;
-        shootBubbleSound.volume = 0;
-        gameSound.volume = 0;
-        gameSound.loop = false;
-        lostSound.volume = 0;
-        winSound.volume = 0;
+        poisonSound.muted = true;
+        coinSound.muted = true;
+        shootBubbleSound.muted = true;
+        gameSound.muted = true;
+        lostSound.muted = true;
+        winSound.muted = true;
     }
     else {
-        poisonSound.volume = 0.4;
-        coinSound.volume = 1;
-        shootBubbleSound.volume = 0.4;
-        gameSound.volume = 0.15;
+        poisonSound.muted = false;
+        coinSound.muted = false;
+        shootBubbleSound.muted = false;
+        gameSound.muted = false;
         gameSound.loop = true;
-        lostSound.volume = 1;
-        winSound.volume = 1;
+        lostSound.muted = false;
+        winSound.muted = false;
     }
 
     try {
