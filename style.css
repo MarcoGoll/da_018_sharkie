@@ -5,7 +5,7 @@
 }
 
 body {
-    min-width: 670px;
+    /* min-width: 670px; */
     min-height: 340px;
     position: relative;
     display: flex;
@@ -36,7 +36,7 @@ body {
 }
 
 canvas {
-    min-width: 670px;
+    /* min-width: 670px; */
     min-height: 340px;
     position: relative;
     background-color: black;
@@ -72,7 +72,7 @@ h1 {
 }
 
 .gameContainer {
-    min-width: 670px;
+    /* min-width: 670px; */
     min-height: 340px;
     position: relative;
     display: flex;
@@ -81,13 +81,14 @@ h1 {
 }
 
 #controlBTNAreaALL {
+    display: none;
     position: absolute;
     z-index: 99;
     bottom: 10px;
     left: 0;
     right: 0;
 
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
 }
 
@@ -184,12 +185,9 @@ h1 {
     height: 80%;
 }
 
-.d_none {
-    display: none !important;
-}
 
 #menue {
-    min-width: 670px;
+    /* min-width: 670px; */
     min-height: 340px;
     position: absolute;
     background-image: url("./assets/img/background.jpg");
@@ -611,4 +609,17 @@ button {
     #controlBTNDescription {
         display: none;
     }
+}
+
+/*Screen with touchpad (Handy/Tablet)*/
+@media (pointer:none),
+(pointer:coarse) {
+    #controlBTNAreaALL {
+        display: flex;
+    }
+}
+
+
+.d_none {
+    display: none !important;
 }
