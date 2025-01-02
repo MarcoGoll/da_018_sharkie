@@ -1,0 +1,24 @@
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+}
+
+.itemMainInfo img {
+    width: 35px;
+    height: auto;
+}
+
+.item :nth-child(2) {
+    width: 50ch;
+}

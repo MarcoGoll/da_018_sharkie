@@ -1,0 +1,124 @@
+#menue {
+    min-height: 340px;
+    position: absolute;
+    background-image: url("../assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px
+}
+
+.menueBTN {
+    width: 300px;
+    padding: 10px 50px;
+    border-radius: 16px;
+    background-color: #bf067f;
+    color: white;
+    border: 2px solid white;
+    font-family: 'anton_SC',
+        Arial,
+        Helvetica,
+        sans-serif;
+    letter-spacing: 4px;
+    box-shadow: 0 4px 0 #630040;
+    transition: all 200ms ease-in-out;
+}
+
+.menueBTN:hover {
+    background-color: #d81d97;
+    box-shadow: 0 6px 0 #630040;
+    transform: translateY(-2px);
+}
+
+.menueBTN:active {
+    background-color: #da1093;
+    box-shadow: none;
+    transform: translateY(6px);
+}
+
+.endScreen {
+    position: absolute;
+    background-color: #91d3e367;
+    border-radius: 32px;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 998;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.resultIMG {
+    width: 90%;
+    transform: rotate(-8deg);
+}
+
+#handyOverlay {
+    position: absolute;
+    background-image: url('../assets/img/smartphone_horizontal_white.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+
+.menuePage {
+    position: absolute;
+    background-color: #571d86;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: white;
+    font-size: 18px;
+}
+
+.menuePage h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 8px;
+    filter: drop-shadow(2px 4px 3px black);
+}
+
+.menuePage h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 8px;
+    filter: drop-shadow(2px 4px 3px black);
+}
+
+#menueControlBTN,
+#menueDescriptionBTN,
+#lostMenueBTN,
+#winMenueBTN,
+#menueEnemiesBTN,
+#menueItemsBTN {
+    background-color: #571d86;
+}

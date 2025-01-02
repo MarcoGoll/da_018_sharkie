@@ -1,0 +1,7 @@
+button {
+    cursor: pointer;
+}
+
+.d_none {
+    display: none !important;
+}

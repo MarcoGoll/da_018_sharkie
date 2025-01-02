@@ -1,0 +1,50 @@
+#controlBTNDescription {
+    position: absolute;
+    z-index: 99;
+    bottom: -80px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#controlBTNDescriptionMove,
+#controlBTNDescriptionAttack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    color: white;
+    font-size: 14px;
+}
+
+.controlBTNContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.descriptionBTNText {
+    margin-left: 8px;
+    flex-grow: 1;
+}
+
+.descriptionBTN {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.descriptionBTN img {
+    width: 80%;
+    height: 80%;
+}

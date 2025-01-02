@@ -1,0 +1,114 @@
+/* Canva responsive*/
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+/* Canva responsive*/
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100dvh;
+    }
+}
+
+
+/* Media Screen im Querformat*/
+@media only screen and (orientation:landscape) {
+    #handyOverlay {
+        display: none;
+    }
+}
+
+/* Media Screen im Hochformat*/
+@media only screen and (orientation:portrait) {
+    #muteContainer {
+        display: none;
+    }
+
+    #muteContainer {
+        display: none;
+    }
+}
+
+/*Screen widht < Xpx*/
+@media only screen and (max-width:685px) {
+    #controlBTNDescription {
+        display: none;
+    }
+
+    h1 {
+        display: none;
+    }
+}
+
+/*Screen height < Xpx*/
+@media only screen and (max-height:480px) {
+    .menuePage h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .menuePage h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .menuePage {
+        font-size: 16px;
+        gap: 8px;
+    }
+
+    .menueBTN {
+        padding: 8px 50px;
+    }
+
+    .descriptionMenueBTN {
+        width: 40px;
+        height: 40px;
+    }
+
+    .characterDescriptionContainer {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .characterDescriptionContainer img {
+        width: 150px;
+    }
+
+    .descriptionContainerIMG img {
+        width: 40px;
+    }
+
+    .descriptionContainerTextProperty {
+        font-size: 16px;
+    }
+
+    .descriptionContainers {
+        gap: 16px;
+    }
+
+}
+
+/*Screen height < Xpx*/
+@media only screen and (max-height:600px) {
+    h1 {
+        display: none;
+    }
+}
+
+/*Screen height over Xpx*/
+@media only screen and (max-height:670px) {
+    #controlBTNDescription {
+        display: none;
+    }
+}
+
+/*Screen with touchpad (Handy/Tablet)*/
+@media (pointer:none),
+(pointer:coarse) {
+    #controlBTNAreaALL {
+        display: flex;
+    }
+}

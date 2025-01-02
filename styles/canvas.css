@@ -1,0 +1,10 @@
+canvas {
+    /* min-width: 670px; */
+    /* min-height: 340px; */
+    position: relative;
+    background-color: black;
+    border-radius: 32px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-bottom: 5px solid black;
+    display: block;
+}

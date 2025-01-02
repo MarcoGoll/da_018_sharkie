@@ -1,0 +1,19 @@
+.characterDescriptionContainer {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.characterDescriptionContainer img {
+    width: 200px;
+    height: auto;
+}
+
+.characterDescriptionContainer p {
+    max-width: 46ch;
+}

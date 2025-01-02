@@ -1,0 +1,59 @@
+.gameContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#controlBTNAreaALL {
+    display: none;
+    position: absolute;
+    padding-bottom: 5px;
+    z-index: 99;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+}
+
+#controlBTNAreaLeft,
+#controlBTNAreaRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    background-color: #571d86;
+
+    border-top-left-radius: 150px;
+    border-top-right-radius: 150px;
+    border: 2px solid white;
+}
+
+#controlBTNAreaLeftFirstLine,
+#controlBTNAreaLeftSecondLine,
+#controlBTNAreaRightFirstLine,
+#controlBTNAreaRightSecondLine {
+    display: flex;
+    gap: 8px;
+}
+
+.controlBTN {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controlBTN:focus {
+    border: 2px solid white;
+}
+
+.controlBTN img {
+    width: 80%;
+    height: 80%;
+}

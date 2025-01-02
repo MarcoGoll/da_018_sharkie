@@ -165,33 +165,6 @@ function initSounds() {
     gameSound.play();
 }
 
-// FULLSCREEN
-function startFullscreen() {
-    let fullScreenDiv = document.getElementById('canvas');
-    enterFullscreen(fullScreenDiv);
-}
-function endFullscreen() {
-    exitFullscreen();
-}
-
-function enterFullscreen(element) {
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.msRequestFullscreen) { // for IE (remove June 15,2022)
-        element.msRequestFullscreen();
-    } else if (element.webkitRequestFullscreen) { // for IOS Safari
-        element.webkitRequestFullscreen();
-    }
-}
-
-function exitFullscreen() {
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-    }
-}
-
 function clearIntervalls() {
     intervallIds.forEach(intervallId => {
         clearInterval(intervallId);

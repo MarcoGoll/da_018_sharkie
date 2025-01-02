@@ -1,0 +1,81 @@
+.descriptionContainers {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.descriptionContainerEnemyType {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.descriptionContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.descriptionContainerIMG {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionContainerIMG img {
+    width: 50px;
+    height: auto;
+}
+
+#endbossProfileIMG {
+    width: 100px;
+}
+
+.descriptionContainerText {
+    display: flex;
+    flex-direction: column;
+}
+
+.descriptionContainerTextProperty {
+    display: flex;
+    gap: 8px;
+}
+
+.easy {
+    color: limegreen;
+}
+
+.middle {
+    color: yellow;
+}
+
+.hard {
+    color: orange;
+}
+
+.extreme {
+    color: tomato;
+}
+
+.runaway {
+    color: red;
+    text-shadow: 2px 4px 13px rgba(209, 0, 255, 1);
+    animation: pulse 1000ms ease-in-out infinite;
+}
+
+/* The animation code */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
