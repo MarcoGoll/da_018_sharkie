@@ -120,11 +120,6 @@ h1 {
     align-items: center;
 }
 
-.controlBTN:hover,
-.controlBTN:active {
-    background-color: #571d86;
-}
-
 .controlBTN:focus {
     border: 2px solid white;
 }

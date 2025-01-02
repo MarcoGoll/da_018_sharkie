@@ -99,73 +99,64 @@ window.addEventListener('keyup', (event) => {
 })
 
 //TODO: Mouse != Touch => Finde herraus was die Touchgesten sind
-upBTNRef.addEventListener('touchstart', () => {
+upBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.)
     keyboard.UP = true;
 })
-upBTNRef.addEventListener('touchend', () => {
-    keyboard.UP = false;
-})
-upBTNRef.addEventListener('mouseout', () => {
+upBTNRef.addEventListener('touchend', e => {
     keyboard.UP = false;
 })
 
-leftBTNRef.addEventListener('touchstart', () => {
+
+leftBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.LEFT = true;
 })
-leftBTNRef.addEventListener('touchend', () => {
-    keyboard.LEFT = false;
-})
-leftBTNRef.addEventListener('mouseout', () => {
+leftBTNRef.addEventListener('touchend', e => {
     keyboard.LEFT = false;
 })
 
-downBTNRef.addEventListener('touchstart', () => {
+
+downBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.DOWN = true;
 })
-downBTNRef.addEventListener('touchend', () => {
-    keyboard.DOWN = false;
-})
-downBTNRef.addEventListener('mouseout', () => {
+downBTNRef.addEventListener('touchend', e => {
     keyboard.DOWN = false;
 })
 
-rightBTNRef.addEventListener('touchstart', () => {
+
+rightBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.RIGHT = true;
 })
-rightBTNRef.addEventListener('touchend', () => {
-    keyboard.RIGHT = false;
-})
-rightBTNRef.addEventListener('mouseout', () => {
+rightBTNRef.addEventListener('touchend', e => {
     keyboard.RIGHT = false;
 })
 
-tailAttackBTNRef.addEventListener('touchstart', () => {
+
+tailAttackBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.SPACE = true;
 })
-tailAttackBTNRef.addEventListener('touchend', () => {
-    keyboard.SPACE = false;
-})
-tailAttackBTNRef.addEventListener('mouseout', () => {
+tailAttackBTNRef.addEventListener('touchend', e => {
     keyboard.SPACE = false;
 })
 
-bubbleAttackBTNRef.addEventListener('touchstart', () => {
+
+bubbleAttackBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.Q = true;
 })
-bubbleAttackBTNRef.addEventListener('touchend', () => {
-    keyboard.Q = false;
-})
-bubbleAttackBTNRef.addEventListener('mouseout', () => {
+bubbleAttackBTNRef.addEventListener('touchend', e => {
     keyboard.Q = false;
 })
 
-poisonAttackBTNRef.addEventListener('touchstart', () => {
+poisonAttackBTNRef.addEventListener('touchstart', e => {
+    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
     keyboard.E = true;
 })
-poisonAttackBTNRef.addEventListener('touchend', () => {
-    keyboard.E = false;
-})
-poisonAttackBTNRef.addEventListener('mouseout', () => {
+poisonAttackBTNRef.addEventListener('touchend', e => {
     keyboard.E = false;
 })
 
