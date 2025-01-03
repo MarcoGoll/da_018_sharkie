@@ -125,9 +125,9 @@ class Character extends MoveableObject {
     ];
 
     /**
-     * Constructor for the class Character
-     * @param {string} img - initial image for character
-     */
+      * Constructor for the class Character
+      * @param {string} img - Initial image for the character
+      */
     constructor(img) {
         super().loadImage(img);
         this.loadImages(this.IMAGES_SWIM);
@@ -144,14 +144,18 @@ class Character extends MoveableObject {
         this.animate();
     }
 
+
+    /**
+     * Initializes the character animations and movement intervals
+     */
     animate() {
         addStoppableIntervallId(setInterval(() => this.playCharacterAnimations(), 1000 / 8));
         addStoppableIntervallId(setInterval(() => this.moveCharacter(), 1000 / 60));
     }
 
     /**
-    * set muted attribut of global sounds
-    */
+   * Sets the muted attribute for global sounds based on the muteMode flag
+   */
     setSoundsMuted() {
         if (muteMode) {
             this.swimSound.muted = true;
@@ -162,6 +166,9 @@ class Character extends MoveableObject {
         }
     }
 
+    /**
+     * Plays the appropriate character animations based on the character's state
+     */
     playCharacterAnimations() {
         if (this.isDead()) this.playDeadAnimation();
         else if (this.isHurt()) this.playHurtAnimation();
@@ -174,7 +181,9 @@ class Character extends MoveableObject {
         }
     }
 
-
+    /**
+     * Plays the dead animation sequence
+     */
     playDeadAnimation() {
         if (!this.deadSoundWasPlayed) {
             lostSound.play();
@@ -192,9 +201,17 @@ class Character extends MoveableObject {
             this.loadImage(this.IMAGES_DEADNORMAL[this.IMAGES_DEADNORMAL.length - 1]);
         }
     }
+
+    /**
+     * Plays the hurt animation sequence
+     */
     playHurtAnimation() {
         this.playAnimation(this.IMAGES_HURTNORMAL); //hurtANIMATION
     }
+
+    /**
+    * Plays the bubble attack animation sequence
+    */
     playAttackBubbleAnimation() {
         if (this.iAttackBubble < this.IMAGES_ATTACKBUBBLENORMAL.length) {
             if (this.attackBubbleAnimationIsPlaying == false) {
@@ -209,6 +226,10 @@ class Character extends MoveableObject {
             this.iAttackBubble = 0;
         }
     }
+
+    /**
+     * Plays the poison bubble attack animation sequence
+     */
     playAttackBubblePoisonAnimation() {
         if (this.iAttackBubblePoison < this.IMAGES_ATTACKBUBBLEPOISON.length) {
             if (this.attackBubblePoisonAnimationIsPlaying == false) {
@@ -223,6 +244,10 @@ class Character extends MoveableObject {
             this.iAttackBubblePoison = 0;
         }
     }
+
+    /**
+     * Plays the slap attack animation sequence
+     */
     playAttackSlapAnimation() {
         if (this.iAttackSlap < this.IMAGES_ATTACKSLAP.length) {
             if (this.attackSlapAnimationIsPlaying == false) {
@@ -237,10 +262,20 @@ class Character extends MoveableObject {
             this.iAttackSlap = 0;
         }
     }
+
+    /**
+    * Plays the swimming animation for the character.
+    * Resets the idle counter.
+    */
     playMoveAnimation() {
         this.playAnimation(this.IMAGES_SWIM);
         this.idleCount = 0;
     }
+
+    /**
+    * Plays the idle animation for the character.
+    * If the idle count exceeds a certain threshold, a long idle animation is played.
+    */
     playIdleAnimations() {
         if (this.idleCount < 100) {
             this.playAnimation(this.IMAGES_IDLE);
@@ -250,20 +285,42 @@ class Character extends MoveableObject {
         }
     }
 
+    /**
+    * Checks if the character is attacking with a normal bubble.
+    * @returns {boolean} True if the character is attacking with a bubble.
+    */
     isAttackingWithBubble() {
         return this.world.keyboard.Q || this.attackBubbleAnimationIsPlaying;
     }
+
+    /**
+    * Checks if the character is attacking with a poison bubble.
+    * @returns {boolean} True if the character is attacking with a poison bubble.
+    */
     isAttackingWithBubblePoison() {
         return this.world.keyboard.E || this.attackBubblePoisonAnimationIsPlaying;
     }
+
+    /**
+    * Checks if the character is attacking with a slap.
+    * @returns {boolean} True if the character is attacking with a slap.
+    */
     isAttackingWithSlapp() {
         this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying;
     }
+
+    /**
+    * Checks if the character is moving.
+    * @returns {boolean} True if the character is moving.
+    */
     isMoving() {
         return this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN;
     }
 
-    //MOVEMENT
+    /**
+     * Handles the character's movement based on user input.
+     * Updates the camera position accordingly.
+     */
     moveCharacter() {
         if (this.shouldCharacterMoveLeft()) this.moveLeft();
         if (this.shouldCharacterMoveRight()) this.moveRight();
@@ -273,21 +330,49 @@ class Character extends MoveableObject {
         this.setCameraDependingOnCharacter();
     }
 
+    /**
+     * Checks if the character should move left.
+     * @returns {boolean} True if the left key is pressed.
+     */
     shouldCharacterMoveLeft() {
         return this.world.keyboard.LEFT;
     }
+
+    /**
+    * Checks if the character should move right.
+    * @returns {boolean} True if the right key is pressed and the end of the level is not reached.
+    */
     shouldCharacterMoveRight() {
         return this.world.keyboard.RIGHT && !this.isEndOfLevelReached();
     }
+
+    /**
+    * Checks if the character should move up.
+    * @returns {boolean} True if the up key is pressed and the character is not at the top.
+    */
     shouldCharacterMoveUp() {
         return this.world.keyboard.UP && this.isUnderTop();
     }
+
+    /**
+    * Checks if the character should move down.
+    * @returns {boolean} True if the down key is pressed and the character is above the ground.
+    */
     shouldCharacterMoveDown() {
         return this.world.keyboard.DOWN && this.isAboveGround();
     }
+
+    /**
+    * Checks if the character has stopped moving.
+    * @returns {boolean} True if no movement keys are pressed.
+    */
     characterStopedMoving() {
         return !this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN;
     }
+
+    /**
+    * Moves the character to the left and plays the swimming sound.
+    */
     moveLeft() {
         if (!this.isStartOfLevelReached()) {
             super.moveLeft();
@@ -295,21 +380,36 @@ class Character extends MoveableObject {
         this.otherDirection = true;
         this.swimSound.play();
     }
+
+    /**
+    * Moves the character to the right and plays the swimming sound.
+    */
     moveRight() {
         super.moveRight();
         this.otherDirection = false;
         this.swimSound.play();
     }
+
+    /**
+    * Moves the character upward and plays the swimming sound.
+    */
     moveUp() {
         super.moveUp();
         this.swimSound.play();
     }
+
+    /**
+    * Moves the character downward, plays the swimming sound, and stops gravity effects.
+    */
     moveDown() {
         super.moveDown();
         this.swimSound.play();
         this.speedGravity = 0;
     }
 
+    /**
+    * Sets the camera position relative to the character's position.
+    */
     setCameraDependingOnCharacter() {
         this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
     }
