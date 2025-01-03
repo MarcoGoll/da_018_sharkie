@@ -169,7 +169,7 @@ class Character extends MoveableObject {
         else if (this.isAttackingWithBubblePoison()) this.playAttackBubblePoisonAnimation();
         else if (this.isAttackingWithSlapp()) this.playAttackSlapAnimation();
         else {
-            if (this.isMoving()) this.playSwimAnimation();
+            if (this.isMoving()) this.playMoveAnimation();
             else if (this.characterStopedMoving()) this.playIdleAnimations();
         }
     }
@@ -237,7 +237,7 @@ class Character extends MoveableObject {
             this.iAttackSlap = 0;
         }
     }
-    playSwimAnimation() {
+    playMoveAnimation() {
         this.playAnimation(this.IMAGES_SWIM);
         this.idleCount = 0;
     }

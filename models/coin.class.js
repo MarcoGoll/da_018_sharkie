@@ -1,22 +1,19 @@
 class Coin extends MoveableObject {
-
-    img = './assets/img/4. Marcadores/1. Coins/1.png';
-
     width = 40;
     height = 40;
-
-    IMAGES_COIN = [
-        './assets/img/4. Marcadores/1. Coins/1.png',
-        './assets/img/4. Marcadores/1. Coins/2.png',
-        './assets/img/4. Marcadores/1. Coins/3.png',
-        './assets/img/4. Marcadores/1. Coins/4.png',
-    ];
     offset = {
         x: 0,
         y: 0,
         widht: 0,
         height: 0,
     }
+    img = './assets/img/4. Marcadores/1. Coins/1.png';
+    IMAGES_COIN = [
+        './assets/img/4. Marcadores/1. Coins/1.png',
+        './assets/img/4. Marcadores/1. Coins/2.png',
+        './assets/img/4. Marcadores/1. Coins/3.png',
+        './assets/img/4. Marcadores/1. Coins/4.png',
+    ];
 
     constructor(x, y) {
         super().loadImage(this.img);
