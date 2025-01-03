@@ -260,7 +260,7 @@ class Character extends MoveableObject {
         this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying;
     }
     isMoving() {
-        this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN;
+        return this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN;
     }
 
     //MOVEMENT
