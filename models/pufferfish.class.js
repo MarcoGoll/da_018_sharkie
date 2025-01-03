@@ -37,11 +37,11 @@ class Pufferfish extends MoveableObject {
         let iTransition = 0;
 
 
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             this.moveLeft();
         }, 1000 / 60)); // 60fps
 
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
 
             if (this.energy < this.energyMax && !(this.isDead())) { //Transition Animation
                 if (iTransition < this.IMAGES_TRANSITION.length) {

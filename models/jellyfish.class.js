@@ -33,7 +33,7 @@ class Jellyfish extends MoveableObject {
     }
 
     animate() {
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             //this.moveLeft();   
 
             if (this.y < 300 && this.isMovingDown) {
@@ -55,7 +55,7 @@ class Jellyfish extends MoveableObject {
             }
         }, 1000 / 60)); // 60fps
 
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             if (this.isDead()) {
                 if (this.iDead < this.IMAGES_DEAD.length) {
                     if (this.deadAnimationWasPlayed == false) {

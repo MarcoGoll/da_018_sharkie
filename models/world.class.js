@@ -86,7 +86,7 @@ class World {
     }
 
     run() {
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             //Check Collisions
             this.checkCollisions();
             this.checkThrowObjects();
@@ -194,7 +194,7 @@ class World {
     }
 
     moveEndboss() {
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             if (!(this.level.enemies[this.level.enemies.length - 1].isDead())) {
                 // TODO: Bessere Möglichkeit auf Endboss zuzugreifen? Diese verhindert das neue Gegner eingefügt werden. Da ich den Endboss daran erkenne, dass es der letzte Enemy ist
                 //MOVE LEFT

@@ -224,6 +224,13 @@ function initSounds() {
 }
 
 /**
+* Add id of stoppable intervall to the array intervallIds
+*/
+function addStoppableIntervallId(id) {
+    intervallIds.push(id);
+}
+
+/**
 * Clears all intervals for which the interval id is present in the array intervallIds
 */
 function clearIntervalls() {

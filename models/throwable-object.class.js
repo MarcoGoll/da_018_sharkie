@@ -29,7 +29,7 @@ class ThrowableObject extends MoveableObject {
         this.y = y;
         this.speedGravity = -5;
         this.applyGravity();
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             this.x += 10;
         }, 25));
         shootBubbleSound.play();

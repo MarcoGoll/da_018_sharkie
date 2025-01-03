@@ -2,6 +2,14 @@ class Character extends MoveableObject {
     width = 220;
     height = 240;
     x = 110;
+    offset = {
+        x: 30,
+        y: 140,
+        widht: 80,
+        height: 210,
+    }
+    world;
+    speed = 4;
     idleCount = 0;
     deadAnimationWasPlayed = false;
     attackBubbleAnimationIsPlaying = false;
@@ -10,7 +18,8 @@ class Character extends MoveableObject {
     isShooting = false;
     deadSoundWasPlayed = false;
 
-
+    swimSound = new Audio('./assets/audio/splash.mp3');
+    isHitAudio = new Audio('./assets/audio/characterIsHit.mp3');
     IMAGES_SWIM = [
         './assets/img/1.Sharkie/3.Swim/1.png',
         './assets/img/1.Sharkie/3.Swim/2.png',
@@ -109,18 +118,10 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ];
 
-    world;
-    speed = 4;
-    swimSound = new Audio('./assets/audio/splash.mp3');
-    isHitAudio = new Audio('./assets/audio/characterIsHit.mp3');
-
-    offset = {
-        x: 30,
-        y: 140,
-        widht: 80,
-        height: 210,
-    }
-
+    /**
+     * Constructor for the class Character
+     * @param {string} img - initial image for character
+     */
     constructor(img) {
         super().loadImage(img);
         this.loadImages(this.IMAGES_SWIM);
@@ -133,7 +134,7 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_ATTACKSLAP);
         this.swimSound.volume = 1;
         this.isHitAudio.volume = 0.5;
-        this.setSounds();
+        this.setSoundsMuted();
         this.animate();
     }
 
@@ -143,8 +144,7 @@ class Character extends MoveableObject {
         let iAttackBubblePoison = 0;
         let iAttackSlap = 0;
 
-
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             if (this.isDead()) { //DEADANIMATION
                 if (!this.deadSoundWasPlayed) {
                     lostSound.play();
@@ -222,7 +222,7 @@ class Character extends MoveableObject {
         }, 1000 / 8))
 
         //MOVEMENT
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             if (this.world.keyboard.LEFT) {
                 if (!this.isStartOfLevelReached()) {
                     this.moveLeft();
@@ -253,7 +253,10 @@ class Character extends MoveableObject {
         }, 1000 / 60))
     }
 
-    setSounds() {
+    /**
+    * set muted attribut of global sounds
+    */
+    setSoundsMuted() {
         if (muteMode) {
             this.swimSound.muted = true;
             this.isHitAudio.muted = true;

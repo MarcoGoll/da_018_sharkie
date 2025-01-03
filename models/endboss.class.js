@@ -80,7 +80,7 @@ class Endboss extends MoveableObject {
 
     animate() {
         let i = 0;
-        intervallIds.push(setInterval(() => {
+        addStoppableIntervallId(setInterval(() => {
             if (i < this.IMAGES_SPAWNING.length) {
                 this.playAnimation(this.IMAGES_SPAWNING);
                 this.isSpawnAudio.play();
