@@ -51,3 +51,7 @@ function setSoundsMuted() {
 
     }
 }
+
+function addStoppableIntervallId(id) {
+    intervallIds.push(id);
+}

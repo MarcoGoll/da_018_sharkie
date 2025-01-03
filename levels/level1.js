@@ -1,5 +1,8 @@
 let level1
 
+/**
+ * Initiates an object of type level. And defines positions of poison, coins, enemies and backgrounds in this level
+ */
 function initLevel() {
     level1 = new Level(
         [
@@ -99,6 +102,10 @@ function initLevel() {
 
     setBackgroundsAndLights(AMOUNTBACKGROUNDS);
 
+    /**
+     * Creates backgrounds and lights
+     * @param {number} amount - defines how many interaction loops there should be
+     */
     function setBackgroundsAndLights(amount) {
         let counter = 0;
         for (let i = 0; i < amount; i++) {
