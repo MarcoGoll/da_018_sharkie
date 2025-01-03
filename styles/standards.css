@@ -2,6 +2,14 @@ button {
     cursor: pointer;
 }
 
+a {
+    color: #fff1fa;
+}
+
+a:hover {
+    color: #bf067f;
+}
+
 .d_none {
     display: none !important;
 }
