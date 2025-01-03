@@ -145,7 +145,7 @@ class Character extends MoveableObject {
     }
 
     animate() {
-        addStoppableIntervallId(setInterval(() => this.playCharacterAnimation(), 1000 / 8));
+        addStoppableIntervallId(setInterval(() => this.playCharacterAnimations(), 1000 / 8));
         addStoppableIntervallId(setInterval(() => this.moveCharacter(), 1000 / 60));
     }
 
@@ -162,110 +162,155 @@ class Character extends MoveableObject {
         }
     }
 
-    playCharacterAnimation() {
-        if (this.isDead()) { //DEADANIMATION
-            if (!this.deadSoundWasPlayed) {
-                lostSound.play();
-                this.deadSoundWasPlayed = true;
-            }
-            if (this.iDead < this.IMAGES_DEADNORMAL.length) {
-                if (this.deadAnimationWasPlayed == false) {
-                    this.currentImage = 0;
-                    this.deadAnimationWasPlayed = true;
-                }
-                this.playAnimation(this.IMAGES_DEADNORMAL);
-                this.iDead++
-            }
-            else {
-                this.loadImage(this.IMAGES_DEADNORMAL[this.IMAGES_DEADNORMAL.length - 1]);
-            }
-        } else if (this.isHurt()) {
-            this.playAnimation(this.IMAGES_HURTNORMAL);
-        } else if (this.world.keyboard.Q || this.attackBubbleAnimationIsPlaying) { //attackBubbleANIMATION
-            if (this.iAttackBubble < this.IMAGES_ATTACKBUBBLENORMAL.length) {
-                if (this.attackBubbleAnimationIsPlaying == false) {
-                    this.attackBubbleAnimationIsPlaying = true;
-                    this.currentImage = 0;
-                }
-                this.playAnimation(this.IMAGES_ATTACKBUBBLENORMAL);
-                this.idleCount = 0;
-                this.iAttackBubble++;
-            } else {
-                this.attackBubbleAnimationIsPlaying = false;
-                this.iAttackBubble = 0;
-            }
+    playCharacterAnimations() {
+        if (this.isDead()) this.playDeadAnimation();
+        else if (this.isHurt()) this.playHurtAnimation();
+        else if (this.isAttackingWithBubble()) this.playAttackBubbleAnimation();
+        else if (this.isAttackingWithBubblePoison()) this.playAttackBubblePoisonAnimation();
+        else if (this.isAttackingWithSlapp()) this.playAttackSlapAnimation();
+        else {
+            if (this.isMoving()) this.playSwimAnimation();
+            else if (this.characterStopedMoving()) this.playIdleAnimations();
         }
-        else if (this.world.keyboard.E || this.attackBubblePoisonAnimationIsPlaying) { //attackBubblePoisonANIMATION
-
-            if (this.iAttackBubblePoison < this.IMAGES_ATTACKBUBBLEPOISON.length) {
-                if (this.attackBubblePoisonAnimationIsPlaying == false) {
-                    this.attackBubblePoisonAnimationIsPlaying = true;
-                    this.currentImage = 0;
-                }
-                this.playAnimation(this.IMAGES_ATTACKBUBBLEPOISON);
-                this.idleCount = 0;
-                this.iAttackBubblePoison++;
-            } else {
-                this.attackBubblePoisonAnimationIsPlaying = false;
-                this.iAttackBubblePoison = 0;
-            }
-
-        }
-        else if (this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying) { //attackSlapANIMATION
-            if (this.iAttackSlap < this.IMAGES_ATTACKSLAP.length) {
-                if (this.attackSlapAnimationIsPlaying == false) {
-                    this.attackSlapAnimationIsPlaying = true;
-                    this.currentImage = 0;
-                }
-                this.playAnimation(this.IMAGES_ATTACKSLAP);
-                this.idleCount = 0;
-                this.iAttackSlap++;
-            } else {
-                this.attackSlapAnimationIsPlaying = false;
-                this.iAttackSlap = 0;
-            }
-        }
-        else
-            if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN) { //WALKANIMATION
-                this.playAnimation(this.IMAGES_SWIM);
-                this.idleCount = 0;
-            } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { //IDLEANIMATION
-                if (this.idleCount < 100) {
-                    this.playAnimation(this.IMAGES_IDLE);
-                    this.idleCount++;
-                } else {
-                    this.playAnimation(this.IMAGES_LONGIDLE);
-                }
-            }
     }
 
-    moveCharacter() {
-        if (this.world.keyboard.LEFT) {
-            if (!this.isStartOfLevelReached()) {
-                this.moveLeft();
+
+    playDeadAnimation() {
+        if (!this.deadSoundWasPlayed) {
+            lostSound.play();
+            this.deadSoundWasPlayed = true;
+        }
+        if (this.iDead < this.IMAGES_DEADNORMAL.length) {
+            if (this.deadAnimationWasPlayed == false) {
+                this.currentImage = 0;
+                this.deadAnimationWasPlayed = true;
             }
-            this.otherDirection = true;
-            this.swimSound.play();
+            this.playAnimation(this.IMAGES_DEADNORMAL);
+            this.iDead++
         }
-        if (this.world.keyboard.RIGHT && !this.isEndOfLevelReached()) {
-            this.moveRight();
-            this.otherDirection = false;
-            this.swimSound.play();
+        else {
+            this.loadImage(this.IMAGES_DEADNORMAL[this.IMAGES_DEADNORMAL.length - 1]);
         }
-        if (this.world.keyboard.UP && this.isUnderTop()) {
-            this.moveUp();
-            this.swimSound.play();
+    }
+    playHurtAnimation() {
+        this.playAnimation(this.IMAGES_HURTNORMAL); //hurtANIMATION
+    }
+    playAttackBubbleAnimation() {
+        if (this.iAttackBubble < this.IMAGES_ATTACKBUBBLENORMAL.length) {
+            if (this.attackBubbleAnimationIsPlaying == false) {
+                this.attackBubbleAnimationIsPlaying = true;
+                this.currentImage = 0;
+            }
+            this.playAnimation(this.IMAGES_ATTACKBUBBLENORMAL);
+            this.idleCount = 0;
+            this.iAttackBubble++;
+        } else {
+            this.attackBubbleAnimationIsPlaying = false;
+            this.iAttackBubble = 0;
         }
-        if (this.world.keyboard.DOWN && this.isAboveGround()) {
-            this.moveDown();
-            this.swimSound.play();
-            this.speedGravity = 0;
+    }
+    playAttackBubblePoisonAnimation() {
+        if (this.iAttackBubblePoison < this.IMAGES_ATTACKBUBBLEPOISON.length) {
+            if (this.attackBubblePoisonAnimationIsPlaying == false) {
+                this.attackBubblePoisonAnimationIsPlaying = true;
+                this.currentImage = 0;
+            }
+            this.playAnimation(this.IMAGES_ATTACKBUBBLEPOISON);
+            this.idleCount = 0;
+            this.iAttackBubblePoison++;
+        } else {
+            this.attackBubblePoisonAnimationIsPlaying = false;
+            this.iAttackBubblePoison = 0;
         }
+    }
+    playAttackSlapAnimation() {
+        if (this.iAttackSlap < this.IMAGES_ATTACKSLAP.length) {
+            if (this.attackSlapAnimationIsPlaying == false) {
+                this.attackSlapAnimationIsPlaying = true;
+                this.currentImage = 0;
+            }
+            this.playAnimation(this.IMAGES_ATTACKSLAP);
+            this.idleCount = 0;
+            this.iAttackSlap++;
+        } else {
+            this.attackSlapAnimationIsPlaying = false;
+            this.iAttackSlap = 0;
+        }
+    }
+    playSwimAnimation() {
+        this.playAnimation(this.IMAGES_SWIM);
+        this.idleCount = 0;
+    }
+    playIdleAnimations() {
+        if (this.idleCount < 100) {
+            this.playAnimation(this.IMAGES_IDLE);
+            this.idleCount++;
+        } else {
+            this.playAnimation(this.IMAGES_LONGIDLE);
+        }
+    }
 
-        if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) {
-            this.swimSound.pause();
-        }
+    isAttackingWithBubble() {
+        return this.world.keyboard.Q || this.attackBubbleAnimationIsPlaying;
+    }
+    isAttackingWithBubblePoison() {
+        return this.world.keyboard.E || this.attackBubblePoisonAnimationIsPlaying;
+    }
+    isAttackingWithSlapp() {
+        this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying;
+    }
+    isMoving() {
+        this.world.keyboard.LEFT || this.world.keyboard.RIGHT || this.world.keyboard.UP || this.world.keyboard.DOWN;
+    }
 
+    //MOVEMENT
+    moveCharacter() {
+        if (this.shouldCharacterMoveLeft()) this.moveLeft();
+        if (this.shouldCharacterMoveRight()) this.moveRight();
+        if (this.shouldCharacterMoveUp()) this.moveUp();
+        if (this.shouldCharacterMoveDown()) this.moveDown();
+        if (this.characterStopedMoving()) this.swimSound.pause();
+        this.setCameraDependingOnCharacter();
+    }
+
+    shouldCharacterMoveLeft() {
+        return this.world.keyboard.LEFT;
+    }
+    shouldCharacterMoveRight() {
+        return this.world.keyboard.RIGHT && !this.isEndOfLevelReached();
+    }
+    shouldCharacterMoveUp() {
+        return this.world.keyboard.UP && this.isUnderTop();
+    }
+    shouldCharacterMoveDown() {
+        return this.world.keyboard.DOWN && this.isAboveGround();
+    }
+    characterStopedMoving() {
+        return !this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN;
+    }
+    moveLeft() {
+        if (!this.isStartOfLevelReached()) {
+            super.moveLeft();
+        }
+        this.otherDirection = true;
+        this.swimSound.play();
+    }
+    moveRight() {
+        super.moveRight();
+        this.otherDirection = false;
+        this.swimSound.play();
+    }
+    moveUp() {
+        super.moveUp();
+        this.swimSound.play();
+    }
+    moveDown() {
+        super.moveDown();
+        this.swimSound.play();
+        this.speedGravity = 0;
+    }
+
+    setCameraDependingOnCharacter() {
         this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
     }
 }
