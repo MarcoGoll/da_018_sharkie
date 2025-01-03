@@ -47,7 +47,6 @@ class Jellyfish extends MoveableObject {
             }
             this.playAnimation(this.IMAGES_DEAD);
             this.iDead++
-            console.log(this.iDead);
         }
     }
 

@@ -244,94 +244,40 @@ function clearIntervalls() {
 * @param {string} areaToBeDisplayed - Indicator which overlay should be displayed
 */
 function showX(areaToBeDisplayed) {
+    menueRef.classList.add('d_none');
+    controlMenueRef.classList.add('d_none');
+    descriptionMenueRef.classList.add('d_none');
+    enemiesMenueRef.classList.add('d_none');
+    itemsMenueRef.classList.add('d_none');
+    lostScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    impressumMenueRef.classList.add('d_none');
+    controlBTNAreaALLRef.classList.add('d_none');
+
     switch (areaToBeDisplayed) {
         case 'game':
-            menueRef.classList.add('d_none');
-            controlMenueRef.classList.add('d_none');
-            descriptionMenueRef.classList.add('d_none');
-            enemiesMenueRef.classList.add('d_none');
-            itemsMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            impressumMenueRef.classList.add('d_none');
             controlBTNAreaALLRef.classList.remove('d_none');
             break;
         case 'menue':
             menueRef.classList.remove('d_none');
-            controlMenueRef.classList.add('d_none');
-            descriptionMenueRef.classList.add('d_none');
-            enemiesMenueRef.classList.add('d_none');
-            itemsMenueRef.classList.add('d_none');
-            impressumMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
         case 'description':
-            menueRef.classList.add('d_none');
-            controlMenueRef.classList.add('d_none');
             descriptionMenueRef.classList.remove('d_none');
-            enemiesMenueRef.classList.add('d_none');
-            itemsMenueRef.classList.add('d_none');
-            impressumMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
         case 'control':
-            menueRef.classList.add('d_none');
             controlMenueRef.classList.remove('d_none');
-            descriptionMenueRef.classList.add('d_none');
-            enemiesMenueRef.classList.add('d_none');
-            itemsMenueRef.classList.add('d_none');
-            impressumMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
         case 'impressum':
-            menueRef.classList.add('d_none');
-            controlMenueRef.classList.add('d_none');
-            descriptionMenueRef.classList.add('d_none');
-            enemiesMenueRef.classList.add('d_none');
-            itemsMenueRef.classList.add('d_none');
             impressumMenueRef.classList.remove('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
         case 'enemies':
-            menueRef.classList.add('d_none');
-            controlMenueRef.classList.add('d_none');
-            descriptionMenueRef.classList.add('d_none');
             enemiesMenueRef.classList.remove('d_none');
-            itemsMenueRef.classList.add('d_none');
-            impressumMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
         case 'items':
-            menueRef.classList.add('d_none');
-            controlMenueRef.classList.add('d_none');
-            descriptionMenueRef.classList.add('d_none');
-            enemiesMenueRef.classList.add('d_none');
             itemsMenueRef.classList.remove('d_none');
-            impressumMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
         default:
             menueRef.classList.remove('d_none');
-            controlMenueRef.classList.add('d_none');
-            descriptionMenueRef.classList.add('d_none');
-            enemiesMenueRef.classList.add('d_none');
-            itemsMenueRef.classList.add('d_none');
-            impressumMenueRef.classList.add('d_none');
-            lostScreenRef.classList.add('d_none');
-            winScreenRef.classList.add('d_none');
-            controlBTNAreaALLRef.classList.add('d_none');
             break;
     }
 }

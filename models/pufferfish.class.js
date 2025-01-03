@@ -69,7 +69,6 @@ class Pufferfish extends MoveableObject {
         }
         this.playAnimation(this.IMAGES_DEAD);
         this.iDead++
-        console.log(this.iDead);
     }
 
     playMoveNormalAnimation() {
