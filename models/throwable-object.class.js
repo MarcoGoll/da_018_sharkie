@@ -1,11 +1,9 @@
 class ThrowableObject extends MoveableObject {
-
-    IMAGE_BUBBLE = './assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png';
-    IMAGE_BUBBLE_POISONED = './assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png';
-
     isPoisonedBubble = false;
     bubblePower = 100;
     bubblePowerPoison = 200;
+    IMAGE_BUBBLE = './assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png';
+    IMAGE_BUBBLE_POISONED = './assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png';
 
     constructor(x, y, isPoisonedBubble) {
         super();
@@ -19,9 +17,7 @@ class ThrowableObject extends MoveableObject {
         } else {
             this.loadImage(this.IMAGE_BUBBLE);
         }
-
         this.throw(this.x, this.y);
-
     }
 
     throw(x, y) {
@@ -29,9 +25,7 @@ class ThrowableObject extends MoveableObject {
         this.y = y;
         this.speedGravity = -5;
         this.applyGravity();
-        addStoppableIntervallId(setInterval(() => {
-            this.x += 10;
-        }, 25));
+        addStoppableIntervallId(setInterval(() => this.x += 10, 25));
         shootBubbleSound.play();
     }
 }

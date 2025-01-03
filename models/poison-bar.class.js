@@ -1,5 +1,5 @@
 class PoisonBar extends DrawableObject {
-
+    percentage = 0;
     IMAGES_POISONBAR = [
         './assets/img/4. Marcadores/orange/0_poison1.png',
         './assets/img/4. Marcadores/orange/20_poison2.png',
@@ -8,8 +8,6 @@ class PoisonBar extends DrawableObject {
         './assets/img/4. Marcadores/orange/80_poison5.png',
         './assets/img/4. Marcadores/orange/100_poison6.png',
     ];
-
-    percentage = 0;
 
     constructor() {
         super();

@@ -8,8 +8,6 @@ class Light extends MoveableObject {
     }
 
     animate() {
-        addStoppableIntervallId(setInterval(() => {
-            this.moveLeft();
-        }, 1000 / 60)); // 60fps
+        addStoppableIntervallId(setInterval(() => this.moveLeft(), 1000 / 60)); // 60fps
     }
 }

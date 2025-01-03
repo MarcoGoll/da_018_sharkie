@@ -18,7 +18,6 @@ class Pufferfish extends MoveableObject {
     isDyingAudio = new Audio('./assets/audio/pufferfishIsDying.mp3');
     iTransition = 0;
 
-
     constructor(x, y, width, height) {
         super();
         this.x = x;

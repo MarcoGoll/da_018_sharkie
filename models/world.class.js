@@ -24,9 +24,7 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Löscht zu Beginn des Zeichnes den Inhalt des Canvas (sonst würde jeder vorher gezeichnete Frame immernoch da sein)
-
         this.ctx.translate(this.camera_x, 0);
-
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.throwableObjects);
@@ -34,7 +32,6 @@ class World {
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectToMap(this.character);
-
         this.ctx.translate(-this.camera_x, 0);
         // -----------START: SPACE FOR FIXED OBJECTS-----------
         this.addObjectToMap(this.statusBarHealth);
@@ -42,12 +39,8 @@ class World {
         this.addObjectToMap(this.coinBar);
         // -----------END: SPACE FOR FIXED OBJECTS-----------
         this.ctx.translate(this.camera_x, 0);
-
         this.ctx.translate(-this.camera_x, 0);
-
-        requestAnimationFrame(() => {
-            this.draw();
-        }); // requestAnimationFrame wird so häufig aufgerufen, wie es die Grafikkarte hergibt
+        requestAnimationFrame(() => this.draw()); // requestAnimationFrame wird so häufig aufgerufen, wie es die Grafikkarte hergibt
     }
 
     addObjectToMap(moveableObject) {
@@ -87,7 +80,6 @@ class World {
 
     run() {
         addStoppableIntervallId(setInterval(() => {
-            //Check Collisions
             this.checkCollisions();
             this.checkThrowObjects();
             this.createEndboss();
@@ -95,6 +87,13 @@ class World {
     }
 
     checkCollisions() {
+        this.checkCollisionBetweenCharacterAndEnemy();
+        this.checkCollisionBetweenThrowableObjectsAndEnemy();
+        this.checkCollisionBetweenCharacterAndPoison();
+        this.checkCollisionBetweenCharacterAndCoin();
+    }
+
+    checkCollisionBetweenCharacterAndEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit(this.collisionPower);
@@ -107,7 +106,8 @@ class World {
                 }
             }
         });
-
+    }
+    checkCollisionBetweenThrowableObjectsAndEnemy() {
         this.throwableObjects.forEach((bubble, indexBubble) => {
             this.level.enemies.forEach((enemy, indexEnemy) => {
                 if (bubble.isColliding(enemy)) {
@@ -142,7 +142,8 @@ class World {
                 }
             });
         });
-
+    }
+    checkCollisionBetweenCharacterAndPoison() {
         this.level.poisons.forEach((poison, index) => {
             if (this.character.isColliding(poison)) {
                 this.character.addPoison();
@@ -151,7 +152,8 @@ class World {
                 this.poisonBar.setPercentage(this.character.poisonAmmunition, 10);
             }
         });
-
+    }
+    checkCollisionBetweenCharacterAndCoin() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
                 this.character.addCoin();

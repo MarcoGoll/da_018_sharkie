@@ -1,5 +1,5 @@
 class StatusBar extends DrawableObject {
-
+    percentage = 100;
     IMAGES_HEALTH = [
         './assets/img/4. Marcadores/orange/0_health1.png',
         './assets/img/4. Marcadores/orange/20_health2.png',
@@ -8,8 +8,6 @@ class StatusBar extends DrawableObject {
         './assets/img/4. Marcadores/orange/80_health5.png',
         './assets/img/4. Marcadores/orange/100_health6.png',
     ];
-
-    percentage = 100;
 
     constructor() {
         super();
