@@ -100,8 +100,7 @@ class World {
                 this.statusBarHealth.setPercentage(this.character.energy)
                 if (this.character.isDead()) {
                     if (!(this.gameIsOver)) {
-                        this.gameOver('CharacterDeath');
-                        this.gameIsOver = true;
+                        this.setGameOver('CharacterDeath');
                     }
                 }
             }
@@ -112,16 +111,13 @@ class World {
             this.level.enemies.forEach((enemy, indexEnemy) => {
                 if (bubble.isColliding(enemy)) {
                     this.throwableObjects.splice(indexBubble, 1);
-                    console.log("Hit enemy");
                     if (!(bubble.isPoisonedBubble)) {
                         enemy.hit(bubble.bubblePower);
                         enemy.isHitAudio.play();
-                        console.log(enemy.energy);
                     }
                     else {
                         enemy.hit(bubble.bubblePowerPoison);
                         enemy.isHitAudio.play();
-                        console.log(enemy.energy);
                     }
                     if (enemy instanceof Pufferfish) {
                         enemy.offset.height = 10;
@@ -130,13 +126,10 @@ class World {
                         enemy.isDyingAudio.play();
                         if (enemy instanceof Endboss) {
                             if (!(this.gameIsOver)) {
-                                this.gameOver('EndbossDeath');
-                                this.gameIsOver = true;
+                                this.setGameOver('EndbossDeath');
                             }
                         } else {
-                            setTimeout(() => {
-                                this.level.enemies.splice(indexEnemy, 1);
-                            }, 500);
+                            setTimeout(() => this.level.enemies.splice(indexEnemy, 1), 500);
                         }
                     }
                 }
@@ -165,7 +158,17 @@ class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.Q && !(this.character.isShooting)) {
+        if (this.bubbleShouldBeThrown()) {
+            this.throwObject('bubble');
+        }
+        if (this.bubblePoisonShouldBeThrown()) {
+            this.throwObject('bubblePoison');
+
+        }
+    }
+
+    throwObject(bubbleType) {
+        if (bubbleType == "bubble") {
             this.character.isShooting = true;
             setTimeout(() => {
                 let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130, false);
@@ -173,7 +176,7 @@ class World {
                 this.character.isShooting = false;
             }, 700)
         }
-        if (this.keyboard.E && !(this.character.isShooting)) {
+        if (bubbleType == "bubblePoison") {
             if (this.character.poisonAmmunition > 0) {
                 this.character.isShooting = true;
                 setTimeout(() => {
@@ -187,6 +190,14 @@ class World {
         }
     }
 
+    bubbleShouldBeThrown() {
+        return this.keyboard.Q && !(this.character.isShooting);
+    }
+
+    bubblePoisonShouldBeThrown() {
+        return this.keyboard.E && !(this.character.isShooting);
+    }
+
     createEndboss() {
         if (this.character.x > this.level.enbossSpawnPoint && !this.hadFirstContact) {
             this.level.enemies.push(new Endboss());
@@ -197,28 +208,61 @@ class World {
 
     moveEndboss() {
         addStoppableIntervallId(setInterval(() => {
-            if (!(this.level.enemies[this.level.enemies.length - 1].isDead())) {
-                // TODO: Bessere Möglichkeit auf Endboss zuzugreifen? Diese verhindert das neue Gegner eingefügt werden. Da ich den Endboss daran erkenne, dass es der letzte Enemy ist
+            if (!(this.myEndBoss().isDead())) {
                 //MOVE LEFT
-                if (this.level.enemies[this.level.enemies.length - 1].x > this.character.x - 50) {
-                    this.level.enemies[this.level.enemies.length - 1].x -= 1;
-                    this.level.enemies[this.level.enemies.length - 1].otherDirection = false;
+                if (this.shouldEndbossMoveLeft()) {
+                    this.moveLeft();
                 }
                 //MOVE RIGHT
-                if (this.level.enemies[this.level.enemies.length - 1].x < this.character.x - 50) {
-                    this.level.enemies[this.level.enemies.length - 1].x += 1;
-                    this.level.enemies[this.level.enemies.length - 1].otherDirection = true;
+                if (this.shouldEndbossMoveRight()) {
+                    this.moveRight();
                 }
                 //MOVE DOWN
-                if (this.level.enemies[this.level.enemies.length - 1].y < this.character.y - 100) {
-                    this.level.enemies[this.level.enemies.length - 1].y += 1;
+                if (this.shouldEndbossMoveDown()) {
+                    this.moveDown();
                 }
                 //MOVE UP
-                if (this.level.enemies[this.level.enemies.length - 1].y > this.character.y - 100) {
-                    this.level.enemies[this.level.enemies.length - 1].y -= 1;
+                if (this.shouldEndbossMoveUp()) {
+                    this.moveUp();
                 }
             }
         }, 1000 / 60));
+    }
+
+    shouldEndbossMoveLeft() {
+        return this.myEndBoss().x > this.character.x - 50;
+    }
+
+    shouldEndbossMoveRight() {
+        return this.myEndBoss().x < this.character.x - 50;
+    }
+
+    shouldEndbossMoveDown() {
+        return this.myEndBoss().y < this.character.y - 100;
+    }
+
+    shouldEndbossMoveUp() {
+        return this.myEndBoss().y > this.character.y - 100;
+    }
+
+    moveLeft() {
+        this.myEndBoss().x -= 1.5;
+        this.myEndBoss().otherDirection = false;
+    }
+    moveRight() {
+        this.myEndBoss().x += 1.5;
+        this.myEndBoss().otherDirection = true;
+    }
+    moveUp() {
+        this.myEndBoss().y -= 1.5;
+    }
+    moveDown() {
+        this.myEndBoss().y += 1.5;
+
+    }
+
+    myEndBoss() {
+        return this.level.enemies[this.level.enemies.length - 1];
     }
 
     setWorldSounds() {
@@ -228,29 +272,25 @@ class World {
         });
     }
 
+    setGameOver(whoIsDeath) {
+        this.gameOver(whoIsDeath);
+        this.gameIsOver = true;
+    }
+
     gameOver(whoIsDeath) {
         if (whoIsDeath == 'EndbossDeath') {
-            //WINN
             winSound.play();
         }
-
         if (whoIsDeath == 'CharacterDeath') {
-            // LOST
             lostSound.play();
         }
-
         setTimeout(() => {
             clearIntervalls();
             if (whoIsDeath == 'EndbossDeath') {
-                //WINN
                 toggleClass('d_none', 'winScreen');
-                console.log("youWIN");
             }
-
             if (whoIsDeath == 'CharacterDeath') {
-                // LOST
                 toggleClass('d_none', 'lostScreen');
-                console.log("youLOSE");
             }
         }, 2000);
     }
