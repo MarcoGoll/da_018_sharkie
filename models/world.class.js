@@ -13,6 +13,11 @@ class World {
     collisionPower = 5;
     gameIsOver = false;
 
+    /**
+    * Initializes a new instance of the object, setting up the status bar
+    * @param {HTMLCanvasElement} canvas - The canvas element used for rendering the game.
+    * @param {Object} keyboard - An object representing the current state of keyboard inputs.
+    */
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
         this.canvas = canvas;
@@ -22,6 +27,10 @@ class World {
         this.run();
     }
 
+    /**
+     * Draws the entire game frame, including dynamic and static objects.
+     * Continuously called using requestAnimationFrame.
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Löscht zu Beginn des Zeichnes den Inhalt des Canvas (sonst würde jeder vorher gezeichnete Frame immernoch da sein)
         this.ctx.translate(this.camera_x, 0);
@@ -43,6 +52,10 @@ class World {
         requestAnimationFrame(() => this.draw()); // requestAnimationFrame wird so häufig aufgerufen, wie es die Grafikkarte hergibt
     }
 
+    /**
+     * Adds a single movable object to the canvas, handling mirroring if necessary.
+     * @param {Object} moveableObject - The object to be drawn.
+     */
     addObjectToMap(moveableObject) {
         if (moveableObject.otherDirection) { // Vor dem Zeichnen spiegeln, wenn otherdirection == true
             this.flipImage(moveableObject);
@@ -56,6 +69,10 @@ class World {
         }
     }
 
+    /**
+    * Flips an image horizontally before drawing.
+    * @param {Object} moveableObject - The object to flip.
+    */
     flipImage(moveableObject) {
         this.ctx.save(); // aktueller Status vom Kontext wird zwischengespeichert, um ihn später wieder laden zu können
         this.ctx.translate(moveableObject.width, 0) // Nötig, um beim Spiegeln den Sprung des Characters zu verhindern 
@@ -63,21 +80,35 @@ class World {
         moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position, ist nötig da wir den Context gespiegelt haben
     }
 
+    /**
+    * Restores the flipped object's original orientation.
+    * @param {Object} moveableObject - The object to restore.
+    */
     flipImageBack(moveableObject) {
         moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position zur Ausgangssituation zurück
         this.ctx.restore(); // läd den Status vom Kontext, bevor wir die Eigenschaften zum Spiegeln eingestellt haben. Damit die nächsten Bilder wieder normal gezeichnet werden
     }
 
+    /**
+    * Adds an array of movable objects to the canvas.
+    * @param {Object[]} arrayOfMovableObjects - Array of objects to be drawn.
+    */
     addObjectsToMap(arryOfMoveableObjects) {
         arryOfMoveableObjects.forEach(moveableObject => {
             this.addObjectToMap(moveableObject);
         });
     }
 
+    /**
+     * Sets a reference to the game world in the character object for interaction.
+     */
     setWorld() {
         this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
     }
 
+    /**
+    * Starts the main game loop, including collision checks and other periodic actions.
+    */
     run() {
         addStoppableIntervallId(setInterval(() => {
             this.checkCollisions();
@@ -86,6 +117,9 @@ class World {
         }, 150))
     }
 
+    /**
+    * Checks all types of collisions in the game world.
+    */
     checkCollisions() {
         this.checkCollisionBetweenCharacterAndEnemy();
         this.checkCollisionBetweenThrowableObjectsAndEnemy();
@@ -93,6 +127,9 @@ class World {
         this.checkCollisionBetweenCharacterAndCoin();
     }
 
+    /**
+    * Checks for collisions between the character and enemies
+    */
     checkCollisionBetweenCharacterAndEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
@@ -106,6 +143,10 @@ class World {
             }
         });
     }
+
+    /**
+    * Checks for collisions between throwableObjects and enemies
+    */
     checkCollisionBetweenThrowableObjectsAndEnemy() {
         this.throwableObjects.forEach((bubble, indexBubble) => {
             this.level.enemies.forEach((enemy, indexEnemy) => {
@@ -136,6 +177,10 @@ class World {
             });
         });
     }
+
+    /**
+    * Checks for collisions between the character and poisons
+    */
     checkCollisionBetweenCharacterAndPoison() {
         this.level.poisons.forEach((poison, index) => {
             if (this.character.isColliding(poison)) {
@@ -146,6 +191,10 @@ class World {
             }
         });
     }
+
+    /**
+    * Checks for collisions between the character and coins
+    */
     checkCollisionBetweenCharacterAndCoin() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
@@ -157,6 +206,9 @@ class World {
         });
     }
 
+    /**
+    * Checks if a bubble or poisoned bubble should be thrown based on user input.
+    */
     checkThrowObjects() {
         if (this.bubbleShouldBeThrown()) {
             this.throwObject('bubble');
@@ -167,6 +219,10 @@ class World {
         }
     }
 
+    /**
+    * Throws a bubble or a poisoned bubble, depending on the type specified.
+    * @param {string} bubbleType - The type of bubble to throw ('bubble' or 'bubblePoison').
+    */
     throwObject(bubbleType) {
         if (bubbleType == "bubble") {
             this.character.isShooting = true;
@@ -190,14 +246,25 @@ class World {
         }
     }
 
+    /**
+    * Determines if a regular bubble should be thrown.
+    * @returns {boolean} True if the 'Q' key is pressed and the character is not already shooting.
+    */
     bubbleShouldBeThrown() {
         return this.keyboard.Q && !(this.character.isShooting);
     }
 
+    /**
+    * Determines if a poisoned bubble should be thrown.
+    * @returns {boolean} True if the 'E' key is pressed and the character is not already shooting.
+    */
     bubblePoisonShouldBeThrown() {
         return this.keyboard.E && !(this.character.isShooting);
     }
 
+    /**
+    * Spawns the Endboss if the character reaches the designated spawn point.
+    */
     createEndboss() {
         if (this.character.x > this.level.enbossSpawnPoint && !this.hadFirstContact) {
             this.level.enemies.push(new Endboss());
@@ -206,6 +273,9 @@ class World {
         }
     }
 
+    /**
+    * Controls the movement of the Endboss, updating its position periodically.
+    */
     moveEndboss() {
         addStoppableIntervallId(setInterval(() => {
             if (!(this.myEndBoss().isDead())) {
@@ -229,42 +299,80 @@ class World {
         }, 1000 / 60));
     }
 
+    /**
+    * Determines if the Endboss should move left.
+    * @returns {boolean} True if the Endboss's x-coordinate is greater than the character's x-coordinate - specific value.
+    */
     shouldEndbossMoveLeft() {
         return this.myEndBoss().x > this.character.x - 50;
     }
 
+    /**
+    * Determines if the Endboss should move right.
+    * @returns {boolean} True if the Endboss's x-coordinate is less than the character's x-coordinate - specific value.
+    */
     shouldEndbossMoveRight() {
         return this.myEndBoss().x < this.character.x - 50;
     }
 
+    /**
+    * Determines if the Endboss should move down.
+    * @returns {boolean} True if the Endboss's y-coordinate is less than the character's y-coordinate - specific value.
+    */
     shouldEndbossMoveDown() {
         return this.myEndBoss().y < this.character.y - 100;
     }
 
+    /**
+    * Determines if the Endboss should move up.
+    * @returns {boolean} True if the Endboss's y-coordinate is greater than the character's y-coordinate - specific value.
+    */
     shouldEndbossMoveUp() {
         return this.myEndBoss().y > this.character.y - 100;
     }
 
+    /**
+     * Moves the Endboss left.
+    */
     moveLeft() {
         this.myEndBoss().x -= 1.5;
         this.myEndBoss().otherDirection = false;
     }
+
+    /**
+     * Moves the Endboss right.
+     */
     moveRight() {
         this.myEndBoss().x += 1.5;
         this.myEndBoss().otherDirection = true;
     }
+
+    /**
+    * Moves the Endboss up.
+    */
     moveUp() {
         this.myEndBoss().y -= 1.5;
     }
+
+    /**
+    * Moves the Endboss down.
+    */
     moveDown() {
         this.myEndBoss().y += 1.5;
 
     }
 
+    /**
+    * Retrieves the last enemy in the enemy array, which is assumed to be the Endboss.
+    * @returns {Object} The Endboss object.
+    */
     myEndBoss() {
         return this.level.enemies[this.level.enemies.length - 1];
     }
 
+    /**
+    * Sets sound effects for the character and all enemies in the level.
+    */
     setWorldSounds() {
         this.character.setSounds();
         this.level.enemies.forEach((enemy) => {
@@ -272,11 +380,19 @@ class World {
         });
     }
 
+    /**
+    * Ends the game and sets the appropriate game over state.
+    * @param {string} whoIsDeath - Specifies who died ('CharacterDeath' or 'EndbossDeath').
+    */
     setGameOver(whoIsDeath) {
         this.gameOver(whoIsDeath);
         this.gameIsOver = true;
     }
 
+    /**
+    * Handles game over logic, including playing sounds and displaying the appropriate end screen.
+    * @param {string} whoIsDeath - Specifies who died ('CharacterDeath' or 'EndbossDeath').
+    */
     gameOver(whoIsDeath) {
         if (whoIsDeath == 'EndbossDeath') {
             winSound.play();

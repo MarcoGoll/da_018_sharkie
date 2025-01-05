@@ -19,6 +19,9 @@ class Poison extends MoveableObject {
         './assets/img/4. Marcadores/Posión/Animada/8.png',
     ];
 
+    /**
+    * Initializes a new instance of the object, setting up a poison potion
+    */
     constructor(x, y) {
         super().loadImage(this.img);
         this.loadImages(this.IMAGES_POISON);
@@ -27,6 +30,9 @@ class Poison extends MoveableObject {
         this.animate();
     }
 
+    /**
+    * Starts the animation of the poison object
+    */
     animate() {
         addStoppableIntervallId(setInterval(() => this.playAnimation(this.IMAGES_POISON), 1000 / 8));
     }

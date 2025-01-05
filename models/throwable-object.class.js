@@ -5,6 +5,10 @@ class ThrowableObject extends MoveableObject {
     IMAGE_BUBBLE = './assets/img/1.Sharkie/4.Attack/Bubble trap/Bubble.png';
     IMAGE_BUBBLE_POISONED = './assets/img/1.Sharkie/4.Attack/Bubble trap/BubblePoisoned.png';
 
+    /**
+    * Initializes a new instance of the object
+    * The bubble can be either a normal bubble or a poisoned bubble.
+    */
     constructor(x, y, isPoisonedBubble) {
         super();
         this.x = x;
@@ -20,6 +24,11 @@ class ThrowableObject extends MoveableObject {
         this.throw(this.x, this.y);
     }
 
+    /**
+    * Makes the bubble move in a projectile motion.
+    * @param {number} x - Initial X position of the bubble.
+    * @param {number} y - Initial Y position of the bubble.
+    */
     throw(x, y) {
         this.x = x;
         this.y = y;

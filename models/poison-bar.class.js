@@ -9,6 +9,9 @@ class PoisonBar extends DrawableObject {
         './assets/img/4. Marcadores/orange/100_poison6.png',
     ];
 
+    /**
+    * Initializes a new instance of the object, setting up the poison bar
+    */
     constructor() {
         super();
         this.loadImages(this.IMAGES_POISONBAR);
@@ -19,12 +22,22 @@ class PoisonBar extends DrawableObject {
         this.setPercentage(0);
     }
 
+    /**
+    * Sets the current percentage of the poison bar and updates the displayed image accordingly.
+    * @param {number} percentage - The current poison percentage (0-100).
+    * @param {number} multiplier - A multiplier applied to the percentage for determining the image index.
+    */
     setPercentage(percentage, multiplier) {
         this.percentage = percentage;
         let path = this.IMAGES_POISONBAR[this.resolveImageIndex(multiplier)];
         this.img = this.imageCache[path];
     }
 
+    /**
+    * Resolves the appropriate image index based on the current percentage and multiplier.
+    * @param {number} multiplier - A multiplier applied to the percentage.
+    * @returns {number} The index of the image corresponding to the current poison level.
+    */
     resolveImageIndex(multiplier) {
         if (this.percentage * multiplier == 100) {
             return 5;
