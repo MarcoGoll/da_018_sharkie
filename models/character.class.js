@@ -125,7 +125,7 @@ class Character extends MoveableObject {
     ];
 
     /**
-    * Initializes a new instance of the object with an image and preloads multiple animations and sound settings.
+    * Initializes a new instance of the object with an image and preloads multiple animations and sound settings.q
     * @param {string} img - The path to the primary image that represents the object.
     */
     constructor(img) {
@@ -306,7 +306,7 @@ class Character extends MoveableObject {
     * @returns {boolean} True if the character is attacking with a slap.
     */
     isAttackingWithSlapp() {
-        this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying;
+        return this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying;
     }
 
     /**
