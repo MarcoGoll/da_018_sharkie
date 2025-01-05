@@ -10,6 +10,9 @@ class CoinBar extends DrawableObject {
         './assets/img/4. Marcadores/orange/100_coin6.png',
     ];
 
+    /**
+    * Initializes a new instance of the object, preloading coin bar images and setting default dimensions and position.
+    */
     constructor() {
         super();
         this.loadImages(this.IMAGES_COINBAR);
@@ -20,12 +23,22 @@ class CoinBar extends DrawableObject {
         this.setPercentage(0);
     }
 
+    /**
+    * Sets the percentage and updates the image path based on the multiplier and percentage.
+    * @param {number} percentage - The percentage value to set (0 to 100).
+    * @param {number} multiplier - A multiplier to adjust the percentage when determining the image index.
+    */
     setPercentage(percentage, multiplier) {
         this.percentage = percentage;
         let path = this.IMAGES_COINBAR[this.resolveImageIndex(multiplier)];
         this.img = this.imageCache[path];
     }
 
+    /**
+    * Resolves the image index based on the calculated percentage after applying the multiplier.
+    * @param {number} multiplier - A multiplier applied to the percentage to determine the appropriate image index.
+    * @returns {number} The index of the image to use, ranging from 0 to 5, based on the percentage thresholds.
+    */
     resolveImageIndex(multiplier) {
         if (this.percentage * multiplier == 100) {
             return 5;

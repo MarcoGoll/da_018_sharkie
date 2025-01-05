@@ -88,7 +88,8 @@ class Pufferfish extends MoveableObject {
     }
 
     /**
-   * set muted attribut of global sounds
+   * Toggles the mute attribute for all sounds associated with a pufferfish.
+   * This is controlled by the global `muteMode` variable.
    */
     setSoundsMuted() {
         if (muteMode) {

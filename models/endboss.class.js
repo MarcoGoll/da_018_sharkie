@@ -58,6 +58,10 @@ class Endboss extends MoveableObject {
         './assets/img/2.Enemy/3 Final Enemy/Hurt/4.png',
     ];
 
+    /**
+    * Initializes a new instance of the object, preloading multiple animations and setting initial properties. 
+    * @param {number} AMOUNTBACKGROUNDS - The number of backgrounds used to calculate the x-coordinate.
+    */
     constructor() {
         super().loadImage(this.IMAGES_SPAWNING[0]);
         this.loadImages(this.IMAGES_SPAWNING);
@@ -72,10 +76,18 @@ class Endboss extends MoveableObject {
         this.animate();
     }
 
+    /**
+    * Starts the animation cycle for the end boss.
+    * This includes spawning, moving, getting hurt, or dying animations, updated at 10 frames per second.
+    */
     animate() {
         addStoppableIntervallId(setInterval(() => this.playEndbossAnimations(), 1000 / 10));
     }
 
+    /**
+    * Plays the appropriate animation for the end boss based on its state.
+    * The states include spawning, dying, getting hurt, or moving.
+    */
     playEndbossAnimations() {
         if (this.isSpawnAnimationStillRequired()) this.playSpawnAnimation();
         else if (this.isDead()) this.playDeadAnimation();
@@ -84,10 +96,18 @@ class Endboss extends MoveableObject {
         this.i++;
     }
 
+    /**
+    * Plays the spawning animation and associated audio for the end boss.
+    */
     playSpawnAnimation() {
         this.playAnimation(this.IMAGES_SPAWNING);
         this.isSpawnAudio.play();
     }
+
+    /**
+    * Plays the death animation for the end boss if it hasn't been fully played yet.
+    * Once the animation is completed, the last death image is displayed.
+    */
     playDeadAnimation() {
         if (this.isDeadAnimationStillRequired()) {
             if (this.deadAnimationWasPlayed == false) {
@@ -101,25 +121,49 @@ class Endboss extends MoveableObject {
             this.loadImage(this.getLastDeathImg());
         }
     }
+
+    /**
+    * Plays the hurt animation for the end boss.
+    */
     playHurtAnimation() {
         this.playAnimation(this.IMAGES_HURT);
     }
+
+    /**
+    * Plays the movement animation for the end boss.
+    */
     playMoveAnimation() {
         this.playAnimation(this.IMAGES_SWIM);
     }
+
+    /**
+    * Determines if the spawning animation is still required to play. 
+    * @returns {boolean} True if the spawning animation has not finished, otherwise false.
+    */
     isSpawnAnimationStillRequired() {
         return this.i < this.IMAGES_SPAWNING.length;
     }
+
+    /**
+    * Determines if the death animation is still required to play. 
+    * @returns {boolean} True if the death animation has not finished, otherwise false.
+    */
     isDeadAnimationStillRequired() {
         return this.iDead < this.IMAGES_DEAD.length;
     }
+
+    /**
+    * Retrieves the last image of the death animation sequence.* 
+    * @returns {string} The path to the last image in the death animation array.
+    */
     getLastDeathImg() {
         return this.IMAGES_DEAD[this.IMAGES_DEAD.length - 1];
     }
 
     /**
-   * set muted attribut of global sounds
-   */
+    * Toggles the mute attribute for all sounds associated with the end boss.
+    * This is controlled by the global `muteMode` variable.
+    */
     setSoundsMuted() {
         if (muteMode) {
             this.isSpawnAudio.muted = true;

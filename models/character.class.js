@@ -125,9 +125,9 @@ class Character extends MoveableObject {
     ];
 
     /**
-      * Constructor for the class Character
-      * @param {string} img - Initial image for the character
-      */
+    * Initializes a new instance of the object with an image and preloads multiple animations and sound settings.
+    * @param {string} img - The path to the primary image that represents the object.
+    */
     constructor(img) {
         super().loadImage(img);
         this.loadImages(this.IMAGES_SWIM);
