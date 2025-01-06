@@ -163,13 +163,11 @@ class World {
                     if (!(bubble.isPoisonedBubble)) {
                         enemy.hit(bubble.bubblePower);
                         if (enemy instanceof Endboss) this.enbossBar.setPercentage(enemy.energy);
-                        console.log("Energie: ", enemy.energy);
                         enemy.isHitAudio.play();
                     }
                     else {
                         enemy.hit(bubble.bubblePowerPoison);
                         if (enemy instanceof Endboss) this.enbossBar.setPercentage(enemy.energy);
-                        console.log("Energie: ", enemy.energy);
                         enemy.isHitAudio.play();
                     }
                     if (enemy instanceof Pufferfish) {
