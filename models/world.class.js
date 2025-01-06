@@ -8,6 +8,7 @@ class World {
     statusBarHealth = new StatusBar();
     poisonBar = new PoisonBar();
     coinBar = new CoinBar();
+    enbossBar = new EnbossLifeBar();
     throwableObjects = [];
     hadFirstContact = false;
     collisionPower = 5;
@@ -46,6 +47,7 @@ class World {
         this.addObjectToMap(this.statusBarHealth);
         this.addObjectToMap(this.poisonBar);
         this.addObjectToMap(this.coinBar);
+        if (this.isEndbossAlreadyCreated()) this.addObjectToMap(this.enbossBar);
         // -----------END: SPACE FOR FIXED OBJECTS-----------
         this.ctx.translate(this.camera_x, 0);
         this.ctx.translate(-this.camera_x, 0);
@@ -154,10 +156,14 @@ class World {
                     this.throwableObjects.splice(indexBubble, 1);
                     if (!(bubble.isPoisonedBubble)) {
                         enemy.hit(bubble.bubblePower);
+                        if (enemy instanceof Endboss) this.enbossBar.setPercentage(enemy.energy);
+                        console.log("Energie: ", enemy.energy);
                         enemy.isHitAudio.play();
                     }
                     else {
                         enemy.hit(bubble.bubblePowerPoison);
+                        if (enemy instanceof Endboss) this.enbossBar.setPercentage(enemy.energy);
+                        console.log("Energie: ", enemy.energy);
                         enemy.isHitAudio.play();
                     }
                     if (enemy instanceof Pufferfish) {
@@ -230,7 +236,7 @@ class World {
                 let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 130, false);
                 this.throwableObjects.push(bubble);
                 this.character.isShooting = false;
-            }, 700)
+            }, 900)
         }
         if (bubbleType == "bubblePoison") {
             if (this.character.poisonAmmunition > 0) {
@@ -241,7 +247,7 @@ class World {
                     this.character.deletePoison();
                     this.poisonBar.setPercentage(this.character.poisonAmmunition, 10);
                     this.character.isShooting = false;
-                }, 700)
+                }, 900)
             }
         }
     }
@@ -271,6 +277,14 @@ class World {
             this.hadFirstContact = true;
             this.moveEndboss();
         }
+    }
+
+    /**
+    * Determines if the Endboss is already created
+    * @returns {boolean} True if the Endboss is already created
+    */
+    isEndbossAlreadyCreated() {
+        return this.hadFirstContact;
     }
 
     /**

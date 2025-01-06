@@ -8,7 +8,7 @@ class Endboss extends MoveableObject {
         height: 310,
     }
     energyMax = 800;
-    energy = 800;
+    energy = 1000;
     iDead = 0;
     world;
     deadAnimationWasPlayed = false;
