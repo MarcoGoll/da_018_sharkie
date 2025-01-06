@@ -42,6 +42,8 @@
     }
 }
 
+
+
 /*Screen height < Xpx*/
 @media only screen and (max-height:480px) {
     .menuePage h2 {
@@ -89,6 +91,11 @@
         gap: 16px;
     }
 
+    .legalLink {
+        bottom: 5px;
+        font-size: 8px;
+    }
+
 }
 
 /*Screen height < Xpx*/
@@ -99,9 +106,13 @@
 }
 
 /*Screen height over Xpx*/
-@media only screen and (max-height:670px) {
+@media only screen and (max-height:700px) {
     #controlBTNDescription {
         display: none;
+    }
+
+    .legalLink {
+        bottom: 5px;
     }
 }
 
