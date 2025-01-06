@@ -65,4 +65,22 @@ class DrawableObject {
             ctx.stroke();
         }
     }
+
+    /**
+    * Draws a text onto the provided canvas context.
+    * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of a `<canvas>` element.
+    * @param {number} x - The initial x-coordinate of the object.
+    * @param {number} y - The initial y-coordinate of the object.
+    */
+    drawText(ctx, fontsize, text, x, y) {
+        try {
+            ctx.font = `${fontsize}px anton_SC`;
+            ctx.fillStyle = "#571d86";
+            ctx.fillText(text, x, y);
+        } catch (error) {
+            console.warn('Error drawing text', error);
+            console.log('Could not draw the text');
+        }
+    }
+
 }

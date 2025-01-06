@@ -34,7 +34,7 @@ class World {
      */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Löscht zu Beginn des Zeichnes den Inhalt des Canvas (sonst würde jeder vorher gezeichnete Frame immernoch da sein)
-        this.ctx.translate(this.camera_x, 0);
+        this.ctx.translate(this.camera_x, 0); //When you call a new method after translate(), the new positions are added to the initial x and y coordinates of the drawn thinks. Here the x is changing acording to the camera. Everething which is drawn will has his initial x + camera x as new x coordinate
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.throwableObjects);
@@ -45,9 +45,15 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         // -----------START: SPACE FOR FIXED OBJECTS-----------
         this.addObjectToMap(this.statusBarHealth);
+        this.statusBarHealth.drawText(this.ctx, 13, this.character.energy, this.statusBarHealth.x + 100, this.statusBarHealth.y + 40);
         this.addObjectToMap(this.poisonBar);
+        this.poisonBar.drawText(this.ctx, 20, "x " + this.character.poisonAmmunition, this.poisonBar.x + 35, this.poisonBar.y + 40);
         this.addObjectToMap(this.coinBar);
-        if (this.isEndbossAlreadyCreated()) this.addObjectToMap(this.enbossBar);
+        this.coinBar.drawText(this.ctx, 20, "x " + this.character.coinCounter, this.coinBar.x + 30, this.coinBar.y + 20);
+        if (this.isEndbossAlreadyCreated()) {
+            this.addObjectToMap(this.enbossBar);
+            this.enbossBar.drawText(this.ctx, 18, "STRESSED WILLY", this.enbossBar.x + 112, this.enbossBar.y + 61);
+        }
         // -----------END: SPACE FOR FIXED OBJECTS-----------
         this.ctx.translate(this.camera_x, 0);
         this.ctx.translate(-this.camera_x, 0);
