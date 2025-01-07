@@ -11,16 +11,12 @@ class Character extends MoveableObject {
     world;
     speed = 4;
     idleCount = 0;
-
     iDead = 0;
     iAttackBubble = 0;
     iAttackBubblePoison = 0;
-    iAttackSlap = 0;
-
     deadAnimationWasPlayed = false;
     attackBubbleAnimationIsPlaying = false;
     attackBubblePoisonAnimationIsPlaying = false;
-    attackSlapAnimationIsPlaying = false;
     isShooting = false;
     deadSoundWasPlayed = false;
 
@@ -92,17 +88,6 @@ class Character extends MoveableObject {
         './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
         './assets/img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
     ];
-    IMAGES_ATTACKSLAP = [
-        './assets/img/1.Sharkie/4.Attack/Fin slap/1.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/2.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/3.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/4.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/5.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/6.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/7.png',
-        './assets/img/1.Sharkie/4.Attack/Fin slap/8.png',
-
-    ];
     IMAGES_DEADNORMAL = [
         './assets/img/1.Sharkie/6.dead/1.Poisoned/1.png',
         './assets/img/1.Sharkie/6.dead/1.Poisoned/2.png',
@@ -137,7 +122,6 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_HURTNORMAL);
         this.loadImages(this.IMAGES_ATTACKBUBBLENORMAL);
         this.loadImages(this.IMAGES_ATTACKBUBBLEPOISON);
-        this.loadImages(this.IMAGES_ATTACKSLAP);
         this.swimSound.volume = 1;
         this.isHitAudio.volume = 0.5;
         this.setSoundsMuted();
@@ -174,7 +158,6 @@ class Character extends MoveableObject {
         else if (this.isHurt()) this.playHurtAnimation();
         else if (this.isAttackingWithBubble()) this.playAttackBubbleAnimation();
         else if (this.isAttackingWithBubblePoison()) this.playAttackBubblePoisonAnimation();
-        else if (this.isAttackingWithSlapp()) this.playAttackSlapAnimation();
         else {
             if (this.isMoving()) this.playMoveAnimation();
             else if (this.characterStopedMoving()) this.playIdleAnimations();
@@ -246,24 +229,6 @@ class Character extends MoveableObject {
     }
 
     /**
-     * Plays the slap attack animation sequence
-     */
-    playAttackSlapAnimation() {
-        if (this.iAttackSlap < this.IMAGES_ATTACKSLAP.length) {
-            if (this.attackSlapAnimationIsPlaying == false) {
-                this.attackSlapAnimationIsPlaying = true;
-                this.currentImage = 0;
-            }
-            this.playAnimation(this.IMAGES_ATTACKSLAP);
-            this.idleCount = 0;
-            this.iAttackSlap++;
-        } else {
-            this.attackSlapAnimationIsPlaying = false;
-            this.iAttackSlap = 0;
-        }
-    }
-
-    /**
     * Plays the swimming animation for the character.
     * Resets the idle counter.
     */
@@ -299,14 +264,6 @@ class Character extends MoveableObject {
     */
     isAttackingWithBubblePoison() {
         return this.world.keyboard.E || this.attackBubblePoisonAnimationIsPlaying;
-    }
-
-    /**
-    * Checks if the character is attacking with a slap.
-    * @returns {boolean} True if the character is attacking with a slap.
-    */
-    isAttackingWithSlapp() {
-        return this.world.keyboard.SPACE || this.attackSlapAnimationIsPlaying;
     }
 
     /**

@@ -8,7 +8,6 @@ let upBTNRef = document.getElementById('btnUP');
 let leftBTNRef = document.getElementById('btnLeft');
 let downBTNRef = document.getElementById('btnDown');
 let rightBTNRef = document.getElementById('btnRight');
-let tailAttackBTNRef = document.getElementById('btnSlapAttack');
 let bubbleAttackBTNRef = document.getElementById('btnBubbleAttack');
 let poisonAttackBTNRef = document.getElementById('btnPoisonAttack');
 let menueRef = document.getElementById('menue');
@@ -59,9 +58,6 @@ window.addEventListener('keydown', (event) => {
         case 'ArrowDown':
             keyboard.DOWN = true;
             break;
-        case ' ':
-            keyboard.SPACE = true;
-            break;
         case 'q':
         case 'Q':
             keyboard.Q = true;
@@ -81,28 +77,31 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'a':
+        case 'A':
         case 'ArrowLeft':
             keyboard.LEFT = false;
             break;
         case 'w':
+        case 'W':
         case 'ArrowUp':
             keyboard.UP = false;
             break; a
         case 'd':
+        case 'D':
         case 'ArrowRight':
             keyboard.RIGHT = false;
             break;
         case 's':
+        case 'S':
         case 'ArrowDown':
             keyboard.DOWN = false;
             break;
-        case ' ':
-            keyboard.SPACE = false;
-            break;
         case 'q':
+        case 'Q':
             keyboard.Q = false;
             break;
         case 'e':
+        case 'E':
             keyboard.E = false;
             break;
         default:
@@ -168,21 +167,6 @@ rightBTNRef.addEventListener('touchstart', e => {
 */
 rightBTNRef.addEventListener('touchend', e => {
     keyboard.RIGHT = false;
-})
-
-/**
-* add EventListener for touchstart
-*/
-tailAttackBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
-    keyboard.SPACE = true;
-})
-
-/**
-* add EventListener for touchend
-*/
-tailAttackBTNRef.addEventListener('touchend', e => {
-    keyboard.SPACE = false;
 })
 
 /**
