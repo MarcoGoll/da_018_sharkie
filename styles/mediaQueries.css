@@ -36,6 +36,22 @@
     }
 }
 
+@media only screen and (max-height:700px) {
+    #controlBTNDescription {
+        display: none;
+    }
+
+    .legalLink {
+        bottom: 5px;
+    }
+}
+
+@media only screen and (max-height:600px) {
+    h1 {
+        display: none;
+    }
+}
+
 @media only screen and (max-height:480px) {
     .menuePage h2 {
         font-size: 24px;
@@ -86,22 +102,13 @@
         bottom: 5px;
         font-size: 8px;
     }
-
 }
 
-@media only screen and (max-height:600px) {
-    h1 {
-        display: none;
-    }
-}
-
-@media only screen and (max-height:700px) {
-    #controlBTNDescription {
-        display: none;
-    }
-
+@media only screen and (max-height:325px) {
     .legalLink {
-        bottom: 5px;
+        top: 60px;
+        right: 15px;
+        font-size: 8px;
     }
 }
 
