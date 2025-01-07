@@ -109,6 +109,7 @@
         top: 60px;
         right: 15px;
         font-size: 8px;
+        flex-shrink: 1;
     }
 }
 
