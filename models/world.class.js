@@ -12,6 +12,8 @@ class World {
     throwableObjects = [];
     hadFirstContact = false;
     collisionPower = 5;
+    attackPower = 7;
+
     gameIsOver = false;
     isEndbossAttacking = false;
 
@@ -142,7 +144,11 @@ class World {
     checkCollisionBetweenCharacterAndEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit(this.collisionPower);
+                if (enemy instanceof Endboss) {
+                    this.character.hit(this.attackPower);
+                } else {
+                    this.character.hit(this.collisionPower);
+                }
                 this.statusBarHealth.setPercentage(this.character.energy)
                 if (this.character.isDead()) {
                     if (!(this.gameIsOver)) {
