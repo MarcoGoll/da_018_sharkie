@@ -12,7 +12,9 @@ class Endboss extends MoveableObject {
     iDead = 0;
     world;
     deadAnimationWasPlayed = false;
+    attackAnimationIsPlaying = false;
     i = 0;
+    iAttack = 0;
     isSpawnAudio = new Audio('./assets/audio/endboss_spawn.mp3');
     isHitAudio = new Audio('./assets/audio/endboss_isHit.mp3');
     isDyingAudio = new Audio('./assets/audio/endboss_dying.mp3');
@@ -57,6 +59,14 @@ class Endboss extends MoveableObject {
         './assets/img/2.Enemy/3 Final Enemy/Hurt/3.png',
         './assets/img/2.Enemy/3 Final Enemy/Hurt/4.png',
     ];
+    IMAGES_ATTACK = [
+        '/assets/img/2.Enemy/3 Final Enemy/Attack/1.png',
+        '/assets/img/2.Enemy/3 Final Enemy/Attack/2.png',
+        '/assets/img/2.Enemy/3 Final Enemy/Attack/3.png',
+        '/assets/img/2.Enemy/3 Final Enemy/Attack/4.png',
+        '/assets/img/2.Enemy/3 Final Enemy/Attack/5.png',
+        '/assets/img/2.Enemy/3 Final Enemy/Attack/6.png',
+    ];
 
     /**
     * Initializes a new instance of the object, preloading multiple animations and setting initial properties. 
@@ -68,6 +78,7 @@ class Endboss extends MoveableObject {
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_ATTACK);
         this.x = (AMOUNTBACKGROUNDS * 1440) - 1200;
         this.isSpawnAudio.volume = 0.5;
         this.isHitAudio.volume = 0.5;
@@ -92,6 +103,7 @@ class Endboss extends MoveableObject {
         if (this.isSpawnAnimationStillRequired()) this.playSpawnAnimation();
         else if (this.isDead()) this.playDeadAnimation();
         else if (this.isHurt()) this.playHurtAnimation();
+        else if (this.isAttacking) this.playAttackAnimation();
         else this.playMoveAnimation();
         this.i++;
     }
@@ -127,6 +139,23 @@ class Endboss extends MoveableObject {
     */
     playHurtAnimation() {
         this.playAnimation(this.IMAGES_HURT);
+    }
+
+    /**
+    * Plays the attack animation for the end boss.
+    */
+    playAttackAnimation() {
+        if (this.iAttack < this.IMAGES_ATTACK.length) {
+            if (this.attackAnimationIsPlaying == false) {
+                this.attackAnimationIsPlaying = true;
+                this.currentImage = 0;
+            }
+            this.playAnimation(this.IMAGES_ATTACK);
+            this.iAttack++;
+        } else {
+            this.attackAnimationIsPlaying = false;
+            this.iAttack = 0;
+        }
     }
 
     /**

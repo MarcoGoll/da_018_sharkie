@@ -13,6 +13,7 @@ class World {
     hadFirstContact = false;
     collisionPower = 5;
     gameIsOver = false;
+    isEndbossAttacking = false;
 
     /**
     * Initializes a new instance of the object, setting up the status bar
@@ -313,6 +314,8 @@ class World {
                 if (this.shouldEndbossMoveUp()) {
                     this.moveUp();
                 }
+                //ATTACK
+                this.setEndbossAttack();
             }
         }, 1000 / 60));
     }
@@ -350,6 +353,14 @@ class World {
     }
 
     /**
+    * Determines if the Endboss should attack.
+    * @returns {boolean} True if the Endboss's x-coordinate and the character's x-coordinate are pretty close.
+    */
+    shouldEndbossAttack() {
+        return (this.myEndBoss().x - this.character.x) < 200 && (this.myEndBoss().x - this.character.x) > 0
+    }
+
+    /**
      * Moves the Endboss left.
     */
     moveLeft() {
@@ -377,7 +388,19 @@ class World {
     */
     moveDown() {
         this.myEndBoss().y += 1.5;
+    }
 
+    /**
+    * Set boolean if the Endboss is attacking or not
+    */
+    setEndbossAttack() {
+        if (this.shouldEndbossAttack()) {
+            this.myEndBoss().isAttacking = true;
+            this.myEndBoss().x -= 1;
+        }
+        else {
+            this.myEndBoss().isAttacking = false;
+        }
     }
 
     /**

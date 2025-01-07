@@ -7,6 +7,7 @@ class MoveableObject extends DrawableObject {
     lastHit = 0;
     poisonAmmunition = 0;
     coinCounter = 0;
+    isAttacking = false;
     offset = {
         x: 0,
         y: 0,
