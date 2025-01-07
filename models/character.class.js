@@ -19,7 +19,6 @@ class Character extends MoveableObject {
     attackBubblePoisonAnimationIsPlaying = false;
     isShooting = false;
     deadSoundWasPlayed = false;
-
     swimSound = new Audio('./assets/audio/splash.mp3');
     isHitAudio = new Audio('./assets/audio/characterIsHit.mp3');
     IMAGES_SWIM = [
@@ -128,7 +127,6 @@ class Character extends MoveableObject {
         this.animate();
     }
 
-
     /**
      * Initializes the character animations and movement intervals
      */
@@ -189,7 +187,7 @@ class Character extends MoveableObject {
      * Plays the hurt animation sequence
      */
     playHurtAnimation() {
-        this.playAnimation(this.IMAGES_HURTNORMAL); //hurtANIMATION
+        this.playAnimation(this.IMAGES_HURTNORMAL);
     }
 
     /**
@@ -368,7 +366,7 @@ class Character extends MoveableObject {
     * Sets the camera position relative to the character's position.
     */
     setCameraDependingOnCharacter() {
-        this.world.camera_x = -this.x; // xAchse der World Camera, soll sich entgegengesetzt zur Character xAchse bewegen
+        this.world.camera_x = -this.x;
     }
 }
 

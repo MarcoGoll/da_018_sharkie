@@ -65,7 +65,6 @@
     animation: pulse 1000ms ease-in-out infinite;
 }
 
-/* The animation code */
 @keyframes pulse {
     0% {
         transform: scale(1);

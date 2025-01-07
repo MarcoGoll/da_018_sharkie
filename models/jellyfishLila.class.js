@@ -7,7 +7,6 @@ class JellyfishLila extends Jellyfish {
         widht: 60,
         height: 70,
     }
-
     IMAGES_SWIM = [
         './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
         './assets/img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',

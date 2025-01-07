@@ -1,7 +1,7 @@
 class World {
     character = new Character("./assets/img/1.Sharkie/3.Swim/1.png");
     canvas;
-    ctx; // um den (ctx/)Context  des Canvas zu verändern (wird immer im Zusammenhang mit canvas benötigt und wird traditionell immer so benannt)
+    ctx;
     keyboard;
     camera_x = 0;
     level = level1;
@@ -13,7 +13,6 @@ class World {
     hadFirstContact = false;
     collisionPower = 5;
     attackPower = 7;
-
     gameIsOver = false;
     isEndbossAttacking = false;
 
@@ -23,7 +22,7 @@ class World {
     * @param {Object} keyboard - An object representing the current state of keyboard inputs.
     */
     constructor(canvas, keyboard) {
-        this.ctx = canvas.getContext('2d'); // Gibt an das wir mit 2d arbeiten wollen und returnd ein Objekt mit Eigenschaften/Methoden zurück, die uns das entsprechende Arbeiten mit 2d ermöglichen und speichert dieses in die Variable ctx
+        this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.draw();
@@ -36,8 +35,8 @@ class World {
      * Continuously called using requestAnimationFrame.
      */
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Löscht zu Beginn des Zeichnes den Inhalt des Canvas (sonst würde jeder vorher gezeichnete Frame immernoch da sein)
-        this.ctx.translate(this.camera_x, 0); //When you call a new method after translate(), the new positions are added to the initial x and y coordinates of the drawn thinks. Here the x is changing acording to the camera. Everething which is drawn will has his initial x + camera x as new x coordinate
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.throwableObjects);
@@ -60,7 +59,7 @@ class World {
         // -----------END: SPACE FOR FIXED OBJECTS-----------
         this.ctx.translate(this.camera_x, 0);
         this.ctx.translate(-this.camera_x, 0);
-        requestAnimationFrame(() => this.draw()); // requestAnimationFrame wird so häufig aufgerufen, wie es die Grafikkarte hergibt
+        requestAnimationFrame(() => this.draw());
     }
 
     /**
@@ -68,14 +67,11 @@ class World {
      * @param {Object} moveableObject - The object to be drawn.
      */
     addObjectToMap(moveableObject) {
-        if (moveableObject.otherDirection) { // Vor dem Zeichnen spiegeln, wenn otherdirection == true
+        if (moveableObject.otherDirection) {
             this.flipImage(moveableObject);
         }
-
         moveableObject.draw(this.ctx);
-        //moveableObject.drawFrame(this.ctx);
-
-        if (moveableObject.otherDirection) { // Nach dem Zeichnen zurückspiegeln, wenn otherdirection == true
+        if (moveableObject.otherDirection) {
             this.flipImageBack(moveableObject);
         }
     }
@@ -85,10 +81,10 @@ class World {
     * @param {Object} moveableObject - The object to flip.
     */
     flipImage(moveableObject) {
-        this.ctx.save(); // aktueller Status vom Kontext wird zwischengespeichert, um ihn später wieder laden zu können
-        this.ctx.translate(moveableObject.width, 0) // Nötig, um beim Spiegeln den Sprung des Characters zu verhindern 
-        this.ctx.scale(-1, 1); // Sagt dem Kontext, dass das nächste Bild gespiegelt gezeichnet werden soll
-        moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position, ist nötig da wir den Context gespiegelt haben
+        this.ctx.save();
+        this.ctx.translate(moveableObject.width, 0);
+        this.ctx.scale(-1, 1);
+        moveableObject.x = moveableObject.x * -1;
     }
 
     /**
@@ -96,8 +92,8 @@ class World {
     * @param {Object} moveableObject - The object to restore.
     */
     flipImageBack(moveableObject) {
-        moveableObject.x = moveableObject.x * -1 // Spiegelt die x Position zur Ausgangssituation zurück
-        this.ctx.restore(); // läd den Status vom Kontext, bevor wir die Eigenschaften zum Spiegeln eingestellt haben. Damit die nächsten Bilder wieder normal gezeichnet werden
+        moveableObject.x = moveableObject.x * -1;
+        this.ctx.restore();
     }
 
     /**
@@ -114,7 +110,7 @@ class World {
      * Sets a reference to the game world in the character object for interaction.
      */
     setWorld() {
-        this.character.world = this; // Wir müssen dem Character eine Referenz zur World geben, da in der World das Keyboardobject liegt auf was wir, aber vom MovableObjekt (in dem Fall der Character) aus zurgreifen wollen. Ohne die Referenz, könnten wir vom Character aus nicht auf das Keyboard Object zugreifen
+        this.character.world = this;
     }
 
     /**
@@ -304,23 +300,18 @@ class World {
     moveEndboss() {
         addStoppableIntervallId(setInterval(() => {
             if (!(this.myEndBoss().isDead())) {
-                //MOVE LEFT
                 if (this.shouldEndbossMoveLeft()) {
                     this.moveLeft();
                 }
-                //MOVE RIGHT
                 if (this.shouldEndbossMoveRight()) {
                     this.moveRight();
                 }
-                //MOVE DOWN
                 if (this.shouldEndbossMoveDown()) {
                     this.moveDown();
                 }
-                //MOVE UP
                 if (this.shouldEndbossMoveUp()) {
                     this.moveUp();
                 }
-                //ATTACK
                 this.setEndbossAttack();
             }
         }, 1000 / 60));
@@ -457,5 +448,4 @@ class World {
             }
         }, 2000);
     }
-
 }

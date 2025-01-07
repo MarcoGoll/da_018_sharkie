@@ -1,10 +1,8 @@
 class CoinBar extends DrawableObject {
     percentage = 0;
-
     IMAGES_COINBAR = [
         './assets/img/4. Marcadores/1. Coins/1.png',
     ];
-
 
     /**
     * Initializes a new instance of the object, preloading coin bar images and setting default dimensions and position.

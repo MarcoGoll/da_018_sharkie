@@ -27,7 +27,7 @@ class EnbossLifeBar extends DrawableObject {
     * @param {number} percentage - The current health percentage (0 to 100).
     */
     setPercentage(percentage) {
-        this.percentage = percentage; // => Ermittle Zahl zwischen 0...5
+        this.percentage = percentage;
         let path = this.IMAGES_HEALTH[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }

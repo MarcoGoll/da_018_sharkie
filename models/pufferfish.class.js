@@ -37,7 +37,7 @@ class Pufferfish extends MoveableObject {
     * Initializes animation and movement intervals for the pufferfish.
     */
     animate() {
-        addStoppableIntervallId(setInterval(() => this.movePufferfish(), 1000 / 60)); // 60fps
+        addStoppableIntervallId(setInterval(() => this.movePufferfish(), 1000 / 60));
         addStoppableIntervallId(setInterval(() => this.playPufferfishAnimations(), 1000 / 10));
     }
 
@@ -77,7 +77,7 @@ class Pufferfish extends MoveableObject {
     * Plays the aggressive swimming animation.
     */
     playMoveAgressiveAnimation() {
-        this.playAnimation(this.IMAGES_AGRESSIVESWIM); //MoveAGRESSIVE 
+        this.playAnimation(this.IMAGES_AGRESSIVESWIM);
     }
 
     /**
@@ -96,7 +96,7 @@ class Pufferfish extends MoveableObject {
     * Plays the normal swimming animation.
     */
     playMoveNormalAnimation() {
-        this.playAnimation(this.IMAGES_SWIM); //MoveNormal
+        this.playAnimation(this.IMAGES_SWIM);
     }
 
     /**

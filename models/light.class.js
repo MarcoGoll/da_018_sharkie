@@ -15,6 +15,6 @@ class Light extends MoveableObject {
     * Starts an animation that moves the object to the left.
     */
     animate() {
-        addStoppableIntervallId(setInterval(() => this.moveLeft(), 1000 / 60)); // 60fps
+        addStoppableIntervallId(setInterval(() => this.moveLeft(), 1000 / 60));
     }
 }

@@ -48,7 +48,7 @@ class MoveableObject extends DrawableObject {
     * @param {Array} images - An array of image paths to be displayed in sequence.
     */
     playAnimation(images) {
-        let i = this.currentImage % images.length; // Wirkt wie eine Endlosschleife. i = 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0 ... (jeweils der Rest von x % y )
+        let i = this.currentImage % images.length;
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
@@ -124,7 +124,7 @@ class MoveableObject extends DrawableObject {
         if (this.energy < 0) {
             this.energy = 0;
         } else {
-            this.lastHit = new Date().getTime(); // aktuelle Zeit (in ms seit dem 1.1.1970)
+            this.lastHit = new Date().getTime();
         }
     }
 
@@ -133,8 +133,8 @@ class MoveableObject extends DrawableObject {
     * @returns {boolean} True if the object was hit less than 1 second ago, false otherwise.
     */
     isHurt() {
-        let timepassed = new Date().getTime() - this.lastHit // aktuelle Zeit  (in ms seit dem 1.1.1970) - die Zeit (in ms seit dem 1.1.1970), die wir beim Hit gespeichert haben (see hit())
-        timepassed = timepassed / 1000 // ms in s
+        let timepassed = new Date().getTime() - this.lastHit
+        timepassed = timepassed / 1000
         return timepassed < 1;
     }
 

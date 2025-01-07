@@ -12,7 +12,7 @@ class DrawableObject {
     * @param {string} path - The relative or absolute path to the image.
     */
     loadImage(path) {
-        this.img = new Image(); //Image Objekt funktioniert wie das <img> HTML-Tag (also z.B. auch mit dem Attribut src)
+        this.img = new Image();
         this.img.src = path;
     }
 
@@ -25,8 +25,7 @@ class DrawableObject {
         array.forEach(path => {
             let img = new Image();
             img.src = path;
-            this.imageCache[path] = img; // this.imageCache[path] does not exist, thats why a new Key:Value Pair will added to imageCache. 
-            //The Key will be the value of the Variable "path" (in our case an relative path) and the Value will be the variable "img"
+            this.imageCache[path] = img;
         });
     }
 
@@ -36,33 +35,10 @@ class DrawableObject {
     */
     draw(ctx) {
         try {
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height); // ctx.drawImage(image, dx, dy, dWidth, dHeight) - eine Methode, die  dank der Zuweisung via getContext('2d') nun möglich ist. Sie Zeichnet im Context des Canvas ein Bild 
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         } catch (error) {
             console.warn('Error loading Image', error);
             console.log('Could not load image', this.img.src);
-        }
-    }
-
-    /**
-    * Draws a rectangle frame around the object on the provided canvas context for debugging purposes.
-    * This is only applied to specific object types (e.g., `Jellyfish`, `Pufferfish`, etc.).* 
-    * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of a `<canvas>` element.
-    */
-    drawFrame(ctx) {
-        //Draw Rectangle
-        if (this instanceof Jellyfish ||
-            this instanceof Pufferfish ||
-            this instanceof ThrowableObject ||
-            this instanceof Character ||
-            this instanceof Endboss ||
-            this instanceof Coin ||
-            this instanceof Poison
-        ) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + this.offset.x, this.y + this.offset.y, this.width - this.offset.widht, this.height - this.offset.height);
-            ctx.stroke();
         }
     }
 
@@ -79,7 +55,7 @@ class DrawableObject {
             ctx.fillText(text, x, y);
         } catch (error) {
             console.warn('Error drawing text', error);
-            console.log('Could not draw the text');
+            console.log('Could not draw the text: ', text);
         }
     }
 

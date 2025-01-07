@@ -10,8 +10,8 @@ class StatusBar extends DrawableObject {
     ];
 
     /**
-   * Initializes a new instance of the object, setting up the status bar
-   */
+    * Initializes a new instance of the object, setting up the status bar
+    */
     constructor() {
         super();
         this.loadImages(this.IMAGES_HEALTH);
@@ -27,7 +27,7 @@ class StatusBar extends DrawableObject {
     * @param {number} percentage - The current health percentage (0 to 100).
     */
     setPercentage(percentage) {
-        this.percentage = percentage; // => Ermittle Zahl zwischen 0...5
+        this.percentage = percentage;
         let path = this.IMAGES_HEALTH[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }

@@ -1,26 +1,21 @@
-/* Canva responsive*/
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
     }
 }
 
-/* Canva responsive*/
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100dvh;
     }
 }
 
-
-/* Media Screen im Querformat*/
 @media only screen and (orientation:landscape) {
     #handyOverlay {
         display: none;
     }
 }
 
-/* Media Screen im Hochformat*/
 @media only screen and (orientation:portrait) {
     #muteContainer {
         display: none;
@@ -31,7 +26,6 @@
     }
 }
 
-/*Screen widht < Xpx*/
 @media only screen and (max-width:685px) {
     #controlBTNDescription {
         display: none;
@@ -42,9 +36,6 @@
     }
 }
 
-
-
-/*Screen height < Xpx*/
 @media only screen and (max-height:480px) {
     .menuePage h2 {
         font-size: 24px;
@@ -98,14 +89,12 @@
 
 }
 
-/*Screen height < Xpx*/
 @media only screen and (max-height:600px) {
     h1 {
         display: none;
     }
 }
 
-/*Screen height over Xpx*/
 @media only screen and (max-height:700px) {
     #controlBTNDescription {
         display: none;
@@ -116,7 +105,6 @@
     }
 }
 
-/*Screen with touchpad (Handy/Tablet)*/
 @media (pointer:none),
 (pointer:coarse) {
     #controlBTNAreaALL {

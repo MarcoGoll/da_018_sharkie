@@ -113,7 +113,7 @@ window.addEventListener('keyup', (event) => {
 * add EventListener for touchstart
 */
 upBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.)
+    e.preventDefault();
     keyboard.UP = true;
 })
 
@@ -128,7 +128,7 @@ upBTNRef.addEventListener('touchend', e => {
 * add EventListener for touchstart
 */
 leftBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
+    e.preventDefault();
     keyboard.LEFT = true;
 })
 
@@ -143,7 +143,7 @@ leftBTNRef.addEventListener('touchend', e => {
 * add EventListener for touchstart
 */
 downBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
+    e.preventDefault();
     keyboard.DOWN = true;
 })
 
@@ -158,7 +158,7 @@ downBTNRef.addEventListener('touchend', e => {
 * add EventListener for touchstart
 */
 rightBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
+    e.preventDefault();
     keyboard.RIGHT = true;
 })
 
@@ -173,7 +173,7 @@ rightBTNRef.addEventListener('touchend', e => {
 * add EventListener for touchstart
 */
 bubbleAttackBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
+    e.preventDefault();
     keyboard.Q = true;
 })
 
@@ -188,7 +188,7 @@ bubbleAttackBTNRef.addEventListener('touchend', e => {
 * add EventListener for touchstart
 */
 poisonAttackBTNRef.addEventListener('touchstart', e => {
-    e.preventDefault(); // Unterdrückt Defaultverhalten für Touchgesten (z.B. Zoom, Image Download etc.
+    e.preventDefault();
     keyboard.E = true;
 })
 

@@ -1,7 +1,6 @@
 class PufferfishGreen extends Pufferfish {
     energyMax = 100;
     energy = 100;
-
     IMAGES_SWIM = [
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
         './assets/img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',

@@ -40,7 +40,7 @@ class Jellyfish extends MoveableObject {
     * Starts the animation and movement for the jellyfish.
     */
     animate() {
-        addStoppableIntervallId(setInterval(() => this.moveJellyfish(), 1000 / 60)); // 60fps
+        addStoppableIntervallId(setInterval(() => this.moveJellyfish(), 1000 / 60));
         addStoppableIntervallId(setInterval(() => this.playJellyfishAnimations(), 1000 / 6));
     }
 
